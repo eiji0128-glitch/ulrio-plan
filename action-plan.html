@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ULRIO アクションプラン 2026</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif;
+      background: #f0f2f5; color: #333; padding: 32px 24px;
+    }
+    h1 { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+    .subtitle { color: #666; font-size: 13px; margin-bottom: 32px; }
+
+    .filter-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+    .filter-btn {
+      padding: 6px 14px; border-radius: 20px; border: 1px solid #ddd;
+      background: #fff; cursor: pointer; font-size: 12px; font-weight: 600; transition: all 0.15s;
+    }
+    .filter-btn:hover, .filter-btn.active { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
+
+    .month-section { margin-bottom: 28px; }
+    .month-header { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; flex-wrap: wrap; }
+    .month-label {
+      font-size: 15px; font-weight: 700;
+      background: #1a1a1a; color: #fff; padding: 4px 14px; border-radius: 20px;
+    }
+    .month-label.urgent   { background: #c0392b; }
+    .month-label.important{ background: #2d5a8e; }
+    .month-label.normal   { background: #2d8e4a; }
+    .month-sublabel { font-size: 12px; color: #888; }
+
+    .task-card {
+      background: #fff; border-radius: 10px; padding: 14px 18px; margin-bottom: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+      display: grid; grid-template-columns: 28px 1fr auto auto auto;
+      gap: 12px; align-items: center;
+      border-left: 4px solid #ddd; transition: box-shadow 0.15s;
+    }
+    .task-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.12); }
+    .task-card.p-high { border-left-color: #e74c3c; }
+    .task-card.p-mid  { border-left-color: #f39c12; }
+    .task-card.p-low  { border-left-color: #2ecc71; }
+    .task-card.done   { opacity: 0.45; }
+
+    .task-check {
+      width: 20px; height: 20px; border: 2px solid #ccc; border-radius: 4px;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: all 0.15s;
+    }
+    .task-check:hover { border-color: #1a1a1a; }
+    .task-check.checked { background: #1a1a1a; border-color: #1a1a1a; }
+    .task-check.checked::after { content: "✓"; color: #fff; font-size: 12px; font-weight: 700; }
+
+    .task-name { font-size: 14px; font-weight: 600; margin-bottom: 3px; }
+    .task-note { font-size: 11px; color: #888; }
+
+    .badge {
+      display: inline-block; font-size: 10px; font-weight: 700;
+      padding: 3px 8px; border-radius: 4px; white-space: nowrap;
+    }
+    .badge-owner-self     { background: #e8f4f8; color: #1a6a8a; }
+    .badge-owner-designer { background: #f0e8f8; color: #6a1a8a; }
+    .badge-owner-photo    { background: #e8f8ec; color: #1a6a3a; }
+    .badge-owner-wt       { background: #fff3e0; color: #8a5a00; }
+    .badge-pri-high { background: #fde8e8; color: #a81a1a; }
+    .badge-pri-mid  { background: #fef9e8; color: #8a6200; }
+    .badge-pri-low  { background: #e8f8ec; color: #1a6a3a; }
+    .badge-cat { background: #f0f2f5; color: #555; }
+
+    .summary-bar { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; }
+    .summary-card {
+      background: #fff; border-radius: 10px; padding: 16px 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.07); min-width: 120px;
+    }
+    .summary-card .val { font-size: 24px; font-weight: 700; }
+    .summary-card .lbl { font-size: 11px; color: #888; margin-top: 2px; }
+
+    .legend { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; font-size: 12px; }
+    .legend-item { display: flex; align-items: center; gap: 6px; }
+    .legend-bar { width: 4px; height: 16px; border-radius: 2px; }
+
+    /* 担当カラー凡例 */
+    .owner-legend { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; font-size: 12px; }
+
+    @media (max-width: 600px) {
+      .task-card { grid-template-columns: 28px 1fr; }
+      .badge-cat, .badge-pri-high, .badge-pri-mid, .badge-pri-low { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<h1>ULRIO アクションプラン 2026</h1>
+<p class="subtitle">マットブラック追加・次シーズン販売準備　作成日：2026-04-01　v2（担当修正版）</p>
+
+<div class="summary-bar">
+  <div class="summary-card">
+    <div class="val" id="total-count">—</div>
+    <div class="lbl">総タスク数</div>
+  </div>
+  <div class="summary-card">
+    <div class="val" id="done-count" style="color:#2ecc71;">0</div>
+    <div class="lbl">完了</div>
+  </div>
+  <div class="summary-card">
+    <div class="val" id="high-count" style="color:#e74c3c;">—</div>
+    <div class="lbl">最優先（未完了）</div>
+  </div>
+  <div class="summary-card">
+    <div class="val" style="color:#c0392b;">5/中旬</div>
+    <div class="lbl">最初の発注期限</div>
+  </div>
+</div>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-bar" style="background:#e74c3c;"></div>🔴 最優先</div>
+  <div class="legend-item"><div class="legend-bar" style="background:#f39c12;"></div>🟡 重要</div>
+  <div class="legend-item"><div class="legend-bar" style="background:#2ecc71;"></div>🟢 通常</div>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="filterTasks('all', this)">すべて</button>
+  <button class="filter-btn" onclick="filterTasks('self', this)">自社</button>
+  <button class="filter-btn" onclick="filterTasks('designer', this)">外注：デザイナー</button>
+  <button class="filter-btn" onclick="filterTasks('photo', this)">外注：カメラマン</button>
+  <button class="filter-btn" onclick="filterTasks('wt', this)">WT</button>
+  <button class="filter-btn" onclick="filterTasks('high', this)">🔴 最優先のみ</button>
+</div>
+
+
+<!-- ========== 4月 ========== -->
+<div class="month-section">
+  <div class="month-header">
+    <span class="month-label urgent">4月　今すぐ着手</span>
+    <span class="month-sublabel">⚠️ 5月中旬の発注に間に合わせるための設計・準備期間</span>
+  </div>
+
+  <div class="task-card p-high" data-owner="self">
+    <div class="task-check" onclick="toggleCheck(this)"></div>
+    <div class="task-body">
+      <div class="task-name">化粧箱 設計図・方針作成（黒用）</div>
+      <div class="task-note">ブランドカラー・掲載情報・仕上げ（マット/グロス）・構成をデザイナーに渡せる形でまとめる。</div>
+    </div>
+    <span class="badge badge-cat">化粧箱</span>
+    <span class="badge badge-owner-self">自社</span>
+    <span class="badge badge-pri-high">🔴 最優先</span>
+  </div>
+
+  <div class="task-card p-high" data-owner="self">
+    <div class="task-check" onclick="toggleCheck(this)"></div>
+    <div class="task-body">
+      <div class="task-name">説明書・同梱物 設計図・改善方針作成</div>
+      <div class="task-note">何を変えるか・何を載せるか（多言語・QR・デザイン刷新など）をデザイナーに渡せる形でまとめる。</div>
+    </div>
+    <span class="badge badge-cat">同梱物</span>
+    <span class="badge badge-owner-self">自社</span>
+    <span class="badge badge-pri-high">🔴 最優先</span>
+  </div>
+
+  <div class="task-card p-high" data-owner="self">
+    <div class="task-check" onclick="toggleCheck(this)"></div>
+    <div class="task-body">
+      <div class="task-name">LP設計図・ワイヤーフレーム作成（白黒共通・黒専用）</div>
+      <div class="task-note">K/Y/F条件の解消観点で構成を設計。セクション順・訴求メッセージ・使用素材の方針をまとめる。</div>
+    </div>
+    <span class="badge badge-cat">LP</span>
+    <span class="badge badge-owner-self">自社</span>
+    <span class="badge badge-pri-high">🔴 最優先</span>
+  </div>
+
+  <div class="task-card p-high" data-owner="self">
+    <div class="task-check" onclick="toggleCheck(this)"></div>
+    <div class="task-body">
+      <div class="task-name">設計図をもとに外注デザイナーへ発注</div>
+      <div class="task-note">化粧箱・説明書・LPの設計図が揃い次第、デザイナーへ発注。化粧箱は5月上旬完成が必須なので最優先。</div>
+    </div>
+    <span class="badge badge-cat">発注</span>
+    <span class="badge badge-owner-self">自社</span>
+    <span class="badge badge-pri-high">🔴 最優先</span>
+  </div>
+
+  <div class="task-card p-mid" data-owner="self">
+    <div class="task-check" onclick="toggleCheck(this)"></div>
+    <div class="task-body">
+      <div class="task-name">撮影ディレクション設計・カメラマン手配</div>
+      <div class="task-note">必要カット・背景・スタイリング・白黒並べカットの構成を決める。サンプル到着（5月上旬）に合わせて撮影日を押さえる。</div>
+    </div>
+    <span class="badge badge-cat">撮影</span>
+    <span class="badge badge-owner-self">自社</span>
+    <span class="badge badge-pri-mid">🟡 重要</span>
+  </div>
+</div>
+
+
+<!-- ========== 5月上旬 ========== -->
+<div class="month-section">
+  <div class="month-header">
+    <span class="month-label urgent">5月上旬　サンプル確認・制作物完成</span>
+    <span class="month-sublabel">サンプル到着。撮影・化粧箱入稿の直前スプリント。</span>
+  </div>
+
+  <div class="task-card p-high" data-owner="wt">
+    <div class="task-check" onclick="toggleCheck(this)"></div>
+    <div class="task-body">
+      <div class="task-name">ブラックサンプル受取・カラー確認</div>
+      <div class="task-note">Pantone Black C・マット仕上げ（光沢度8〜12GU @ 60°）・現行表面テクスチャを確認。</div>
+    </div>
+    <span class="badge badge-cat">サンプル</span>
+    <span class="badge badge-owner-wt">WT</span>
+    <span class="badge badge-pri-high">🔴 最優先</span>
+  </div>
+
+  <div class="task-card p-high" data-owner="self">
+    <div class="task-check" onclick="toggleCheck(this)"></div>
+    <div class="task-body">
+      <div class="task-name">サンプル承認 or 修正依頼</div>
+      <div class="task-note">承認後すぐに発注へ。修正の場合はスケジュールを見直す。</div>
+    </div>
+    <span class="badge badge-cat">サンプル</span>
+    <span class="badge badge-owner-self">自社</span>
+    <span class="badge badge-pri-high">🔴 最優先</span>
+  </div>
+
+  <div class="task-card p-high" data-owner="designer">
+    <div class="task-check" onclick="toggleCheck(this)"></div>
+    <div class="task-body">
+      <div class="task-name">化粧箱デザイン制作・入稿データ納品（設計図をもとに）</div>
+      <div class="task-note">自社設計図をもとにデザイナーが制作。サンプルの実物色を確認してから最終色校正。5月中旬発注前に完成必須。</div>
+    </div>
+    <span class="badge badge-cat">化粧箱</span>
+    <span class="badge badge-owner-designer">外注：デザイナー</span>
+    <span class="badge badge-pri-high">🔴 最優先</span>
+  </div>
+
+  <div class="task-card p-high" data-owner="designer">
+    <div class="task-check" onclick="toggleCheck(this)"></div>
+    <div class="task-body">
+      <div class="task-name">説明書・同梱物 制作・入稿データ納品（設計図をもとに）</div>
+      <div class="task-note">自社設計図をもとにデザイナーが制作。保証書・サンキューカード等も含めて一式納品。</div>
+    </div>
+    <span class="badge badge-cat">同梱物</span>
+    <span class="badge badge-owner-designer">外注：デザイナー</span>
+    <span class="badge badge-pri-high">🔴 最優先</span>
+  </div>
+
+  <div class="task-card p-mid" data-owner="photo">
+    <div class="task-check" onclick="toggleCheck(this)"></div>
+    <div class="task-body">
+      <div class="task-name">商品写真撮影（サンプル使用）</div>
+      <div class="task-note">自社ディレクション設計に基づいて撮影。白黒並べたバリエーション画像・単体・生活シーンカット。LP・商品ページ両用。</div>
+    </div>
+    <span class="badge badge-cat">撮影</span>
+    <span class="badge badge-owner-photo">外注：カメラマン</span>
+    <span class="badge badge-pri-mid">🟡 重要</span>
+  </div>
+</div>
+
+
+<!-- ========== 5月中旬 ========== -->
+<div class="month-section">
+  <div class="month-header">
+    <span class="month-label urgent">5月中旬　ブラック正式発注</span>
+    <span class="month-sublabel">🚨 ここを逃すと9月予約開始に間に合わない</span>
+  </div>
+
+  <div class="task-card p-high" data-owner="self">
+    <div class="task-check" onclick="toggleCheck(this)"></div>
+    <div class="task-body">
+      <div class="task-name">化粧箱・説明書・同梱物 入稿データをWTへ提出</div>
+      <div class="task-note">工場への発注に同梱する印刷物データ一式。発注と同時に提出が必要。</div>
+    </div>
+    <span class="badge badge-cat">入稿</span>
+    <span class="badge badge-owner-self">自社</span>
+    <span class="badge badge-pri-high">🔴 最優先</span>
+  </div>
+
+  <div class="task-card p-high" data-owner="wt">
+    <div class="task-check" onclick="toggleCheck(this)"></div>
+    <div class="task-body">
+      <div class="task-name">マットブラック 正式発注（2,000台）30%支払い</div>
+      <div class="task-note">¥3,855,000。発注確定で製造スタート。ここからリードタイム3ヶ月（8月中旬着）。</div>
+    </div>
+    <span class="badge badge-cat">発注</span>
+    <span class="badge badge-owner-wt">WT</span>
+    <span class="badge badge-pri-high">🔴 最優先</span>
+  </div>
+</div>
+
+
+<!-- ========== 6月 ========== -->
+<div class="month-section">
+  <div class="month-header">
+    <span class="month-label important">6月　コンテンツ制作・ホワイト発注</span>
+    <span class="month-sublabel">LP・動画・コピーを仕上げる。月末にホワイト発注。</span>
+  </div>
+
+  <div class="task-card p-high" data-owner="photo">
+    <div class="task-check" onclick="toggleCheck(this)"></div>
+    <div class="task-body">
+      <div class="task-name">動画撮影・編集（Meta広告・LP用）</div>
+      <div class="task-note">自社ディレクション設計に基づいて撮影・編集。Meta広告用15〜30秒、LP用商品紹介動画。白黒両カラーで撮影。</div>
+    </div>
+    <span class="badge badge-cat">撮影</span>
+    <span class="badge badge-owner-photo">外注：カメラマン</span>
+    <span class="badge badge-pri-high">🔴 最優先</span>
+  </div>
+
+  <div class="task-card p-mid" data-owner="designer">
+    <div class="task-check" onclick="toggleCheck(this)"></div>
+    <div class="task-body">
+      <div class="task-name">商品画像編集（白黒バリエーション画像含む）</div>
+      <div class="task-note">自社指定の仕様に基づいてデザイナーが編集。Amazon・楽天メイン・サブ画像、白黒並びのバリエーション画像。</div>
+    </div>
+    <span class="badge badge-cat">デザイン</span>
+    <span class="badge badge-owner-designer">外注：デザイナー</span>
+    <span class="badge badge-pri-mid">🟡 重要</span>
+  </div>
+
+  <div class="task-card p-mid" data-owner="self">
+    <div class="task-check" onclick="toggleCheck(this)"></div>
+    <div class="task-body">
+      <div class="task-name">LPコピーライティング（白黒共通・黒専用訴求）</div>
+      <div class="task-note">K/Y/F条件解消を意識したコピー。黒は「黒系インテリア統一層」への訴求を追加。デザイナーへ渡す原稿として仕上げる。</div>
+    </div>
+    <span class="badge badge-cat">LP</span>
+    <span class="badge badge-owner-self">自社</span>
+    <span class="badge badge-pri-mid">🟡 重要</span>
+  </div>
+
+  <div class="task-card p-mid" data-owner="designer">
+    <div class="task-check" onclick="toggleCheck(this)"></div>
+    <div class="task-body">
+      <div class="task-name">LP制作（Amazon・楽天・Shopify）</div>
+      <div class="task-note">自社ワイヤーフレーム＋コピー原稿をもとにデザイナーが制作。7月末公開目標で逆算して進行。</div>
+    </div>
+    <span class="badge badge-cat">LP</span>
+    <span class="badge badge-owner-designer">外注：デザイナー</span>
+    <span class="badge badge-pri-mid">🟡 重要</span>
+  </div>
+
+  <div class="task-card p-high" data-owner="wt">
+    <div class="task-check" onclick="toggleCheck(this)"></div>
+    <div class="task-body">
+      <div class="task-name">オフホワイト 正式発注（2,000台）30%支払い　※月末必達</div>
+      <div class="task-note">¥3,855,000。9月末着の必達ライン。6月末を1日でも過ぎると11月ピーク前の在庫確保がズレる。</div>
+    </div>
+    <span class="badge badge-cat">発注</span>
+    <span class="badge badge-owner-wt">WT</span>
+    <span class="badge badge-pri-high">🔴 最優先</span>
+  </div>
+</div>
+
+
+<!-- ========== 7月 ========== -->
+<div class="month-section">
+  <div class="month-header">
+    <span class="month-label important">7月　LP完成・広告素材準備</span>
+    <span class="month-sublabel">新LP公開（月末目標）。ブラック出荷前70%支払い。</span>
+  </div>
+
+  <div class="task-card p-high" data-owner="self">
+    <div class="task-check" onclick="toggleCheck(this)"></div>
+    <div class="task-body">
+      <div class="task-name">新LP確認・フィードバック・公開（Amazon・楽天・Shopify）</div>
+      <div class="task-note">デザイナー制作物を確認・修正指示。白黒両対応で7月末までに公開。9月予約開始前に検索インデックスに乗せておく。</div>
+    </div>
+    <span class="badge badge-cat">LP</span>
+    <span class="badge badge-owner-self">自社</span>
+    <span class="badge badge-pri-high">🔴 最優先</span>
+  </div>
+
+  <div class="task-card p-mid" data-owner="self">
+    <div class="task-check" onclick="toggleCheck(this)"></div>
+    <div class="task-body">
+      <div class="task-name">Meta広告バナー制作（黒用・予約開始用）</div>
+      <div class="task-note">自社で制作。動画広告と合わせて複数パターン準備。9月配信開始に向けて完成させる。</div>
+    </div>
+    <span class="badge badge-cat">広告</span>
+    <span class="badge badge-owner-self">自社</span>
+    <span class="badge badge-pri-mid">🟡 重要</span>
+  </div>
+
+  <div class="task-card p-high" data-owner="wt">
+    <div class="task-check" onclick="toggleCheck(this)"></div>
+    <div class="task-body">
+      <div class="task-name">ブラック 出荷前70%支払い（月中旬）</div>
+      <div class="task-note">¥8,995,000。今期最大の支払い。支払い確認後に工場から出荷。</div>
+    </div>
+    <span class="badge badge-cat">支払</span>
+    <span class="badge badge-owner-wt">WT</span>
+    <span class="badge badge-pri-high">🔴 最優先</span>
+  </div>
+</div>
+
+
+<!-- ========== 8月 ========== -->
+<div class="month-section">
+  <div class="month-header">
+    <span class="month-label important">8月　販売準備完成・ブラック入庫</span>
+    <span class="month-sublabel">商品ページ・予約設定を完成。ブラック日本着。</span>
+  </div>
+
+  <div class="task-card p-high" data-owner="self">
+    <div class="task-check" onclick="toggleCheck(this)"></div>
+    <div class="task-body">
+      <div class="task-name">Amazon 商品ページ作成・バリエーション登録（黒）</div>
+      <div class="task-note">ブラックのASIN発行・白とのバリエーション紐付け・FBA納品プラン作成。</div>
+    </div>
+    <span class="badge badge-cat">販売設定</span>
+    <span class="badge badge-owner-self">自社</span>
+    <span class="badge badge-pri-high">🔴 最優先</span>
+  </div>
+
+  <div class="task-card p-high" data-owner="self">
+    <div class="task-check" onclick="toggleCheck(this)"></div>
+    <div class="task-body">
+      <div class="task-name">楽天 商品ページ作成・バリエーション登録（黒）</div>
+      <div class="task-note">楽天でのカラバリ設定。9月予約開始に合わせてスケジュール。</div>
+    </div>
+    <span class="badge badge-cat">販売設定</span>
+    <span class="badge badge-owner-self">自社</span>
+    <span class="badge badge-pri-high">🔴 最優先</span>
+  </div>
+
+  <div class="task-card p-high" data-owner="self">
+    <div class="task-check" onclick="toggleCheck(this)"></div>
+    <div class="task-body">
+      <div class="task-name">Shopify 商品ページ作成（黒）</div>
+      <div class="task-note">バリアント追加・在庫連携設定・予約注文フローの確認。</div>
+    </div>
+    <span class="badge badge-cat">販売設定</span>
+    <span class="badge badge-owner-self">自社</span>
+    <span class="badge badge-pri-high">🔴 最優先</span>
+  </div>
+
+  <div class="task-card p-high" data-owner="self">
+    <div class="task-check" onclick="toggleCheck(this)"></div>
+    <div class="task-body">
+      <div class="task-name">楽天・Shopify 予約販売フローの設定</div>
+      <div class="task-note">予約受付・自動メール・在庫管理を設定。9月上旬公開に向けて完成させる。</div>
+    </div>
+    <span class="badge badge-cat">販売設定</span>
+    <span class="badge badge-owner-self">自社</span>
+    <span class="badge badge-pri-high">🔴 最優先</span>
+  </div>
+
+  <div class="task-card p-mid" data-owner="self">
+    <div class="task-check" onclick="toggleCheck(this)"></div>
+    <div class="task-body">
+      <div class="task-name">Meta広告 配信設定・ターゲティング設計</div>
+      <div class="task-note">黒系インテリア層・加湿器興味層へのターゲティング。9月配信開始に向けて設定完了。</div>
+    </div>
+    <span class="badge badge-cat">広告</span>
+    <span class="badge badge-owner-self">自社</span>
+    <span class="badge badge-pri-mid">🟡 重要</span>
+  </div>
+
+  <div class="task-card p-high" data-owner="wt">
+    <div class="task-check" onclick="toggleCheck(this)"></div>
+    <div class="task-body">
+      <div class="task-name">ホワイト 出荷前70%支払い（月末）</div>
+      <div class="task-note">¥8,995,000。支払い後に出荷→9月末日本着。</div>
+    </div>
+    <span class="badge badge-cat">支払</span>
+    <span class="badge badge-owner-wt">WT</span>
+    <span class="badge badge-pri-high">🔴 最優先</span>
+  </div>
+
+  <div class="task-card p-high" data-owner="wt">
+    <div class="task-check" onclick="toggleCheck(this)"></div>
+    <div class="task-body">
+      <div class="task-name">ブラック 日本着・検品・FBA納品（月中旬）</div>
+      <div class="task-note">到着後すぐにFBA納品プランを実行。9月予約開始時には在庫反映されている状態に。</div>
+    </div>
+    <span class="badge badge-cat">物流</span>
+    <span class="badge badge-owner-wt">WT</span>
+    <span class="badge badge-pri-high">🔴 最優先</span>
+  </div>
+</div>
+
+
+<!-- ========== 9月 ========== -->
+<div class="month-section">
+  <div class="month-header">
+    <span class="month-label normal">9月　予約開始・広告スタート</span>
+    <span class="month-sublabel">🎉 両カラー予約注文スタート。Meta・Google広告配信開始。</span>
+  </div>
+
+  <div class="task-card p-high" data-owner="self">
+    <div class="task-check" onclick="toggleCheck(this)"></div>
+    <div class="task-body">
+      <div class="task-name">両カラー 予約注文開始（楽天・Shopify）</div>
+      <div class="task-note">9月上旬に公開。ブラック2,000台・ホワイト既存在庫785台が出荷可能状態。</div>
+    </div>
+    <span class="badge badge-cat">販売</span>
+    <span class="badge badge-owner-self">自社</span>
+    <span class="badge badge-pri-high">🔴 最優先</span>
+  </div>
+
+  <div class="task-card p-mid" data-owner="self">
+    <div class="task-check" onclick="toggleCheck(this)"></div>
+    <div class="task-body">
+      <div class="task-name">Meta広告 配信開始（予約獲得フェーズ）</div>
+      <div class="task-note">黒専用クリエイティブ＋白黒共通クリエイティブで複数パターン配信。</div>
+    </div>
+    <span class="badge badge-cat">広告</span>
+    <span class="badge badge-owner-self">自社</span>
+    <span class="badge badge-pri-mid">🟡 重要</span>
+  </div>
+
+  <div class="task-card p-mid" data-owner="self">
+    <div class="task-check" onclick="toggleCheck(this)"></div>
+    <div class="task-body">
+      <div class="task-name">Google広告 設定・配信開始</div>
+      <div class="task-note">「加湿器 黒」「加湿器 おしゃれ」等の検索キーワードで新規層を捕捉。</div>
+    </div>
+    <span class="badge badge-cat">広告</span>
+    <span class="badge badge-owner-self">自社</span>
+    <span class="badge badge-pri-mid">🟡 重要</span>
+  </div>
+
+  <div class="task-card p-high" data-owner="wt">
+    <div class="task-check" onclick="toggleCheck(this)"></div>
+    <div class="task-body">
+      <div class="task-name">ホワイト 日本着・検品・FBA納品（月末）</div>
+      <div class="task-note">11月ピークに向けた在庫確保。到着後速やかにFBA納品。</div>
+    </div>
+    <span class="badge badge-cat">物流</span>
+    <span class="badge badge-owner-wt">WT</span>
+    <span class="badge badge-pri-high">🔴 最優先</span>
+  </div>
+</div>
+
+
+<!-- ========== 10月〜 ========== -->
+<div class="month-section">
+  <div class="month-header">
+    <span class="month-label normal">10月〜　シーズンイン・全チャネル全力稼働</span>
+    <span class="month-sublabel">Amazon本格稼働。全広告フル稼働で11月ピークへ。</span>
+  </div>
+
+  <div class="task-card p-high" data-owner="self">
+    <div class="task-check" onclick="toggleCheck(this)"></div>
+    <div class="task-body">
+      <div class="task-name">Amazon 両カラー 本格販売開始</div>
+      <div class="task-note">Amazonバリエーション公開・スポンサー広告開始。</div>
+    </div>
+    <span class="badge badge-cat">販売</span>
+    <span class="badge badge-owner-self">自社</span>
+    <span class="badge badge-pri-high">🔴 最優先</span>
+  </div>
+
+  <div class="task-card p-mid" data-owner="self">
+    <div class="task-check" onclick="toggleCheck(this)"></div>
+    <div class="task-body">
+      <div class="task-name">Amazon広告 スポンサープロダクト・スポンサーブランド設定</div>
+      <div class="task-note">白黒それぞれのターゲットキーワードで設定。ACOS25%以内を目標。</div>
+    </div>
+    <span class="badge badge-cat">広告</span>
+    <span class="badge badge-owner-self">自社</span>
+    <span class="badge badge-pri-mid">🟡 重要</span>
+  </div>
+
+  <div class="task-card p-mid" data-owner="self">
+    <div class="task-check" onclick="toggleCheck(this)"></div>
+    <div class="task-body">
+      <div class="task-name">楽天RPP広告 強化設定</div>
+      <div class="task-note">昨季ROAS787%の実績あり。ピークに向けて予算・入札を最適化。</div>
+    </div>
+    <span class="badge badge-cat">広告</span>
+    <span class="badge badge-owner-self">自社</span>
+    <span class="badge badge-pri-mid">🟡 重要</span>
+  </div>
+</div>
+
+
+<script>
+  function toggleCheck(el) {
+    el.classList.toggle('checked');
+    el.closest('.task-card').classList.toggle('done');
+    updateCount();
+  }
+
+  function filterTasks(type, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.task-card').forEach(card => {
+      if (type === 'all') card.style.display = '';
+      else if (type === 'high') card.style.display = card.classList.contains('p-high') ? '' : 'none';
+      else card.style.display = card.dataset.owner === type ? '' : 'none';
+    });
+  }
+
+  function updateCount() {
+    const all  = document.querySelectorAll('.task-card').length;
+    const done = document.querySelectorAll('.task-card.done').length;
+    const high = document.querySelectorAll('.task-card.p-high:not(.done)').length;
+    document.getElementById('total-count').textContent = all;
+    document.getElementById('done-count').textContent  = done;
+    document.getElementById('high-count').textContent  = high;
+  }
+
+  updateCount();
+</script>
+</body>
+</html>

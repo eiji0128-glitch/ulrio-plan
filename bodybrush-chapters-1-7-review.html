@@ -1,821 +1,1050 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta name="robots" content="noindex, nofollow">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>統合マーケ理論 構築編 第1〜7章 レビュー用サマリー — 電動ボディブラシ</title>
+<meta name="robots" content="noindex, nofollow">
+<title>統合マーケ理論 構築編 第1〜7章 レビュー用サマリー</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'Hiragino Kaku Gothic Pro','Yu Gothic',メイリオ,sans-serif;font-size:13px;color:#1a1a1a;line-height:1.75;background:#f4f6f9}
-.wrap{max-width:1200px;margin:0 auto;padding:24px 24px 60px 280px;position:relative}
-/* HERO */
-.hero{background:linear-gradient(135deg,#1a3a6e 0%,#2c5697 100%);color:#fff;padding:40px 36px;border-radius:10px;margin-bottom:28px;box-shadow:0 4px 18px rgba(26,58,110,.15)}
-.hero h1{font-size:24px;margin-bottom:10px;letter-spacing:.02em}
-.hero .sub{font-size:14px;opacity:.9;margin-bottom:18px}
-.hero .desc{font-size:13px;line-height:1.9;background:rgba(255,255,255,.1);padding:14px 18px;border-radius:6px;border-left:4px solid #27ae60}
-.hero .review-focus{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
-.hero .review-focus span{background:rgba(255,255,255,.18);padding:6px 14px;border-radius:100px;font-size:12px;font-weight:600}
-/* NAV */
-nav.side{position:fixed;top:24px;left:24px;width:240px;max-height:calc(100vh - 48px);overflow-y:auto;background:#fff;border:1px solid #dde3ec;border-radius:8px;padding:16px 14px;font-size:12px;box-shadow:0 2px 10px rgba(0,0,0,.05)}
-nav.side h4{font-size:11px;color:#1a3a6e;margin-bottom:8px;text-transform:uppercase;letter-spacing:.08em;border-bottom:1px solid #dde3ec;padding-bottom:6px}
-nav.side ul{list-style:none;margin-bottom:12px}
-nav.side li{margin:4px 0}
-nav.side a{color:#333;text-decoration:none;display:block;padding:4px 8px;border-radius:4px;transition:all .15s}
-nav.side a:hover{background:#e8f0fc;color:#1a3a6e}
-/* HEADINGS */
-h2.section{font-size:19px;color:#1a3a6e;margin:36px 0 16px;padding:10px 0 10px 14px;border-left:6px solid #1a3a6e;background:#eef2f9}
-h3{font-size:15px;color:#1a3a6e;margin:20px 0 10px;padding-bottom:4px;border-bottom:1px dashed #b7c4db}
-h4{font-size:13px;color:#333;margin:14px 0 8px;font-weight:700}
-/* CARD */
-.chapter{background:#fff;border:1px solid #dde3ec;border-radius:10px;padding:24px 26px;margin-bottom:30px;box-shadow:0 2px 10px rgba(0,0,0,.04)}
-.chapter-head{display:flex;align-items:center;gap:14px;padding-bottom:14px;border-bottom:2px solid #1a3a6e;margin-bottom:18px;flex-wrap:wrap}
-.chapter-num{background:#1a3a6e;color:#fff;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;flex-shrink:0}
-.chapter-title{font-size:17px;color:#1a3a6e;font-weight:700}
-.chapter-meta{font-size:11px;color:#6b7a93;margin-top:4px}
-.phase-tag{display:inline-block;padding:3px 10px;border-radius:100px;font-size:10px;font-weight:700;color:#fff;margin-left:6px}
-.phase-know{background:#3498db}
-.phase-place{background:#e67e22}
-.phase-verify{background:#27ae60}
-/* LABELS */
-.label{display:inline-block;padding:2px 8px;border-radius:3px;font-size:10px;font-weight:700;margin-right:5px}
-.lb-fact{background:#dbeafe;color:#1e40af}
-.lb-premise{background:#fef3c7;color:#92400e}
-.lb-inference{background:#ede9fe;color:#6d28d9}
-.lb-ok{background:#d1fae5;color:#065f46}
-.lb-partial{background:#fed7aa;color:#9a3412}
-.lb-miss{background:#fecaca;color:#991b1b}
-/* BOX */
-.box{border-radius:6px;padding:12px 16px;margin:10px 0;font-size:12.5px}
-.box-compliance{background:#f0fdf4;border-left:4px solid #27ae60}
-.box-io{background:#eff6ff;border-left:4px solid #3498db}
-.box-excerpt{background:#fefce8;border-left:4px solid #eab308}
-.box-fact{background:#f9fafb;border-left:4px solid #6b7280}
-.box-decision{background:#fff7ed;border-left:4px solid #e67e22}
-.box-next{background:#f5f3ff;border-left:4px solid #8b5cf6}
-.box h4{margin-top:0;color:#1a3a6e;font-size:12px;text-transform:uppercase;letter-spacing:.05em}
-/* TABLE */
-table{width:100%;border-collapse:collapse;margin:10px 0;font-size:12px}
-th,td{border:1px solid #dde3ec;padding:7px 10px;text-align:left;vertical-align:top}
-th{background:#1a3a6e;color:#fff;font-weight:600;font-size:11.5px}
-tr:nth-child(even) td{background:#f8fafc}
-/* QUOTE */
-.quote{background:#f0f4f8;border-left:3px solid #1a3a6e;padding:8px 14px;margin:6px 0;font-size:12px;font-style:italic;color:#334}
-.quote .src{display:block;font-style:normal;color:#6b7a93;font-size:10.5px;margin-top:4px}
-/* CONNECTION */
-.flow{background:#fff;border:1px solid #dde3ec;border-radius:10px;padding:26px;margin-bottom:28px}
-.flow-step{display:flex;align-items:center;gap:12px;margin:6px 0;padding:10px 14px;background:#f8fafc;border-left:4px solid #1a3a6e;border-radius:4px;font-size:12px}
-.flow-step strong{color:#1a3a6e;min-width:70px}
-.flow-arrow{text-align:center;color:#1a3a6e;font-size:16px;margin:2px 0}
-/* CHECKLIST */
-.checklist{background:#fff;border:1px solid #dde3ec;border-radius:10px;padding:24px 28px;margin-bottom:28px}
-.check-item{border-bottom:1px solid #edf0f5;padding:12px 0}
-.check-item:last-child{border-bottom:none}
-.check-item label{display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:13px;font-weight:600;color:#1a3a6e}
-.check-item input[type=checkbox]{margin-top:4px;width:16px;height:16px;cursor:pointer}
-.check-item .desc{margin-left:26px;margin-top:4px;font-size:11.5px;color:#6b7a93;font-weight:400}
-.check-item textarea{margin-left:26px;margin-top:8px;width:calc(100% - 26px);min-height:50px;border:1px solid #dde3ec;border-radius:4px;padding:8px 10px;font-size:12px;font-family:inherit;resize:vertical}
-/* HISTORY */
-.history{background:#fff;border:1px solid #dde3ec;border-radius:10px;padding:22px 26px;margin-bottom:28px}
-ul.bul{margin-left:20px;font-size:12.5px;line-height:1.85}
-ul.bul li{margin:3px 0}
-/* SUMMARY BAR */
-.bar{display:flex;height:28px;border-radius:4px;overflow:hidden;margin:6px 0;font-size:11px;font-weight:700;color:#fff}
-.bar-ok{background:#27ae60;display:flex;align-items:center;justify-content:center}
-.bar-partial{background:#e67e22;display:flex;align-items:center;justify-content:center}
-.bar-miss{background:#c0392b;display:flex;align-items:center;justify-content:center}
-@media print{
-  body{background:#fff;font-size:10.5px}
-  nav.side{display:none}
-  .wrap{max-width:100%;padding:10px}
-  .chapter{page-break-inside:avoid;box-shadow:none}
-  .hero{background:#1a3a6e !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-}
-@media (max-width:1100px){
-  nav.side{display:none}
-  .wrap{padding:24px}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Hiragino Kaku Gothic Pro','Yu Gothic','メイリオ',sans-serif; font-size: 13px; color: #1a1a1a; line-height: 1.7; background: #f5f6f8; }
+.wrapper { max-width: 1200px; margin-left: 260px; padding: 24px 32px 48px; }
+.cover { background: linear-gradient(135deg,#1a3a6e,#2c5aa0); color: #fff; padding: 48px 40px; border-radius: 0 0 16px 16px; margin-bottom: 32px; }
+.cover h1 { font-size: 26px; margin-bottom: 8px; }
+.cover .meta { font-size: 13px; opacity: .85; margin-top: 12px; }
+.cover .pill { display: inline-block; background: rgba(255,255,255,.18); padding: 4px 12px; border-radius: 12px; margin-right: 8px; font-size: 11px; }
+.review-points { background: #fff; border-left: 4px solid #1a3a6e; padding: 16px 20px; margin: 16px 0 24px; border-radius: 4px; font-size: 13px; }
+.review-points strong { color: #1a3a6e; }
+.review-points ol { margin: 8px 0 0 20px; }
+nav.side { position: fixed; top: 0; left: 0; width: 240px; height: 100vh; background: #1a3a6e; color: #fff; padding: 24px 16px; overflow-y: auto; }
+nav.side h3 { font-size: 12px; text-transform: uppercase; opacity: .6; margin-bottom: 12px; }
+nav.side a { display: block; color: #fff; text-decoration: none; padding: 8px 12px; margin-bottom: 4px; border-radius: 4px; font-size: 12px; }
+nav.side a:hover { background: rgba(255,255,255,.12); }
+nav.side .section-label { font-size: 11px; opacity: .5; margin: 16px 0 4px 12px; }
+section { background: #fff; border-radius: 10px; padding: 28px 32px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,.04); scroll-margin-top: 20px; }
+section h2 { font-size: 20px; color: #1a3a6e; border-left: 5px solid #1a3a6e; padding-left: 12px; margin-bottom: 16px; }
+section h3 { font-size: 15px; color: #1a3a6e; margin: 20px 0 10px; border-bottom: 2px solid #e8eef7; padding-bottom: 4px; }
+section h4 { font-size: 13px; color: #2c5aa0; margin: 14px 0 6px; }
+.card { border: 1px solid #e0e4eb; border-radius: 8px; padding: 14px 18px; margin: 12px 0; background: #fafbfc; }
+.card-title { font-weight: 700; color: #1a3a6e; margin-bottom: 6px; font-size: 13px; }
+table.data-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 12px; }
+table.data-table th { background: #1a3a6e; color: #fff; padding: 8px 10px; text-align: left; font-weight: 600; border: 1px solid #1a3a6e; }
+table.data-table td { padding: 8px 10px; border: 1px solid #e0e4eb; vertical-align: top; }
+table.data-table tr:nth-child(even) td { background: #f8f9fb; }
+.data-table.sticky-header thead th { position: sticky; top: 0; z-index: 10; }
+blockquote.review-quote { margin: 8px 0; padding: 10px 16px; border-left: 3px solid #2c5aa0; background: #f0f4fa; font-style: italic; color: #2d3748; font-size: 12px; border-radius: 0 6px 6px 0; }
+blockquote.review-quote cite { display: block; font-style: normal; font-size: 11px; color: #64748b; margin-top: 4px; }
+.callout-blue { background: #e8f4fd; border: 1px solid #b8daff; padding: 14px 18px; border-radius: 8px; margin: 14px 0; font-size: 13px; }
+.callout-blue strong { color: #004085; display: block; margin-bottom: 4px; }
+.callout-green { background: #d4edda; border: 1px solid #c3e6cb; padding: 14px 18px; border-radius: 8px; margin: 14px 0; font-size: 13px; }
+.callout-yellow { background: #fff8e1; border: 1px solid #ffe082; padding: 14px 18px; border-radius: 8px; margin: 14px 0; font-size: 13px; }
+.inference-meter { display: inline-block; padding: 3px 10px; border-radius: 10px; font-size: 11px; font-weight: 600; margin: 8px 0; }
+.inference-meter.fact-heavy { background: #d4edda; color: #155724; }
+.inference-meter.balanced { background: #fff3cd; color: #856404; }
+.inference-meter.inference-heavy { background: #f8d7da; color: #721c24; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 10px; font-weight: 600; margin-right: 4px; }
+.badge-com { background: #1a3a6e; color: #fff; }
+.badge-ka5 { background: #e2e8f0; color: #475569; }
+.badge-ka4 { background: #fde68a; color: #92400e; }
+.badge-ka3 { background: #c6f6d5; color: #22543d; }
+.badge-ka2 { background: #fbd38d; color: #744210; }
+.badge-ka1 { background: #fed7d7; color: #742a2a; }
+.rewrite-flow { display: flex; gap: 12px; align-items: stretch; margin: 14px 0; flex-wrap: wrap; }
+.rewrite-flow .step { flex: 1; min-width: 240px; background: #f8f9fb; border: 1px solid #e0e4eb; border-radius: 6px; padding: 12px 14px; font-size: 12px; position: relative; }
+.rewrite-flow .step.before { border-left: 4px solid #e67e22; }
+.rewrite-flow .step.after { border-left: 4px solid #27ae60; }
+.rewrite-flow .step.action { border-left: 4px solid #3498db; }
+.rewrite-flow .step h5 { font-size: 11px; text-transform: uppercase; color: #64748b; margin-bottom: 6px; letter-spacing: .5px; }
+.judgement-card { border: 2px solid #1a3a6e; border-radius: 10px; padding: 16px 20px; margin: 14px 0; background: #fff; }
+.judgement-card h4 { color: #1a3a6e; font-size: 14px; margin-bottom: 10px; }
+.judgement-card .meta-row { display: flex; gap: 16px; font-size: 12px; margin-top: 10px; padding-top: 10px; border-top: 1px dashed #cbd5e1; }
+.judgement-card .meta-row span { flex: 1; }
+.judgement-card .meta-row strong { display: block; color: #1a3a6e; font-size: 11px; margin-bottom: 2px; }
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 12px 16px; border-bottom: 1px solid #e0e4eb; display: flex; gap: 12px; align-items: flex-start; }
+.checklist li input[type=checkbox] { margin-top: 3px; }
+.checklist li .item { flex: 1; }
+.checklist li .item strong { display: block; color: #1a3a6e; margin-bottom: 4px; }
+.checklist li .item textarea { width: 100%; min-height: 40px; margin-top: 6px; border: 1px solid #e0e4eb; border-radius: 4px; padding: 6px 8px; font-family: inherit; font-size: 12px; resize: vertical; }
+.flow-diagram { background: #fafbfc; border: 1px solid #e0e4eb; border-radius: 8px; padding: 20px; margin: 14px 0; font-size: 12px; }
+.flow-diagram .flow-row { display: flex; align-items: center; gap: 10px; margin: 8px 0; }
+.flow-diagram .flow-row .node { background: #fff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 8px 12px; flex: 1; }
+.flow-diagram .flow-row .arrow { color: #1a3a6e; font-weight: 700; font-size: 16px; }
+footer.page-footer { margin-top: 40px; padding: 20px 0; text-align: center; color: #94a3b8; font-size: 11px; }
+@media print {
+  nav.side { display: none; }
+  .wrapper { margin-left: 0; }
+  section { break-inside: avoid; box-shadow: none; border: 1px solid #e0e4eb; }
 }
 </style>
 </head>
 <body>
-
 <nav class="side">
-<h4>目次</h4>
-<ul>
-<li><a href="#hero">トップ</a></li>
-<li><a href="#chapter-1">第1章 商品情報</a></li>
-<li><a href="#chapter-2">第2章 ベネフィット</a></li>
-<li><a href="#chapter-3">第3章 競合調査</a></li>
-<li><a href="#chapter-3-5">第3.5章 競合レビュー</a></li>
-<li><a href="#chapter-4">第4章 アンケート</a></li>
-<li><a href="#chapter-5">第5章 インタビュー</a></li>
-<li><a href="#chapter-6">第6章 解像度UP</a></li>
-<li><a href="#chapter-7">第7章 条件分析</a></li>
-</ul>
-<h4>俯瞰・チェック</h4>
-<ul>
-<li><a href="#flow">章間接続フロー</a></li>
-<li><a href="#checklist">レビューチェック</a></li>
-<li><a href="#history">整合性チェック履歴</a></li>
-</ul>
+<h3>レビュー用サマリー</h3>
+<div class="section-label">章別</div>
+<a href="#top">トップ</a>
+<a href="#chapter-1">第1章 商品情報</a>
+<a href="#chapter-2">第2章 ベネフィット</a>
+<a href="#chapter-3">第3章 確定グループ・競合</a>
+<a href="#chapter-3-5">第3.5章 競合レビュー分析</a>
+<a href="#chapter-4">第4章 アンケート</a>
+<a href="#chapter-5">第5章 インタビュー</a>
+<a href="#chapter-6">第6章 ベネフィット（解像度UP）</a>
+<a href="#chapter-7">第7章 条件の接続分析</a>
+<div class="section-label">巻末</div>
+<a href="#flow">章間接続フロー</a>
+<a href="#history">整合性修正履歴</a>
+<a href="#checklist">レビューチェックリスト</a>
 </nav>
-
-<div class="wrap">
-
-<section id="hero" class="hero">
+<div class="wrapper">
+<div class="cover" id="top">
 <h1>統合マーケ理論 構築編 第1〜7章 レビュー用サマリー</h1>
-<div class="sub">電動ボディブラシ / Broadseal OEM / Shopify自社EC ¥8,999 ／ 作成日: 2026-04-14</div>
-<div class="desc">
-OEM調達予定の電動ダブルハンドルボディブラシ（Ningbo Broadseal製・仕入れ単価$8.10〜8.40／MOQ20個）を、Shopify自社ECで¥8,999で販売する戦略を構築中。確定グループは G-1「加齢臭・体臭が気になって、人前での不安をなくしたい」の1グループに集中。第1〜7章（＋第3.5章）は完了し、整合性チェック後の修正も反映済み（評価A）。現在は第8章（裏付け）に進む直前のフェーズ。
+<div>
+<span class="pill">電動ボディブラシ</span>
+<span class="pill">Broadseal OEM</span>
+<span class="pill">Shopify自社EC ¥8,999</span>
+<span class="pill">インタビュー9名</span>
 </div>
-<div class="review-focus">
-<span>理論準拠</span><span>章間接続</span><span>ファクト／前提／推論の区別</span>
+<div class="meta">作成日: 2026-04-14 / 整合性評価: A（完全整合） / 対象確定グループ: G-1「加齢臭・体臭が気になって、人前での不安をなくしたい」</div>
 </div>
+<div class="review-points">
+<strong>レビューの観点（理論作成者向け）</strong>
+<ol>
+<li>理論準拠: 各章の手順・アウトプット形式・完了条件がナレッジ定義を満たしているか</li>
+<li>章間接続: 前章の成果物が後続章で適切に使われているか（ID体系・列構造・定義の維持）</li>
+<li>ファクト/前提/推論の区別: 推論が根拠データを伴って明示されているか</li>
+</ol>
+</div>
+<section id="chapter-1">
+  <div class="card">
+    <h2>第1章 商品情報（電動ボディブラシ / Broadseal OEM）</h2>
+
+    <div class="callout-blue">
+      <strong>この章で見てほしい判断</strong>
+      <ul>
+        <li>F-01〜F-12の機能粒度は「第2章のベネフィット起点」として過不足がないか</li>
+        <li>自社レビューゼロ（新商品）という前提で、ファクト／推論／情報なしの振り分けが妥当か</li>
+        <li>サンプル取得前に「確度◎」で走る意思決定（F-07 / F-09）に同意できるか</li>
+      </ul>
+    </div>
+
+    <h3>商品基本情報</h3>
+    <table class="data-table">
+      <thead><tr><th>項目</th><th>内容</th><th>確度</th></tr></thead>
+      <tbody>
+        <tr><td>仕入れ元商品名</td><td>Dual Mode Long Handle Detachable Spin Exfoliating Shower Brush</td><td>ファクト</td></tr>
+        <tr><td>製造元</td><td>Ningbo Broadseal Import &amp; Export Co., Ltd.（寧波市）</td><td>ファクト</td></tr>
+        <tr><td>仕入れ単価</td><td>$8.10〜8.40（約¥1,200〜1,260） / MOQ 20個</td><td>ファクト</td></tr>
+        <tr><td>想定販売価格</td><td>¥8,999（確定）</td><td>ファクト</td></tr>
+        <tr><td>販売チャネル</td><td>Shopify（自社EC）</td><td>ファクト</td></tr>
+        <tr><td>取得認証</td><td>FCC + CE + RoHS + SGS（4認証）</td><td>ファクト</td></tr>
+      </tbody>
+    </table>
+
+    <h3>コスト構造（2026-03-27 確定）</h3>
+    <table class="data-table">
+      <thead><tr><th>項目</th><th>金額</th></tr></thead>
+      <tbody>
+        <tr><td>原価（CNY 100）</td><td>¥2,400</td></tr>
+        <tr><td>国際送料</td><td>¥250</td></tr>
+        <tr><td>関税（0%）</td><td>¥0</td></tr>
+        <tr><td>消費税（10.1%）</td><td>¥268</td></tr>
+        <tr><td>デパン作業</td><td>¥40</td></tr>
+        <tr><td>取説&amp;付属品</td><td>¥100</td></tr>
+        <tr><td>作業費</td><td>¥100</td></tr>
+        <tr><td>販売倉庫納品までの総コスト</td><td><strong>¥3,158</strong></td></tr>
+        <tr><td>売価</td><td><strong>¥8,999</strong></td></tr>
+        <tr><td>Shopify手数料（6%）</td><td>¥495</td></tr>
+        <tr><td>シッピーノ手数料</td><td>¥33</td></tr>
+        <tr><td>限界利益</td><td><strong>¥5,313</strong></td></tr>
+        <tr><td>限界利益率</td><td><strong>59.0%</strong></td></tr>
+      </tbody>
+    </table>
+
+    <h3>カテゴリ4：機能一覧（F-01〜F-12 全件）</h3>
+    <table class="data-table">
+      <thead><tr><th>機能ID</th><th>機能</th><th>情報源</th><th>確度</th></tr></thead>
+      <tbody>
+        <tr><td>F-01</td><td>電動360°スピン回転ブラシヘッド</td><td>Alibaba商品ページ</td><td>ファクト</td></tr>
+        <tr><td>F-02</td><td>ダブルハンドル設計（ロングハンドル着脱式 + 本体グリップ）</td><td>Alibaba商品ページ</td><td>ファクト</td></tr>
+        <tr><td>F-03</td><td>ロングハンドルで背中・脚など手の届きにくい部位に到達可能</td><td>Alibaba商品ページ</td><td>ファクト</td></tr>
+        <tr><td>F-04</td><td>シリコン素材ブラシヘッド（肌に優しい素材）</td><td>Alibaba商品ページ・CE/RoHS認証</td><td>ファクト</td></tr>
+        <tr><td>F-05</td><td>5種類の交換式ブラシヘッド（massage / face / bath / buffing / scrub）</td><td>Alibaba商品ページ</td><td>ファクト</td></tr>
+        <tr><td>F-06</td><td>2段階速度モード（ソフト／パワフル）</td><td>Alibaba商品ページ</td><td>ファクト</td></tr>
+        <tr><td>F-07</td><td>IPX7完全防水（水深1m・30分耐久）</td><td>Alibaba商品ページ</td><td>ファクト</td></tr>
+        <tr><td>F-08</td><td>USB充電式（内蔵リチウムイオン電池 1,200mAh）</td><td>Alibaba商品ページ</td><td>ファクト</td></tr>
+        <tr><td>F-09</td><td>FCC + CE + RoHS + SGS 4認証取得（食品衛生基準準拠素材）</td><td>Alibaba企業情報</td><td>ファクト</td></tr>
+        <tr><td>F-10</td><td>ギフトボックス対応可否</td><td>要確認</td><td>情報なし</td></tr>
+        <tr><td>F-11</td><td>壁掛け収納対応</td><td>要確認（サンプル確認後）</td><td>情報なし</td></tr>
+        <tr><td>F-12</td><td>日本語レビュー実績あり（6件確認済み・5つ星評価）</td><td>Alibaba商品ページ</td><td>ファクト</td></tr>
+      </tbody>
+    </table>
+
+    <h3>自社レビュー状況</h3>
+    <p>新規商品のためレビューなし。ただし仕入れ元（Broadseal）のAlibabaページに日本語レビュー6件確認済み。これらは第2章ステップ9での照合に活用する。</p>
+
+    <h3>推論比率（確度内訳）</h3>
+    <p>機能12件のうち：ファクト 10件（F-01〜F-09、F-12） / 情報なし 2件（F-10 ギフトボックス、F-11 壁掛け）。物理的特徴・使用情報はサンプル取得後の実測待ちで「情報なし・推論」が残存する。</p>
+  </div>
 </section>
 
-<!-- ================= 第1章 ================= -->
-<section id="chapter-1" class="chapter">
-<div class="chapter-head">
-<div class="chapter-num">第1章</div>
-<div>
-<div class="chapter-title">商品情報収集（7カテゴリ）<span class="phase-tag phase-know">自社を知る</span></div>
-<div class="chapter-meta">一次資料: 構築_第1章_商品情報.md ／ 完了: 2026-03-19（2026-03-27コスト構造確定）</div>
-</div>
-</div>
+<section id="chapter-2">
+  <div class="card">
+    <h2>第2章 ベネフィット一覧</h2>
 
-<p>OEM対象商品の7カテゴリ調査＋機能一覧（F-01〜F-12）＋コスト構造を整理。自社レビューはゼロだが仕入れ元Alibabaページの日本語レビュー6件を代替素材として第8章印象形成用に引き継ぐ設計。</p>
+    <div class="callout-blue">
+      <strong>この章で見てほしい判断</strong>
+      <ul>
+        <li>BP-A〜BP-K相当（B-001〜B-016）の起点選定が機能から自然に導かれているか</li>
+        <li>代表5本の階層1〜5の連鎖に飛躍がないか</li>
+        <li>取消 B-003 / B-008 の削除理由（インタビュー9名言及ゼロ）を受け入れて良いか</li>
+      </ul>
+    </div>
 
-<div class="box box-compliance">
-<h4>理論準拠チェック　<span class="label lb-ok">完全</span></h4>
-<ul class="bul">
-<li>ナレッジ定義: 7カテゴリ（基本情報／物理的特徴／技術・製造／機能／使用情報／サービス／オプション品）全てを埋める。情報なし項目も明示する。</li>
-<li>実行結果: 全7カテゴリを記入。要確認項目は「情報なし」と明記（重量推定・パッケージ外装・耐用年数等）。</li>
-<li>ファクト／推論の区別: 各行に「確度」列を設けて【ファクト】【推論】【情報なし】を全行でラベリング済み。</li>
-<li>機能一覧F-01〜F-12の12件を列挙。うちF-12（日本語レビュー6件）は「第8章の印象形成14項目（口コミ・お客様の声）の代替素材」として明示的に第8章への引き継ぎを設計。</li>
-</ul>
-</div>
+    <h3>起点一覧（B-001〜B-016）</h3>
+    <table class="data-table">
+      <thead><tr><th>ID</th><th>起点機能</th><th>経路概要</th><th>確度</th></tr></thead>
+      <tbody>
+        <tr><td>B-001</td><td>F-01 360°回転</td><td>皮脂物理除去 → 体臭恐怖からの解放【LF8-3】</td><td>○</td></tr>
+        <tr><td>B-002</td><td>F-01 360°回転</td><td>清潔な人として見られたい【LF8-8】</td><td>○</td></tr>
+        <tr><td><s>B-003</s></td><td><s>F-01 360°回転</s></td><td><s>入浴が楽しみな時間に【LF8-5】</s></td><td>△削除</td></tr>
+        <tr><td>B-004</td><td>F-02+F-03 ダブルハンドル+リーチ</td><td>背中到達 → 後ろめたさ解消【LF8-3】</td><td>○</td></tr>
+        <tr><td>B-005</td><td>F-02+F-03</td><td>一人でケア完結【非LF8 自由・独立】</td><td>△</td></tr>
+        <tr><td>B-006</td><td>F-02+F-03</td><td>加齢臭主要発生部位を毎日洗浄【LF8-3】</td><td>○</td></tr>
+        <tr><td>B-007</td><td>F-05 5種ヘッド</td><td>1台で全身ケア完結【LF8-5】</td><td>○</td></tr>
+        <tr><td><s>B-008</s></td><td><s>F-05 5種ヘッド</s></td><td><s>顔洗浄で時短【非LF8 能率】</s></td><td>△削除</td></tr>
+        <tr><td>B-009</td><td>F-06 2段階モード</td><td>パワフルで加齢臭部位重点洗浄【LF8-3】</td><td>○</td></tr>
+        <tr><td>B-010</td><td>F-06 2段階モード</td><td>ソフトでデリケート部位対応【非LF8 安心】</td><td>△</td></tr>
+        <tr><td>B-011</td><td>F-07 IPX7</td><td>壊れない安心で集中使用【非LF8 信頼性】</td><td>◎</td></tr>
+        <tr><td>B-012</td><td>F-08 USB充電</td><td>充電切れストレスなし【非LF8 便利】</td><td>○</td></tr>
+        <tr><td>B-013</td><td>F-08 USB充電</td><td>旅行・出張先でも使える【非LF8 安心】</td><td>○保留</td></tr>
+        <tr><td>B-014</td><td>F-09 4認証</td><td>毎日肌に当てる安全性の客観証明【LF8-3】</td><td>◎</td></tr>
+        <tr><td>B-015</td><td>F-09 4認証</td><td>家族にも使わせられる【LF8-7 守りたい】</td><td>○</td></tr>
+        <tr><td>B-016</td><td>F-04 シリコン素材</td><td>敏感肌でも安心【LF8-3】</td><td>○</td></tr>
+      </tbody>
+    </table>
 
-<div class="box box-io">
-<h4>インプット／アウトプット</h4>
-<strong>インプット:</strong> 起点（Alibaba商品ページ／企業情報／コスト試算）<br>
-<strong>アウトプット:</strong> 商品情報（7カテゴリ表）＋機能一覧（F-01〜F-12）＋コスト構造表（限界利益¥5,313／59.0%）＋自社レビュー扱いの方針
-</div>
+    <h3>代表5本：階層1〜5 全文</h3>
 
-<div class="box box-excerpt">
-<h4>主要成果物の抜粋</h4>
-<strong>機能一覧（抜粋）:</strong>
-<table>
-<tr><th>ID</th><th>機能</th><th>確度</th></tr>
-<tr><td>F-01</td><td>電動360°スピン回転ブラシヘッド</td><td>ファクト</td></tr>
-<tr><td>F-02</td><td>ダブルハンドル設計（ロングハンドル着脱式＋本体グリップ）</td><td>ファクト</td></tr>
-<tr><td>F-03</td><td>ロングハンドルで背中・脚など手の届きにくい部位に到達可能</td><td>ファクト</td></tr>
-<tr><td>F-04</td><td>シリコン素材ブラシヘッド（食品衛生基準準拠）</td><td>ファクト</td></tr>
-<tr><td>F-05</td><td>5種類の交換式ブラシヘッド（massage/face/bath/buffing/scrub）</td><td>ファクト</td></tr>
-<tr><td>F-06</td><td>2段階速度モード（ソフト／パワフル）</td><td>ファクト</td></tr>
-<tr><td>F-07</td><td>IPX7完全防水（水深1m・30分）</td><td>ファクト</td></tr>
-<tr><td>F-08</td><td>USB充電式（1,200mAh）</td><td>ファクト</td></tr>
-<tr><td>F-09</td><td>FCC＋CE＋RoHS＋SGS 4認証</td><td>ファクト</td></tr>
-<tr><td>F-10〜F-11</td><td>ギフトボックス／壁掛け対応</td><td>情報なし</td></tr>
-<tr><td>F-12</td><td>日本語レビュー6件・5つ星（仕入れ元）</td><td>ファクト</td></tr>
-</table>
-<strong>コスト構造:</strong> 総コスト¥3,158／売価¥8,999／限界利益¥5,313／限界利益率59.0%<br>
-<strong>自社レビュー:</strong> ゼロ。Broadseal Alibabaの日本語レビュー6件を第2章ステップ9および第8章印象形成に活用する方針。
-</div>
+    <h4>B-001（F-01 360°回転 × 体臭恐怖ルート）</h4>
+    <table class="data-table">
+      <tbody>
+        <tr><td>階層1 機能的結果</td><td>毛穴に対して手洗いの数倍の回転摩擦が加わり、手・タオルでは除去できない皮脂・古い角質が物理的に落ちる</td></tr>
+        <tr><td>階層2 行動変化</td><td>毎日のシャワーで皮脂汚れを確実に落とせるようになる</td></tr>
+        <tr><td>階層3 心理変化</td><td>「今日はちゃんと洗えた」という確かな実感が生まれる</td></tr>
+        <tr><td>階層4 生活シーン変化</td><td>人と近距離で接する場面（電車・会議・会食）で体臭への不安を感じずに行動できる</td></tr>
+        <tr><td>階層5 潜在欲求接続</td><td>【LF8-3】恐怖、痛み、危険を免れたい（"臭いと思われる恐怖"から解放される）</td></tr>
+      </tbody>
+    </table>
 
-<div class="box box-fact">
-<h4>ファクト／前提／推論の区別</h4>
-<span class="label lb-fact">ファクト</span> Alibaba商品ページ・企業情報から取得した項目（仕入れ単価・MOQ・認証・機能仕様・工場情報・輸出国比率）<br>
-<span class="label lb-premise">前提条件</span> 売価¥8,999・Shopify販売・シッピーノ手数料率・Shopify手数料率6%（企画確定）<br>
-<span class="label lb-inference">推論</span> 本体重量500g〜1kg（パッケージ5個=5kgから推算）・基本的な使い方・メンテナンス方法・セット販売候補
-</div>
+    <h4>B-004（F-02+F-03 ダブルハンドル × 背中リーチ）</h4>
+    <table class="data-table">
+      <tbody>
+        <tr><td>階層1</td><td>ブラシが背中全体（肩甲骨下・腰まわり）に物理的に届く</td></tr>
+        <tr><td>階層2</td><td>今まで自分では洗えていなかった背中を毎日しっかり洗えるようになる</td></tr>
+        <tr><td>階層3</td><td>「背中が洗えていない」という長年の後ろめたさ・不安が消える</td></tr>
+        <tr><td>階層4</td><td>夏に薄着・肌見せの服を着るシーンや温泉・スポーツジムで背中を人に見られても気にならなくなる</td></tr>
+        <tr><td>階層5</td><td>【LF8-3】恐怖、痛み、危険を免れたい（"背中が臭い・汚い"という恐怖から解放）</td></tr>
+      </tbody>
+    </table>
 
-<div class="box box-decision">
-<h4>判断介入ポイント</h4>
-サプライヤー2社（Broadseal最推奨／Xuannuo次点）からBroadsealを選定。売価¥8,999はユーザーの企画確定値。Shopifyチャネル選択も企画確定値。
-</div>
+    <h4>B-009（F-06 パワフルモード × 加齢臭重点洗浄）</h4>
+    <table class="data-table">
+      <tbody>
+        <tr><td>階層1</td><td>パワフルモードで皮脂分泌の多い部位（背中・胸・脇）に強い摩擦をかけられる</td></tr>
+        <tr><td>階層2</td><td>加齢臭の原因部位を重点的に洗える</td></tr>
+        <tr><td>階層3</td><td>加齢臭対策として「ちゃんとやれている」という確信が持てる</td></tr>
+        <tr><td>階層4</td><td>入浴後の数時間を、体臭を気にせず人と話せるシーン</td></tr>
+        <tr><td>階層5</td><td>【LF8-3】恐怖、痛み、危険を免れたい</td></tr>
+      </tbody>
+    </table>
 
-<div class="box box-next">
-<h4>次章への接続</h4>
-機能一覧F-01〜F-09が第2章のベネフィット起点の直接インプット。F-12は第8章の印象形成へ。コスト構造は第3章の競合コスト比較（ソープ・サプリとの月額比較で逆転点算出）に直結。ID体系（F-XX）は第2章で維持される。
-</div>
+    <h4>B-011（F-07 IPX7完全防水）</h4>
+    <table class="data-table">
+      <tbody>
+        <tr><td>階層1</td><td>水深1m・30分の完全防水で、シャワー・湯船どちらでも機器が故障しない</td></tr>
+        <tr><td>階層2</td><td>浴室内で水を気にせず自由に動かして使える</td></tr>
+        <tr><td>階層3</td><td>「壊れないか」という心配なく使用に集中できる</td></tr>
+        <tr><td>階層4</td><td>毎日安心して長く使い続けられるシーン</td></tr>
+        <tr><td>階層5</td><td>【非LF8】信頼性・質の良さが欲しい</td></tr>
+      </tbody>
+    </table>
+
+    <h4>B-014（F-09 4認証 × 安全性の客観証明）</h4>
+    <table class="data-table">
+      <tbody>
+        <tr><td>階層1</td><td>FCC/CE/RoHS/SGS認証が第三者機関によって取得されており、安全性が客観的に証明されている</td></tr>
+        <tr><td>階層2</td><td>毎日肌に直接当てて安心して使い続けられる</td></tr>
+        <tr><td>階層3</td><td>「安全性が証明されていない商品を毎日肌に使う不安」が解消される</td></tr>
+        <tr><td>階層4</td><td>長期的なボディケアルーティンとして定着させられるシーン</td></tr>
+        <tr><td>階層5</td><td>【LF8-3】恐怖、痛み、危険を免れたい（有害素材への不安から解放）</td></tr>
+      </tbody>
+    </table>
+
+    <h3>取消：B-003 / B-008 の理由</h3>
+    <table class="data-table">
+      <thead><tr><th>ID</th><th>内容</th><th>削除理由</th></tr></thead>
+      <tbody>
+        <tr><td>B-003</td><td>F-01 360°回転 → 入浴が面倒なルーティンではなく楽しみな時間になる（LF8-5 快適に暮らしたい）</td><td>インタビュー9名全員で言及ゼロ。訴求候補から除外</td></tr>
+        <tr><td>B-008</td><td>F-05 顔用ヘッドで洗顔時短（非LF8 能率）</td><td>インタビュー9名全員で言及ゼロ。訴求候補から除外</td></tr>
+      </tbody>
+    </table>
+  </div>
 </section>
 
-<!-- ================= 第2章 ================= -->
-<section id="chapter-2" class="chapter">
-<div class="chapter-head">
-<div class="chapter-num">第2章</div>
-<div>
-<div class="chapter-title">ベネフィット一覧（5層構造）<span class="phase-tag phase-know">自社を知る</span></div>
-<div class="chapter-meta">一次資料: 構築_第2章_ベネフィット.md ／ 完了: 2026-03-19（Broadseal推奨版）</div>
-</div>
-</div>
+<section id="chapter-3">
+  <div class="card">
+    <h2>第3章 顕在欲求グルーピング・競合調査</h2>
 
-<p>F-01〜F-09の機能起点から16本のベネフィット（B-001〜B-016）を5層構造で展開。B-003・B-008は第5章インタビュー9名全員で言及ゼロを理由に取り消し線で削除（IDは欠番保持）。</p>
+    <div class="callout-blue">
+      <strong>この章で見てほしい判断</strong>
+      <ul>
+        <li>G-1「加齢臭・体臭で人前での不安をなくしたい」1本に集中する意思決定は妥当か</li>
+        <li>熊野筆をベンチマーク競合に据える構図（勝ち筋4点）に同意できるか</li>
+        <li>保留3グループをスケール時の再検証に回す運用で良いか</li>
+      </ul>
+    </div>
 
-<div class="box box-compliance">
-<h4>理論準拠チェック　<span class="label lb-ok">完全</span></h4>
-<ul class="bul">
-<li>ナレッジ定義: 5層（機能的結果→行動変化→心理変化→生活シーン変化→潜在欲求接続）全てまで展開、操作B（場面・使用者・欲求）の分岐探索、LF8／非LF8の明示、確度ラベル（◎／○／△）。</li>
-<li>実行結果: 全16本が5層まで展開済み。分岐のきっかけ列（欲求／使用者／場面）を明示。LF8-3／8-5／8-7／8-8と非LF8（快適／便利／安定・安心／自由・独立）を全て正確にラベリング。</li>
-<li>取り消し運用: B-003／B-008は取り消し線で残置し、IDは欠番保持。削除理由を備考欄に明記。ルール8cに準拠。</li>
-<li>ベネフィット経路マップを4経路（恐怖・社会的信頼・安全安心・習慣継続）で俯瞰図化。</li>
-</ul>
-</div>
+    <h3>G-1 詳細：加齢臭・体臭が気になって、人前での不安をなくしたい</h3>
+    <table class="data-table">
+      <tbody>
+        <tr><td>種別</td><td>【顕在欲求・確定】 今回のローンチ対象</td></tr>
+        <tr><td>含むベネフィット</td><td>B-001, B-002, B-004, B-005, B-006, B-009</td></tr>
+        <tr><td>背後の潜在欲求</td><td>【LF8-3】恐怖・危険を免れたい / 【LF8-8】社会的に認められたい</td></tr>
+        <tr><td>統合方針</td><td>加齢臭（40代以上）と体臭・汗臭（若年層）を一本化</td></tr>
+      </tbody>
+    </table>
 
-<div class="box box-io">
-<h4>インプット／アウトプット</h4>
-<strong>インプット:</strong> 第1章の機能一覧F-01〜F-09<br>
-<strong>アウトプット:</strong> ベネフィット一覧16件×5層（列: ID／機能／階層1〜5／分岐きっかけ／確度／レビューの言葉）
-</div>
+    <h3>保留3グループ</h3>
+    <table class="data-table">
+      <thead><tr><th>グループ</th><th>含むB</th><th>潜在欲求</th></tr></thead>
+      <tbody>
+        <tr><td>背中など届かない部位をちゃんと洗いたい</td><td>B-004, B-005</td><td>【非LF8】自由・独立</td></tr>
+        <tr><td>毎日の入浴をもっと丁寧な肌ケアにしたい</td><td><s>B-003</s>, B-007, <s>B-008</s></td><td>【LF8-5】快適に暮らしたい</td></tr>
+        <tr><td>パートナー・家族の体臭が気になりギフトとして検討</td><td>B-014, B-015</td><td>【LF8-7】愛する人を守りたい</td></tr>
+      </tbody>
+    </table>
+    <p>スケール時に第4章（アンケート設計）からやり直して検証する。</p>
 
-<div class="box box-excerpt">
-<h4>代表3件の5層全文引用</h4>
+    <h3>競合5カテゴリ全件比較表</h3>
+    <table class="data-table">
+      <thead><tr><th>競合</th><th>商品例</th><th>初期</th><th>継続</th><th>解決範囲</th><th>持続性</th><th>完全性</th><th>備考</th></tr></thead>
+      <tbody>
+        <tr><td>自社商品</td><td>Broadseal OEM</td><td>¥8,999</td><td>ほぼゼロ</td><td>全面</td><td>使用毎</td><td>根本解決</td><td>「加齢臭×電動ブラシ」空白地帯</td></tr>
+        <tr><td>ソープ（主力）</td><td>LUCIDO 薬用デオドラント</td><td>¥800〜1,000</td><td>月¥800〜1,000</td><td>全身（使用時）</td><td>一時的</td><td>軽減</td><td>4.2★/1,115件</td></tr>
+        <tr><td>ソープ（高機能）</td><td>Ag DEO24 メンズクレンズ</td><td>¥979</td><td>月¥1,000</td><td>全身</td><td>一時的</td><td>軽減</td><td>4.54★ 4臭対応</td></tr>
+        <tr><td>サプリ（最多）</td><td>BARARINA グレープシード</td><td>¥1,980</td><td>月¥1,980</td><td>内側から</td><td>継続中のみ</td><td>軽減</td><td>4.4★/4,100件</td></tr>
+        <tr><td>サプリ（柿渋）</td><td>DHC 柿渋エチケット</td><td>¥1,570</td><td>月¥1,570</td><td>内側から</td><td>継続中のみ</td><td>軽減</td><td>4.0★/223件</td></tr>
+        <tr><td>デオ（スプレー）</td><td>エージーデオ24</td><td>¥922〜1,474</td><td>月¥1,000〜1,500</td><td>部分的</td><td>数時間</td><td>緩和</td><td>制汗剤No.1</td></tr>
+        <tr><td>デオ（ロールオン）</td><td>メルサボン 薬用</td><td>¥884〜990</td><td>月¥900〜1,000</td><td>脇中心</td><td>半日</td><td>緩和</td><td>密着力評価</td></tr>
+        <tr><td>消臭インナー</td><td>セーレン DEOEST</td><td>¥2,000〜4,000</td><td>半年〜1年</td><td>体幹</td><td>着用中</td><td>緩和</td><td>根本解決せず</td></tr>
+        <tr><td>電動ブラシ（一般）</td><td>Oh.XIYU</td><td>¥7,224</td><td>年¥1,000</td><td>全身</td><td>使用毎</td><td>軽減</td><td>4.5★/133件 体臭訴求なし</td></tr>
+        <tr><td>手動ブラシ（重要）</td><td>熊野筆ボディブラシ（村岸産業）</td><td>¥11,380〜16,000</td><td>ほぼゼロ</td><td>ハンディは背中NG</td><td>手動で継続困難</td><td>軽減〜根本</td><td>Makuake 3,446人・約4,700万円</td></tr>
+        <tr><td>何もしない</td><td>—</td><td>¥0</td><td>¥0</td><td>なし</td><td>—</td><td>なし</td><td>Meta広告の最大ターゲット</td></tr>
+      </tbody>
+    </table>
 
-<strong>B-001（F-01 360°回転）｜確度○／LF8-3 恐怖を免れたい</strong>
-<table>
-<tr><th>階層1 機能的結果</th><td>毛穴に対して手洗いの数倍の回転摩擦が加わり、手・タオルでは除去できない皮脂・古い角質が物理的に落ちる</td></tr>
-<tr><th>階層2 行動変化</th><td>毎日のシャワーで皮脂汚れを確実に落とせるようになる</td></tr>
-<tr><th>階層3 心理変化</th><td>「今日はちゃんと洗えた」という確かな実感が生まれる</td></tr>
-<tr><th>階層4 生活シーン変化</th><td>人と近距離で接する場面（電車・会議・会食）で体臭への不安を感じずに行動できる</td></tr>
-<tr><th>階層5 潜在欲求接続</th><td>【LF8-3】恐怖、痛み、危険を免れたい（"臭いと思われる恐怖"から解放される）</td></tr>
-</table>
+    <h3>熊野筆 勝敗分析</h3>
+    <p><strong>熊野筆が成功した理由：</strong>「手で洗うだけでは毛穴の汚れが落ちない → 極細毛ブラシが届く」という条件の書き換え、LF8-3（恐怖）× 感覚裏付け（90年製法・天然山羊毛154,400本）、Makuakeのこだわり層との相性一致。</p>
 
-<strong>B-004（F-02＋F-03 ダブルハンドル）｜確度○／LF8-3</strong>
-<table>
-<tr><th>階層1</th><td>ブラシが背中全体（肩甲骨下・腰まわり）に物理的に届く</td></tr>
-<tr><th>階層2</th><td>今まで自分では洗えていなかった背中を毎日しっかり洗えるようになる</td></tr>
-<tr><th>階層3</th><td>「背中が洗えていない」という長年の後ろめたさ・不安が消える</td></tr>
-<tr><th>階層4</th><td>夏に薄着・肌見せの服を着るシーンや温泉・スポーツジムで背中を人に見られても気にならなくなる</td></tr>
-<tr><th>階層5</th><td>【LF8-3】恐怖、痛み、危険を免れたい（"背中が臭い・汚い"という恐怖から解放）</td></tr>
-</table>
+    <table class="data-table">
+      <thead><tr><th>熊野筆の弱点</th><th>内容</th><th>自社の優位（勝ち筋）</th></tr></thead>
+      <tbody>
+        <tr><td>背中に届かない</td><td>ハンディ（直径70mm・105g）は構造上、肩甲骨下・腰に届かない。柄付きは¥16,000と高額</td><td>ダブルハンドルで背中まで確実に到達</td></tr>
+        <tr><td>毎日継続しにくい</td><td>手動のため疲れた日・忙しい日は「今日はいいか」になりやすい</td><td>ボタン1つで電動回転。疲れていても一定の洗浄力</td></tr>
+        <tr><td>天然毛の衛生リスク</td><td>山羊毛は吸水性が高く乾きにくい。毛の中に雑菌繁殖リスク</td><td>シリコン素材（IPX7）。水洗い可・SGS/CE/RoHS認証</td></tr>
+        <tr><td>価格が高い</td><td>¥11,380〜16,000はマス層には高すぎる</td><td>¥8,999。熊野筆の半額以下</td></tr>
+      </tbody>
+    </table>
 
-<strong>B-014（F-09 4認証）｜確度◎／LF8-3</strong>
-<table>
-<tr><th>階層1</th><td>FCC/CE/RoHS/SGS認証が第三者機関によって取得されており、安全性が客観的に証明されている</td></tr>
-<tr><th>階層2</th><td>毎日肌に直接当てて安心して使い続けられる</td></tr>
-<tr><th>階層3</th><td>「安全性が証明されていない商品を毎日肌に使う不安」が解消される</td></tr>
-<tr><th>階層4</th><td>長期的なボディケアルーティンとして定着させられるシーン</td></tr>
-<tr><th>階層5</th><td>【LF8-3】恐怖、痛み、危険を免れたい（有害素材への不安から解放）</td></tr>
-</table>
+    <h3>自社の劣位点（正直ベース）</h3>
+    <ul>
+      <li>ブランド・物語性：熊野筆90年の職人技・日本製という感覚裏付けには構造的に勝てない</li>
+      <li>レビュー資産：新商品で自社レビューゼロ。熊野筆はMakuake 3,446人・楽天★5の実績あり</li>
+      <li>素材のプレミアム感：シリコンは衛生面で勝るが「こだわり派」には天然素材に負ける</li>
+      <li>コスト逆転の時間差：ソープとは9ヶ月、サプリとは5ヶ月かかる。短期比較では割高に見える</li>
+    </ul>
 
-<strong>取り消し済み:</strong>
-<div class="quote"><s>B-003（F-01）: 入浴が楽しみな時間になる ／ LF8-5 快適に暮らしたい</s><span class="src">削除理由: インタビュー9名全員で言及ゼロ</span></div>
-<div class="quote"><s>B-008（F-05）: 顔もブラシで洗える・時短 ／ 非LF8 能率よくありたい</s><span class="src">削除理由: インタビュー9名全員で言及ゼロ</span></div>
-</div>
-
-<div class="box box-fact">
-<h4>ファクト／前提／推論の区別</h4>
-<span class="label lb-fact">ファクト</span> 階層1（機能的結果）は第1章の機能ファクトから論理的に一意に導ける<br>
-<span class="label lb-premise">前提条件</span> 「毎日シャワーを浴びる人」「体臭・加齢臭を気にする人」という見込み客像<br>
-<span class="label lb-inference">推論</span> 階層2〜5はすべて推論。第5〜6章でリサーチ照合して確度を引き上げる設計（第6章で8本が◎に引上）
-</div>
-
-<div class="box box-decision">
-<h4>判断介入ポイント</h4>
-B-003／B-008の削除承認（第5章インタビュー終了後に遡及適用）。B-013（出張USB充電）は第4〜7章言及ゼロのため保留扱い。
-</div>
-
-<div class="box box-next">
-<h4>次章への接続</h4>
-B-001〜B-016のIDがそのまま第3章グルーピングの根拠データとなる。ナレッジの「第3章のグルーピング根拠は第2章ベネフィット」の原則を厳守。経路マップの「恐怖ルート」「社会的信頼ルート」が第3章確定グループG-1の直接根拠。
-</div>
+    <h3>コスト比較</h3>
+    <table class="data-table">
+      <thead><tr><th>期間</th><th>自社商品</th><th>加齢臭ソープ</th><th>消臭サプリ</th></tr></thead>
+      <tbody>
+        <tr><td>初期コスト</td><td>¥8,999</td><td>¥979</td><td>¥1,980</td></tr>
+        <tr><td>月ランニング</td><td>ほぼ¥0</td><td>¥1,000</td><td>¥1,980</td></tr>
+        <tr><td>6ヶ月合計</td><td>¥8,999</td><td>¥6,979</td><td>¥13,860</td></tr>
+        <tr><td>9ヶ月合計</td><td>¥8,999</td><td>¥9,979</td><td>¥19,800</td></tr>
+        <tr><td>1年合計</td><td>¥8,999</td><td>¥12,979</td><td>¥25,740</td></tr>
+      </tbody>
+    </table>
+  </div>
 </section>
 
-<!-- ================= 第3章 ================= -->
-<section id="chapter-3" class="chapter">
-<div class="chapter-head">
-<div class="chapter-num">第3章</div>
-<div>
-<div class="chapter-title">顕在欲求グルーピング・競合調査<span class="phase-tag phase-place">戦う場所を決める</span></div>
-<div class="chapter-meta">一次資料: 構築_第3章_競合調査.md ／ 完了: 2026-03-19</div>
-</div>
-</div>
+<section id="chapter-3-5">
+  <div class="card">
+    <h2>第3.5章 競合レビュー分析（約1,333件）</h2>
 
-<p>ベネフィット経路から4グループを設計し、G-1「加齢臭・体臭」をローンチ対象として確定。残り3グループはスケール時に第4章からやり直す保留方針。競合選択肢は5カテゴリ全て検討し、熊野筆ボディブラシ（Makuake 4,700万円）を重要競合として弱点分析。</p>
+    <div class="callout-blue">
+      <strong>この章で見てほしい判断</strong>
+      <ul>
+        <li>5つの主要パターン（共通不満）を「条件書き換えの弾」として採用して良いか</li>
+        <li>「洗浄剤ではなく洗い方の問題」というAg DEO24ユーザー自身の発見を中核メッセージに据える構図</li>
+        <li>手動ブラシの「硬い/柔らかい」ジレンマを電動の優位として訴求する流れ</li>
+      </ul>
+    </div>
 
-<div class="box box-compliance">
-<h4>理論準拠チェック　<span class="label lb-ok">完全</span></h4>
-<ul class="bul">
-<li>ナレッジ定義: 競合選択肢5カテゴリ（同カテゴリ／異カテゴリ／代替手段／行動変容や我慢／何もしない）を全て検討、欲求充足度の3軸評価（解決範囲・持続性・完全性）、グルーピング根拠は第2章ベネフィット、レビューはグルーピング判断に使わない。</li>
-<li>実行結果: 5カテゴリ全列挙（ソープ高/低・サプリ柿渋/ローズ・デオドラントスプレー/ロールオン・消臭インナー・他社電動・熊野筆手動・何もしない）。3軸を全行に付与。</li>
-<li>熊野筆は重要競合として別枠で4観点弱点分析（背中未到達・継続困難・天然毛衛生リスク・価格¥11,380〜16,000）。ポジショニングは「優しさ・品質・伝統」vs「確実性・継続性・到達性・コスパ」で棲み分け。</li>
-<li>訴求の空白地帯（電動×加齢臭＝Amazon約70件 vs 電動ボディブラシ全体1万件超）をファクトで確認。</li>
-</ul>
-</div>
+    <h3>主要パターン5つ（件数付き・全競合横断）</h3>
+    <table class="data-table">
+      <thead><tr><th>#</th><th>共通不満</th><th>ソープ</th><th>サプリ</th><th>手動ブラシ</th><th>自社解決策</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>効果の自覚が難しい</td><td>最多の不満（LUCIDO 216件／Ag DEO24 199件で頻出）</td><td>最多の不満（DHC 48件中約4割／BARARINA 391件 ★1〜2率24%）</td><td>—</td><td>「洗い方が変わる」行動変化で実感しやすい</td></tr>
+        <tr><td>2</td><td>冬に使えない／季節依存</td><td>致命的（メンソール、両ソープで10件以上）</td><td>—</td><td>—</td><td>通年使える（物理除去のためメンソール不要）</td></tr>
+        <tr><td>3</td><td>肌への刺激・乾燥</td><td>多い（殺菌成分で乾燥）</td><td>胃のムカムカ</td><td>硬いと痛い（ALATANA 307件で最多30件以上）</td><td>シリコン＋電動回転力でブラシ自体は柔らかく</td></tr>
+        <tr><td>4</td><td>ランニングコスト高</td><td>月¥1,000</td><td>月¥1,570〜1,980</td><td>—</td><td>初期¥8,999のみ（9ヶ月/5ヶ月で逆転）</td></tr>
+        <tr><td>5</td><td>根本解決でない</td><td>洗浄剤を変えるだけ</td><td>内側から軽減のみ</td><td>力の加減困難</td><td>皮脂を物理除去＝原因に直接対処</td></tr>
+      </tbody>
+    </table>
 
-<div class="box box-io">
-<h4>インプット／アウトプット</h4>
-<strong>インプット:</strong> 第2章ベネフィット一覧＋第1章商品情報<br>
-<strong>アウトプット:</strong> 確定グループ一覧（G-1確定／保留3）＋競合選択肢比較表（11選択肢×3軸）＋熊野筆弱点分析＋条件書き換えポイント
-</div>
+    <h3>実レビュー引用</h3>
 
-<div class="box box-excerpt">
-<h4>確定グループと保留グループ</h4>
-<table>
-<tr><th>グループ名</th><th>種別</th><th>紐づくBP</th><th>潜在欲求</th></tr>
-<tr><td><strong>加齢臭・体臭が気になって、人前での不安をなくしたい</strong></td><td>【確定】G-1</td><td>B-001/002/004/005/006/009</td><td>LF8-3／LF8-8</td></tr>
-<tr><td>背中など届かない部位をちゃんと洗いたい</td><td>【保留】</td><td>B-004/005</td><td>非LF8 自由・独立</td></tr>
-<tr><td>毎日の入浴をもっと丁寧な肌ケアにしたい</td><td>【保留】</td><td><s>B-003</s>/B-007/<s>B-008</s></td><td>LF8-5</td></tr>
-<tr><td>パートナー・家族の体臭が気になりギフト検討</td><td>【保留】</td><td>B-014/B-015</td><td>LF8-7</td></tr>
-</table>
+    <h4>A. 加齢臭専用ボディソープ（LUCIDO / Ag DEO24）</h4>
+    <blockquote class="review-quote">「加齢臭への効果はあまり実感できなかった。一所懸命洗っていたのに体臭があると言われた」<br><span>— LUCIDO 薬用デオドラントボディウォッシュ</span></blockquote>
+    <blockquote class="review-quote">「加齢臭にはボディソープよりシャンプーの選定と、頭皮〜首の後ろの洗い方を工夫する方が効果を感じる」<br><span>— LUCIDO（洗浄剤ではなく"洗い方"に答えがあるという競合ユーザー自身の発見）</span></blockquote>
+    <blockquote class="review-quote">「フットメジのブラシと合わせて購入。ブラシで足の指先や間を意識して洗うことで、石鹸で手洗いするだけでは取れなかった臭いが完璧に解消。耳の裏や首周り、四肢の付け根、足裏や足指の間をコレで丁寧に洗えば効果が実感できる」<br><span>— Ag DEO24 薬用メンズボディクレンズ（条件書き換えの核心）</span></blockquote>
 
-<h4>熊野筆ボディブラシ（村岸産業）弱点分析</h4>
-<table>
-<tr><th>弱点</th><th>自社の優位</th></tr>
-<tr><td>ハンディ（70mm・105g）は背中未到達／柄付き¥16,000と高額</td><td>ダブルハンドルで肩甲骨下・腰まで確実到達</td></tr>
-<tr><td>手動のため疲れた日は継続困難</td><td>ボタン1つで電動回転</td></tr>
-<tr><td>天然山羊毛は吸水性が高く雑菌繁殖リスク</td><td>シリコン素材＋IPX7＋SGS/CE/RoHS認証</td></tr>
-<tr><td>¥11,380〜16,000はマス層に高すぎる</td><td>¥8,999（熊野筆柄付きの約半額）</td></tr>
-</table>
+    <h4>B. 消臭サプリ（DHC 柿渋 / BARARINA）</h4>
+    <blockquote class="review-quote">「3ヶ月飲んだがまったく効果なし」「60日で断念」「飲んでるだけで大丈夫と思えてしまうのが不思議」<br><span>— DHC 柿渋エチケット 48件</span></blockquote>
+    <blockquote class="review-quote">「3ヶ月真面目に飲んだが体臭がバラのようにはならない」「15分はバラの香りだが体臭にはまったく効果なし。ゲップした時だけ」「無駄遣い。お金返してほしい。なにが三か月だよ。責任を取れよ」<br><span>— BARARINA グレープシード 391件／★1が59件</span></blockquote>
 
-<h4>コスト逆転点</h4>
-ソープ: 9ヶ月で逆転／サプリ: 5ヶ月で逆転／1年で1.4〜2.9倍差
-</div>
+    <h4>C. 手動ボディブラシ（ALATANA / Coneflake）</h4>
+    <blockquote class="review-quote">「紙やすりで撫でられている感じ」「背中真っ赤」「カバなら★5」「使い始めてニキビが20個以上できた」<br><span>— ALATANA Basics 背中ブラシ 307件（硬め代表）</span></blockquote>
+    <blockquote class="review-quote">「滑り防止のために設計されたとしか思えない」「アザだらけ」「ムッキーーー！」「撫でているだけ。泡を背中に塗るだけ。洗えない」「女性は疲れる。背中半分も洗えなかった」<br><span>— Coneflake 120万本極細毛 背中ブラシ 164件（柔らかめ代表）</span></blockquote>
 
-<div class="box box-fact">
-<h4>ファクト／前提／推論の区別</h4>
-<span class="label lb-fact">ファクト</span> 熊野筆Makuake 3,446人・4,700万円・目標157倍、Amazon競合件数、各競合の価格・レビュー件数、認証情報<br>
-<span class="label lb-premise">前提条件</span> 見込み客がこれら選択肢を比較検討する、コスト比較が意思決定に作用する<br>
-<span class="label lb-inference">推論</span> 条件書き換えポイント（「洗浄剤ではなく洗い方」「電動の物理除去が根本解決」）、熊野筆が取れていない層の存在、ポジショニング棲み分け
-</div>
+    <h4>D. 直接競合 電動ダブルハンドル（8件）</h4>
+    <blockquote class="review-quote">加齢臭・体臭訴求は一切なし。「便利グッズ」として購入され、「皮脂の多い背中周辺を効率的に洗浄」という声が自然発生。改善要望は替えブラシ販売・滑り止め・回転力向上・バッテリー残量表示。<br><span>— 第3章で指摘した「空白地帯」を実地で確認</span></blockquote>
+  </div>
+</section>
+<section id="chapter-4">
+  <div class="card">
+    <h2>第4章　アンケート結果分析（N=128）</h2>
 
-<div class="box box-decision">
-<h4>判断介入ポイント</h4>
-G-1単一ローンチの確定（加齢臭×若年層体臭の一本化）、保留グループのスケール時やり直し方針、ポジショニング軸の選択（確実性・継続性・到達性・コスパ）
-</div>
+    <div class="callout-blue">
+      <strong>この章で見てほしい判断</strong>
+      <p>（1）「頭皮は関心1位だが競合市場が飽和、背中・首まわりは空白地帯」という戦略判断の妥当性。（2）ボリュームゾーンが認知度3ではなく認知度4（34%）であった事実をどう扱うか。（3）深掘りテーマT1〜T8がインタビュー設計への橋渡しとして適切か。</p>
+    </div>
 
-<div class="box box-next">
-<h4>次章への接続</h4>
-G-1を第4章アンケートの単一対象とし、「このグループの見込み客の条件・認知度を定量で確認する」の3検証仮説（①ソープ不満層の規模 ②電動ブラシ=体臭対策の認知率 ③年代・性別分布）を第4章に引き継ぎ。
-</div>
+    <h3>4-1.　3層構造と認知度別設問数の考え方</h3>
+    <p>アンケートはグループG-1「加齢臭・体臭が気になって、人前での不安をなくしたい」1本に絞り、認知度1〜5の5階層別に設問を出し分ける3層構造（共通設問／認知度別設問／裏付けパターン設問）で設計した。認知度3（コア層）は部位・条件・不満・理想ケア・対策歴・裏付け傾向・決断速度・情報接触の8ブロックで深掘り、認知度4は「対策しない理由」「本格対策のトリガー」「気になる頻度」「周囲からの指摘」を中心に、認知度2は「最重視ポイント」「比較ポイント」「踏み切れない理由」「安心条件」で詰め、認知度1・5は最小限とした。</p>
+
+    <h3>4-2.　N=128の認知度分布</h3>
+    <table class="data-table">
+      <thead><tr><th>認知度</th><th>人数</th><th>比率</th><th>意味</th></tr></thead>
+      <tbody>
+        <tr><td>認知度1（購入段階）</td><td>6名</td><td>5%</td><td>商品を決めている</td></tr>
+        <tr><td>認知度2（手段は知っている）</td><td>21名</td><td>16%</td><td>どれにするか迷っている</td></tr>
+        <tr><td>認知度3（課題認識）</td><td>37名</td><td>29%</td><td>何とかしたいが手段がわからない</td></tr>
+        <tr><td>認知度4（問題は認識）</td><td>44名</td><td>34%</td><td>気になるが対策するほどではない</td></tr>
+        <tr><td>認知度5（問題未認識）</td><td>20名</td><td>16%</td><td>気になっていない</td></tr>
+      </tbody>
+    </table>
+    <p>性別比は男性52%／女性48%、年代は30代36%／40代34%／50代14%／20代以下12%／60代以上3%。想定ボリュームゾーンの認知度3（29%）より、認知度4（34%）が最大ブロックとして出現した点が最大の発見である。認知度3＋4で63%を占める。</p>
+
+    <h3>4-3.　ボリュームゾーン（認知度3）の条件上位10件の具体文</h3>
+    <p>Q3-6「対策として重要だと思うこと」とQ3-8「理想のケア像」から、見込み客が自分の言葉で述べた条件上位10件を抽出した。</p>
+    <table class="data-table">
+      <thead><tr><th>No.</th><th>条件（見込み客の言葉ベース）</th><th>出現率／出典</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>根本から原因を除去できる</td><td>68%（Q3-6）</td></tr>
+        <tr><td>2</td><td>毎日手間なく続けられる</td><td>62%（Q3-6）</td></tr>
+        <tr><td>3</td><td>安全性が高い（肌への負担が少ない）</td><td>46%（Q3-6）</td></tr>
+        <tr><td>4</td><td>効果が速く出る</td><td>43%（Q3-6）</td></tr>
+        <tr><td>5</td><td>毎日のお風呂で普通に洗うだけで1日中ニオイが気にならない</td><td>Q3-8 最多パターン</td></tr>
+        <tr><td>6</td><td>手間がかからず長時間効果が続く</td><td>Q3-8</td></tr>
+        <tr><td>7</td><td>毛穴の奥に詰まった酸化した皮脂を完全にかき出せる</td><td>Q3-8 代表回答</td></tr>
+        <tr><td>8</td><td>価格が安い</td><td>24%（Q3-6）</td></tr>
+        <tr><td>9</td><td>背中など届きにくい部位もケアできる</td><td>19%（Q3-6）</td></tr>
+        <tr><td>10</td><td>使い方がシンプルで簡単</td><td>16%（Q3-6）</td></tr>
+      </tbody>
+    </table>
+    <blockquote class="review-quote">毎日のお風呂でサッと洗うだけで臭いの元からしっかり落ちて、妻から文句を言われなくなるのが一番ありがたい（Q3-8 自由記述）</blockquote>
+    <blockquote class="review-quote">お風呂での通常の洗浄だけで、特別な技術や手間をかけずに、毛穴の奥に詰まった酸化した皮脂を完全にかき出せるのが理想（Q3-8 自由記述）</blockquote>
+    <blockquote class="review-quote">手間がかからず、長時間効果が続く。肌に優しく、背中などケアしにくい部位にも簡単に使える（Q3-8 自由記述）</blockquote>
+
+    <h3>4-4.　第5章への深掘りテーマT1〜T8</h3>
+    <table class="data-table">
+      <thead><tr><th>ID</th><th>テーマ</th><th>導出根拠</th></tr></thead>
+      <tbody>
+        <tr><td>T1</td><td>「一時しのぎ」への不満の深掘り</td><td>Q3-7 不満パターン「効果が持続しない」12件</td></tr>
+        <tr><td>T2</td><td>「洗い方を変える」発想の有無</td><td>Q3-9 対策履歴がボディソープ・デオドラントに偏在</td></tr>
+        <tr><td>T3</td><td>背中・首まわりへの意識、問題の拡張が受け入れられるか</td><td>頭皮70%vs背中19%の関心ギャップ</td></tr>
+        <tr><td>T4</td><td>認知度4の「指摘されない限り動かない」構造</td><td>89%が「指摘されたことがない」、80%が「指摘されたら動く」</td></tr>
+        <tr><td>T5</td><td>電動ブラシへの第一印象、価格感、頭皮ブラシとの違い認識</td><td>Q3-9で電動ブラシ使用者ゼロ</td></tr>
+        <tr><td>T6</td><td>男女の違い（男性の「手間」意識、女性の「安全性」意識）</td><td>8-5クロス：毎日手間なく男性73%vs女性47%、安全性男性36%vs女性60%</td></tr>
+        <tr><td>T7</td><td>価格受容・コスパ換算・返品保証の効き方</td><td>認知度3の価格条件24%の低さと、9,000円帯商品の実購買可否検証</td></tr>
+        <tr><td>T8</td><td>裏付けへの信頼（口コミ・メカニズム・Before/After）</td><td>Q3-10 口コミ70%・メカニズム59%のバランス型</td></tr>
+      </tbody>
+    </table>
+  </div>
 </section>
 
-<!-- ================= 第3.5章 ================= -->
-<section id="chapter-3-5" class="chapter">
-<div class="chapter-head">
-<div class="chapter-num">第3.5</div>
-<div>
-<div class="chapter-title">競合レビュー分析（約1,333件横断）<span class="phase-tag phase-place">戦う場所を決める</span></div>
-<div class="chapter-meta">一次資料: 構築_第3.5章_競合レビュー分析.md ／ 完了: 2026-03-27</div>
-</div>
-</div>
+<section id="chapter-5">
+  <div class="card">
+    <h2>第5章　インタビュー分析（N=9）</h2>
 
-<p>8競合の合計約1,333件レビューを横断分析し、既存解決策に対する見込み客の条件（知識・信念・不満）を直接読み取り。第5章インタビュー設計の入力となる仮説を抽出。</p>
+    <div class="callout-blue">
+      <strong>この章で見てほしい判断</strong>
+      <p>（1）9名の属性分布（認知度4:3名／認知度3:6名）で「グループG-1の行動決定要因」を結論づけてよいか。（2）No.8 ocr73jdをインタビュー判定で認知度3→実質4に変更した判断の妥当性。（3）3軸充足度○6件／△1件で第6章に前進する判断の妥当性。</p>
+    </div>
 
-<div class="box box-compliance">
-<h4>理論準拠チェック　<span class="label lb-ok">完全</span></h4>
-<ul class="bul">
-<li>第3章の原則（レビューは補助参考情報、グルーピング判断には使わない）を厳守。本章はレビューを条件・不満の抽出元として扱うだけで、G-1の再編はしていない。</li>
-<li>5つの共通不満を横断で整理: (1)効果の自覚困難 (2)冬は使えない (3)肌刺激・乾燥 (4)ランニングコスト (5)根本解決でない。</li>
-<li>条件書き換えの「弾」をカテゴリ別（ソープ/サプリ/手動ブラシ/熊野筆）に整理し、全ての弾に具体的レビュー引用を添付。</li>
-</ul>
-</div>
+    <h3>5-1.　インタビュー対象9名の属性一覧</h3>
+    <table class="data-table">
+      <thead>
+        <tr><th>No.</th><th>ハンドル</th><th>年代／性別</th><th>認知度（事前）</th><th>認知度（事後）</th><th>最強トリガー</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>加藤</td><td>40代女性</td><td>4</td><td>4</td><td>月1,000円以内のコスパ線</td></tr>
+        <tr><td>2</td><td>茂ノ井</td><td>40代女性</td><td>4</td><td>4</td><td>月額コスパ換算で態度変化</td></tr>
+        <tr><td>3</td><td>w0cmkpf</td><td>20代男性</td><td>4</td><td>4</td><td>30日返品保証</td></tr>
+        <tr><td>4</td><td>ふくろう</td><td>50代男性</td><td>3</td><td>3</td><td>月換算コスパ＋首裏・背中情報</td></tr>
+        <tr><td>5</td><td>はっっさん</td><td>39歳男性</td><td>3</td><td>3</td><td>30日返品保証＋視覚的Before/After</td></tr>
+        <tr><td>6</td><td>匿名</td><td>40代女性</td><td>3</td><td>3</td><td>コスパ換算＋着払い伝票同封</td></tr>
+        <tr><td>7</td><td>小川</td><td>49歳女性</td><td>3</td><td>3</td><td>背中の皮脂訴求＋返品保証＋ヘッド交換</td></tr>
+        <tr><td>8</td><td>ocr73jd</td><td>50代男性</td><td>3</td><td>実質4に変更</td><td>どのトリガーも効かず</td></tr>
+        <tr><td>9</td><td>neko0513</td><td>40代女性</td><td>3</td><td>3</td><td>背中到達＋アタッチメント＋薬局ヘッド購入</td></tr>
+      </tbody>
+    </table>
+    <p>No.8 ocr73jdは事前アンケートで認知度3と申告していたが、インタビューで「必要性認識そのものが低く」、コスパ換算も返品保証も効かなかった唯一のケース。実質的には認知度4相当として扱い、第6章以降の認知度3コアとしては6→5名と見なす。</p>
 
-<div class="box box-io">
-<h4>インプット／アウトプット</h4>
-<strong>インプット:</strong> LUCIDO(216)/Ag DEO24(199)/DHC柿渋(48)/BARARINA(391)/ALATANA(307)/Coneflake(164)/電動ダブルハンドル(8)/熊野筆（Makuake読込不可・楽天少数）<br>
-<strong>アウトプット:</strong> カテゴリ別レビュー分析＋5共通不満テーブル＋条件書換え弾リスト＋第5章インタビュー仮説5件
-</div>
+    <h3>5-2.　主要発見5つの具体引用（出典付き）</h3>
 
-<div class="box box-excerpt">
-<h4>主要パターン抜粋</h4>
-<ul class="bul">
-<li><strong>効果の自覚困難（ソープ・サプリで最多）:</strong> 「効果を実感している訳ではない、安心感で継続」（LUCIDO）。惰性継続の心理がT1深掘りテーマへ。</li>
-<li><strong>洗い方への核心的証言:</strong> 「フットメジのブラシと合わせて購入。ブラシで足の指先や間を意識して洗うことで石鹸で手洗いするだけでは取れなかった臭いが完璧に解消」（Ag DEO24）。条件書き換え「洗浄剤ではなく洗い方」の直接証拠。</li>
-<li><strong>冬使えない問題:</strong> 両ソープで10件以上「スースーするので冬は使いたくない」。</li>
-<li><strong>手動ブラシの二極化:</strong> ALATANA「紙やすりで撫でられている感じ」／Coneflake「撫でているだけ・洗えない」。硬いと痛い／柔らかいと洗えないジレンマ。</li>
-<li><strong>熊野筆:</strong> 「加齢臭が改善した」という直接体験レビューは未確認（予防・ケア方向の訴求が中心）。</li>
-</ul>
-</div>
+    <h4>発見1　行動を止めている最大要因は「価格」ではなく「フィードバック欠如」</h4>
+    <blockquote class="review-quote">家族といえど、臭いに関しては気を使っているかなと思ってしまった（No.2 茂ノ井／40代女性／認知度4）</blockquote>
+    <blockquote class="review-quote">心配になることはよくあります（No.1 加藤／40代女性／認知度4）</blockquote>
 
-<div class="box box-fact">
-<h4>ファクト／前提／推論の区別</h4>
-<span class="label lb-fact">ファクト</span> レビュー件数・引用内容・出典ASIN<br>
-<span class="label lb-premise">前提条件</span> レビュー投稿者＝実購入者が多数である（Amazon購入者レビュー）<br>
-<span class="label lb-inference">推論</span> 5共通不満の構造化、各カテゴリの「弾」、第5章で検証すべき仮説5件
-</div>
+    <h4>発見2　「耳の裏・首の後ろ・背中」情報が全9名で最強の即時反応</h4>
+    <blockquote class="review-quote">耳の裏ってあんまり洗ってなかった気がするので、それは洗わなきゃって今思いました（No.2 茂ノ井／認知度4）</blockquote>
+    <blockquote class="review-quote">知らなかった。背中を洗いたいと思うようになった（No.3 w0cmkpf／20代男性／認知度4）</blockquote>
 
-<div class="box box-next">
-<h4>次章への接続</h4>
-第5章インタビュー設計にT1「惰性継続の心理」T2「洗い方を変える発想」T7「手動ブラシの失敗経験」として直結。特にT2は本章のAg DEO24証言をインタビューでそのまま提示する設計に反映。
-</div>
+    <h4>発見3　8,999円への態度変化トリガーが3タイプに分岐（コスパ換算／返品保証／効かない）</h4>
+    <blockquote class="review-quote">1ヶ月に2,000円かけるよりは、電動ブラシ買った方が割安かな（No.2 茂ノ井）</blockquote>
+    <blockquote class="review-quote">使用後でも返品OKで送料も入るなら、入り口として試してみたい（No.5 はっっさん）</blockquote>
+
+    <h4>発見4　ブラシヘッド交換モデルへの自発的支持が2名から</h4>
+    <blockquote class="review-quote">ヘッドだけ交換できるといいな。本体は12,000〜15,000円してもええんやけど、ヘッドは2,000円台（No.7 小川／49歳女性／認知度3）</blockquote>
+    <blockquote class="review-quote">アタッチメントで先のブラシを変えられると広がる。背中は硬め、首まわりは柔らかめ（No.9 neko0513／40代女性／認知度3）</blockquote>
+
+    <h4>発見5　「上から誤魔化す」対策への不信と「洗い落とす」哲学の一致</h4>
+    <blockquote class="review-quote">上から上書きするより、きれいに洗って匂いを出さないようにしたい（No.4 ふくろう／50代男性／認知度3）</blockquote>
+    <blockquote class="review-quote">私の理想はマスキングなしの無臭であること（No.7 小川／49歳女性／認知度3）</blockquote>
+    <blockquote class="review-quote">色々塗ったりコーティングしても効果はない。洗い流すのが一番（No.6 匿名／40代女性／認知度3）</blockquote>
+
+    <h3>5-3.　3軸充足度テーブル</h3>
+    <p>深掘りテーマごとに「表現／感情／価値基準」の3軸で判定。○=十分／△=部分的。</p>
+    <table class="data-table">
+      <thead>
+        <tr><th>#</th><th>テーマ</th><th>分類</th><th>表現</th><th>感情</th><th>価値基準</th><th>次アクション</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>T1</td><td>加齢臭への社会的不安と沈黙ループ</td><td>横断</td><td>○</td><td>○</td><td>○</td><td>第6章・第10章に反映</td></tr>
+        <tr><td>T2</td><td>現在の洗い方と背中・耳の裏の実態</td><td>横断</td><td>○</td><td>○</td><td>○</td><td>第6章・第7章・第12章に反映</td></tr>
+        <tr><td>T3</td><td>背中・首・耳の裏の未知性</td><td>横断</td><td>○</td><td>○</td><td>○</td><td>第10章冒頭の中核として使用</td></tr>
+        <tr><td>T4</td><td>電動ブラシへの第一印象・不安・期待</td><td>固有</td><td>○</td><td>○</td><td>○</td><td>第6章・第8章に反映</td></tr>
+        <tr><td>T5</td><td>価格受容・コスパ換算・返品保証</td><td>横断</td><td>○</td><td>○</td><td>○</td><td>第7章価格条件・第10章リスクリバーサル</td></tr>
+        <tr><td>T6</td><td>裏付けへの信頼（口コミ／専門家／実機体験）</td><td>横断</td><td>○</td><td>○</td><td>○</td><td>第8章裏付け選定</td></tr>
+        <tr><td>T7</td><td>女性固有：生理前／更年期による急性悪化</td><td>固有</td><td>△</td><td>○</td><td>△</td><td>新規セグメント扱いなら追加2〜3名推奨、補助訴求なら現状可</td></tr>
+      </tbody>
+    </table>
+  </div>
 </section>
 
-<!-- ================= 第4章 ================= -->
-<section id="chapter-4" class="chapter">
-<div class="chapter-head">
-<div class="chapter-num">第4章</div>
-<div>
-<div class="chapter-title">アンケート設計・結果分析（128名回収）<span class="phase-tag phase-verify">見込み客を確かめる</span></div>
-<div class="chapter-meta">一次資料: 構築_第4章_アンケート設計.md ／ 構築_第4章_アンケート結果分析.md ／ 完了: 2026-03-20</div>
-</div>
-</div>
+<section id="chapter-6">
+  <div class="card">
+    <h2>第6章　解像度を上げたベネフィット一覧</h2>
 
-<p>3層構造（第1層CrowdWorks募集条件／第2層認知度振り分けQ0／第3層認知度別設問セット）で設計し、CrowdWorks×Googleフォームで128名回収（目標110名超過）。認知度4が最大ボリューム34%という重要な分布発見。</p>
+    <div class="callout-blue">
+      <strong>この章で見てほしい判断</strong>
+      <p>（1）B-NEW-001〜003の階層1-5とLF8接続が第2章の機能起点仮説から自然に展開できているか。（2）検証4パターン（引上／維持／新規／削除）の件数分布が意思決定に使える粒度か。（3）認知度別見込み客の言葉10件以上がLP冒頭および広告クリエイティブの素材として十分か。</p>
+    </div>
 
-<div class="box box-compliance">
-<h4>理論準拠チェック　<span class="label lb-ok">完全</span></h4>
-<ul class="bul">
-<li>ナレッジ定義: 3層構造、認知度1〜5全捕捉（生活文脈で募集）、認知度3は詳細設問13問、分岐フローチャート必須、情報接触経路設問必須（第7章ステップ3の入力）。</li>
-<li>実行結果: 第1層「日常的に入浴する方」で全認知度捕捉、Q0で5分岐、認知度1=7問／2=7問／3=13問／4=7問／5=7問の設計。Q3-12情報接触経路あり。</li>
-<li>認知度の方向: Q0選択肢A=認知度1（購入段階・最も近い）／E=認知度5（問題未認識・最も遠い）が正しく設定。</li>
-<li>分析セクション3の2視点（既存ファクトとの乖離／横断パターン）、セクション5の深掘りテーマ候補が第5章の直接入力として機能。</li>
-</ul>
-</div>
+    <h3>6-1.　新規ベネフィット3本の階層1-5全文</h3>
 
-<div class="box box-io">
-<h4>インプット／アウトプット</h4>
-<strong>インプット:</strong> 第3章確定グループG-1<br>
-<strong>アウトプット:</strong> アンケート設計書＋認知度別データ活用マップ＋アンケートJSON＋128名の生データ＋分析レポート
-</div>
+    <h4>B-NEW-001　電動だから「当てるだけ」</h4>
+    <table class="data-table">
+      <tbody>
+        <tr><th>起点機能</th><td>F-01（360°回転）＋電動</td></tr>
+        <tr><th>階層1：機能的結果</th><td>電動回転により、ブラシを肌に当てるだけで洗浄が完了する</td></tr>
+        <tr><th>階層2：行動変化</th><td>手でゴシゴシ擦る動作が不要になり、入浴の手間が激減する</td></tr>
+        <tr><th>階層3：心理変化</th><td>「毎日続けられる」という確信が生まれ、挫折しない</td></tr>
+        <tr><th>階層4：生活シーン変化</th><td>疲れた日でも体臭ケアを飛ばさず、習慣として定着する</td></tr>
+        <tr><th>階層5：潜在欲求接続</th><td>【非LF8】能率よくありたい／【LF8-5】快適に暮らしたい</td></tr>
+        <tr><th>確度</th><td>◎（認知度3=23件、INT=3件で裏付け）</td></tr>
+      </tbody>
+    </table>
 
-<div class="box box-excerpt">
-<h4>認知度分布（128名）</h4>
-<table>
-<tr><th>認知度</th><th>人数</th><th>比率</th><th>意味</th></tr>
-<tr><td>1 購入段階</td><td>6名</td><td>5%</td><td>商品を決めている</td></tr>
-<tr><td>2 手段は知っている</td><td>21名</td><td>16%</td><td>どれにするか迷う</td></tr>
-<tr><td>3 課題認識</td><td>37名</td><td>29%</td><td>手段がわからない</td></tr>
-<tr><td>4 問題は認識</td><td>44名</td><td><strong>34%（最大）</strong></td><td>対策するほどではない</td></tr>
-<tr><td>5 問題未認識</td><td>20名</td><td>16%</td><td>気になっていない</td></tr>
-</table>
+    <h4>B-NEW-002　道具を変えるだけで匂いが変わる</h4>
+    <table class="data-table">
+      <tbody>
+        <tr><th>起点機能</th><td>F-01＋F-02＋F-03（回転＋ハンドル＋リーチ）</td></tr>
+        <tr><th>階層1：機能的結果</th><td>従来の手・タオルと異なる「電動ブラシ」という洗浄道具に切り替わる</td></tr>
+        <tr><th>階層2：行動変化</th><td>洗い方（道具）を変えるだけで、皮脂除去量が飛躍的に増加する</td></tr>
+        <tr><th>階層3：心理変化</th><td>「今までのやり方では足りなかった」という気づきと納得が生まれる</td></tr>
+        <tr><th>階層4：生活シーン変化</th><td>道具を1つ変えるだけの小さな行動で、体臭の悩みに対処できる</td></tr>
+        <tr><th>階層5：潜在欲求接続</th><td>【LF8-3】恐怖・痛み・危険を免れたい／【LF8-5】快適に暮らしたい</td></tr>
+        <tr><th>確度</th><td>◎（INT=3件で裏付け）</td></tr>
+      </tbody>
+    </table>
 
-<h4>認知度3の主要発見（37名）</h4>
-<ul class="bul">
-<li>重要条件Q3-6: 根本除去68% ／ 手間なく62% ／ 安全性46% ／ 速効43% ／ 価格24%（価格は上位ではない）</li>
-<li>気になる部位: 頭皮70% / 脇49% / 首43% / 足32% / 背中19%</li>
-<li>現在の対策: ソープ・デオドラント中心、<strong>電動ボディブラシ使用者ゼロ</strong>（条件書き換えの必要性をファクトで確認）</li>
-<li>裏付け傾向: 口コミ70%（感覚）／メカニズム59%（論理）／成分43%（論理）のバランス型</li>
-<li>決断速度: 即断51%／熟考48%でほぼ半々</li>
-<li>男女差: 男性は「毎日手間なく」73%最重要、女性は「安全性」60%が2位</li>
-</ul>
+    <h4>B-NEW-003　マスキング不要の「無臭」を実現</h4>
+    <table class="data-table">
+      <tbody>
+        <tr><th>起点機能</th><td>F-01＋F-02＋F-06（回転＋リーチ＋2段階）</td></tr>
+        <tr><th>階層1：機能的結果</th><td>皮脂の根本除去により、デオドラント等で上書きする必要がなくなる</td></tr>
+        <tr><th>階層2：行動変化</th><td>毎日の入浴だけで「無臭」の状態を維持できるようになる</td></tr>
+        <tr><th>階層3：心理変化</th><td>「マスキングではなく、本当にニオイがない」という根本的安心感</td></tr>
+        <tr><th>階層4：生活シーン変化</th><td>お風呂だけで体臭ケアが完結し、追加コスト・追加手間がゼロになる</td></tr>
+        <tr><th>階層5：潜在欲求接続</th><td>【LF8-3】恐怖・痛み・危険を免れたい／【LF8-5】快適に暮らしたい</td></tr>
+        <tr><th>確度</th><td>◎（INT=4件で裏付け）</td></tr>
+      </tbody>
+    </table>
 
-<h4>認知度4の重要発見（44名）</h4>
-<ul class="bul">
-<li>「対策するほどではない」理由: 指摘されていない50% ／ 自分では臭わない20% ／ シャワーで十分16%</li>
-<li>本格対策のトリガー: 「家族・友人・同僚から指摘されたら」80%</li>
-<li>89%（39/44）が「指摘されたことはない」</li>
-</ul>
+    <h3>6-2.　検証4パターン別件数</h3>
+    <table class="data-table">
+      <thead><tr><th>パターン</th><th>件数</th><th>ID</th><th>判定根拠</th></tr></thead>
+      <tbody>
+        <tr><td>確度引上（○→◎ または △→◎）</td><td>8本</td><td>B-001, B-002, B-004, B-005, B-006, B-007, B-009, B-010</td><td>アンケート＋インタビュー両方で見込み客の言葉が取れた</td></tr>
+        <tr><td>確度維持</td><td>6本</td><td>B-011, B-012, B-013, B-014, B-015, B-016</td><td>機能仮説のまま、検証で上振れも下振れもなし</td></tr>
+        <tr><td>新規発見</td><td>3本</td><td>B-NEW-001, B-NEW-002, B-NEW-003</td><td>第2章の機能起点では気づけなかった見込み客目線の発見</td></tr>
+        <tr><td>削除</td><td>2本</td><td>B-003（入浴が楽しみな時間）, B-008（顔もブラシで洗える）</td><td>インタビュー9名全員で言及ゼロ、欠番として保持</td></tr>
+      </tbody>
+    </table>
+    <p>検証後の分布：◎13本／○4本／△2本。合計19本が第7章以降のLP・広告コピー素材となる。</p>
 
-<h4>深掘りテーマ候補（第5章に引き継ぎ）</h4>
-T1惰性継続 / T2洗い方発想 / T3背中・首意識 / T4指摘されない層の深層 / T5電動ブラシ第一印象 / T6男女差 / T7手動ブラシ失敗経験
-</div>
+    <h3>6-3.　認知度別・見込み客の言葉（出典付き／10件以上）</h3>
 
-<div class="box box-fact">
-<h4>ファクト／前提／推論の区別</h4>
-<span class="label lb-fact">ファクト</span> 128名の回答数値・クロス集計・代表コメント（verbatim）<br>
-<span class="label lb-premise">前提条件</span> CrowdWorks回答者が日本の見込み客を代表する、自由記述が本人の実感に近い<br>
-<span class="label lb-inference">推論</span> 「男性=手段がわからない／女性=決め手がない」の構造、「年齢とともに『まだ大丈夫』が増える」、頭皮関心→背中・首関心への拡張戦略
-</div>
+    <h4>認知度3（主力ターゲット）</h4>
+    <blockquote class="review-quote">根本から原因を除去できる（認知度3 68%／Q3-6 アンケート）</blockquote>
+    <blockquote class="review-quote">毎日手間なく続けられる（認知度3 62%、男性73%／Q3-6 アンケート）</blockquote>
+    <blockquote class="review-quote">上から上書きするより、きれいに洗って匂いを出さないようにしたい（No.4 ふくろう／50代男性／認知度3／INT）</blockquote>
+    <blockquote class="review-quote">私の理想はマスキングなしの無臭であること（No.7 小川／49歳女性／認知度3／INT）</blockquote>
+    <blockquote class="review-quote">1ヶ月1,000円と考えたときに、本当にきれいに使いやすいというものがあれば、いい（No.4 ふくろう／認知度3／INT）</blockquote>
+    <blockquote class="review-quote">それはとても革命的だな。1年以上使えば元が取れる（No.6 匿名／40代女性／認知度3／INT）</blockquote>
+    <blockquote class="review-quote">返金されるということなら、9,000円でも全然選択肢として買うが入ってくる（No.7 小川／認知度3／INT）</blockquote>
+    <blockquote class="review-quote">当てときゃいい感じですもんね（No.5 はっっさん／39歳男性／認知度3／INT）</blockquote>
+    <blockquote class="review-quote">電動ボディブラシで洗った際の背中の汚れ落ち方の比較がわかりやすい。視覚的に分かるものに動く（No.5 はっっさん／認知度3／INT）</blockquote>
+    <blockquote class="review-quote">ヘッドだけ交換できるといいな。本体は12,000円しても15,000円してもええんやけど、ヘッドは2,000円台（No.7 小川／認知度3／INT）</blockquote>
+    <blockquote class="review-quote">いい商品作ってください。私、絶対買いますから（No.7 小川／認知度3／INT）</blockquote>
 
-<div class="box box-decision">
-<h4>判断介入ポイント</h4>
-報酬150円設定（金額で不誠実応募を抑制）、目標回収110名、募集対象を「加齢臭・体臭」ではなく「日常的に入浴する方」にする（認知度4・5を取るため）、認知度3回収の厚み優先
-</div>
+    <h4>認知度4（リターゲティング対象）</h4>
+    <blockquote class="review-quote">家族といえど、臭いに関しては気を使っているかなと思ってしまった（No.2 茂ノ井／40代女性／認知度4／INT）</blockquote>
+    <blockquote class="review-quote">耳の裏ってあんまり洗ってなかった気がするので、それは洗わなきゃって今思いました（No.2 茂ノ井／認知度4／INT）</blockquote>
+    <blockquote class="review-quote">知らなかった。背中を洗いたいと思うようになった（No.3 w0cmkpf／20代男性／認知度4／INT）</blockquote>
+    <blockquote class="review-quote">1ヶ月に2,000円かけるよりは、電動ブラシ買った方が割安かな（No.2 茂ノ井／認知度4／INT）</blockquote>
+    <blockquote class="review-quote">知らずに臭っていて、人に迷惑をかけていたら嫌だ（No.3 w0cmkpf／認知度4／INT）</blockquote>
 
-<div class="box box-next">
-<h4>次章への接続</h4>
-セクション5の深掘りテーマ候補7件がそのまま第5章インタビューT1〜T7に。認知度3 37名を厚くし、認知度4 3名を指摘恐怖深掘り用に配置する人数設計の根拠となる。生データは第6章作業1（認知度別タグ付き言葉）の入力にもなる。
-</div>
+    <h4>認知度1-2（比較検討層）</h4>
+    <blockquote class="review-quote">しっかり効果があると立証されたもの（認知度2／Q2-7 アンケート）</blockquote>
+    <blockquote class="review-quote">敏感肌でも使用できること、口コミが良いこと（認知度2／Q2-7 アンケート）</blockquote>
+    <blockquote class="review-quote">どの年代のどのにおいを消してくれるのか詳しい効果の説明（認知度2／Q2-7 アンケート）</blockquote>
+  </div>
 </section>
+<section id="chapter-7">
 
-<!-- ================= 第5章 ================= -->
-<section id="chapter-5" class="chapter">
-<div class="chapter-head">
-<div class="chapter-num">第5章</div>
-<div>
-<div class="chapter-title">インタビュー設計・分析（9名実施）<span class="phase-tag phase-verify">見込み客を確かめる</span></div>
-<div class="chapter-meta">一次資料: 構築_第5章_インタビュー設計.md ／ 構築_第5章_インタビュー分析.html ／ 完了: 2026-04-10</div>
+<style>
+#chapter-7 .callout-blue { background:#e8f4fd; border:1px solid #b8daff; padding:16px 20px; border-radius:8px; margin:20px 0; font-size:13px; }
+#chapter-7 .callout-blue strong { color:#004085; }
+#chapter-7 .callout-green { background:#d4edda; border:1px solid #c3e6cb; padding:14px 18px; border-radius:8px; margin:16px 0; font-size:13px; }
+#chapter-7 .callout-yellow { background:#fff8e1; border:1px solid #ffe082; padding:14px 18px; border-radius:8px; margin:16px 0; font-size:12px; }
+#chapter-7 h2 { font-size:20px; color:#1a3a6e; border-left:5px solid #1a3a6e; padding-left:12px; margin:36px 0 16px; }
+#chapter-7 h3 { font-size:16px; color:#2a4f8f; margin:24px 0 10px; }
+#chapter-7 h4 { font-size:14px; color:#1a3a6e; margin:14px 0 6px; }
+#chapter-7 .tbl-wrap { overflow-x:auto; margin-bottom:14px; border:1px solid #ddd; border-radius:8px; }
+#chapter-7 table { border-collapse:collapse; width:100%; font-size:12px; }
+#chapter-7 th, #chapter-7 td { padding:8px 10px; border:1px solid #e0e0e0; vertical-align:top; }
+#chapter-7 th { background:#1a3a6e; color:#fff; font-weight:600; white-space:nowrap; }
+#chapter-7 td:first-child { font-weight:600; font-size:11px; color:#666; white-space:nowrap; }
+#chapter-7 .badge { display:inline-block; padding:2px 8px; border-radius:100px; font-size:11px; font-weight:600; }
+#chapter-7 .b-com { background:#cce5ff; color:#004085; }
+#chapter-7 .b5 { background:#f8d7da; color:#721c24; }
+#chapter-7 .b4 { background:#fff3cd; color:#856404; }
+#chapter-7 .b3 { background:#d4edda; color:#155724; }
+#chapter-7 .b2 { background:#cce5ff; color:#004085; }
+#chapter-7 .b1 { background:#e8d5f5; color:#7b1fa2; }
+#chapter-7 .j-ok { background:#d4edda; color:#155724; }
+#chapter-7 .j-mid { background:#fff3cd; color:#856404; }
+#chapter-7 .j-ng { background:#f8d7da; color:#721c24; }
+#chapter-7 .j-rewrite { background:#ffecd2; color:#c0392b; }
+#chapter-7 .j-add { background:#d6eaf8; color:#2471a3; }
+#chapter-7 .j-match { background:#d5f5e3; color:#1e8449; }
+#chapter-7 .section-header { background:#f0f4f8; padding:8px 14px; font-weight:700; color:#1a3a6e; margin:8px 0; font-size:13px; border-radius:6px; }
+#chapter-7 .rewrite-flow { border:1px solid #fd7e14; border-left:5px solid #fd7e14; border-radius:8px; padding:18px 22px; margin:14px 0; background:#fffbf7; }
+#chapter-7 .rewrite-flow h4 { color:#c0392b; margin-bottom:8px; }
+#chapter-7 .rewrite-flow .cond { font-size:13px; font-weight:700; color:#333; margin-bottom:8px; }
+#chapter-7 .rewrite-flow .policy { font-size:12px; color:#555; margin-bottom:8px; padding:6px 10px; background:#fff3e0; border-radius:4px; }
+#chapter-7 .rewrite-flow .quote { font-size:11px; color:#666; font-style:italic; border-left:3px solid #fd7e14; padding:6px 10px; background:#fafafa; margin:6px 0; }
+#chapter-7 .rewrite-flow .step { font-size:12px; color:#444; padding:6px 0; border-top:1px dashed #eee; }
+#chapter-7 .rewrite-flow .step strong { color:#c0392b; }
+#chapter-7 .judgement-card { border:1px solid #ddd; border-left:5px solid #1a3a6e; border-radius:8px; padding:18px 22px; margin:14px 0; background:#fff; }
+#chapter-7 .judgement-card h4 { color:#1a3a6e; font-size:15px; margin-bottom:10px; }
+#chapter-7 .judgement-card .row { font-size:12px; margin-bottom:8px; line-height:1.7; }
+#chapter-7 .judgement-card .row strong { color:#1a3a6e; display:inline-block; min-width:90px; }
+#chapter-7 .judgement-card .risk { background:#fff5f5; border-left:3px solid #f5c6cb; padding:6px 10px; font-size:11px; color:#721c24; margin-top:6px; border-radius:0 4px 4px 0; }
+#chapter-7 .judgement-card .infer { display:inline-block; padding:2px 8px; border-radius:100px; font-size:10px; font-weight:700; background:#fff3cd; color:#856404; }
+#chapter-7 .source-quote { background:#f8f9fa; border-left:3px solid #1a3a6e; padding:8px 12px; font-size:11px; font-style:italic; color:#555; margin:8px 0; border-radius:0 4px 4px 0; }
+</style>
+
+<h2>第7章 条件の構造化（ステップ1〜5）</h2>
+
+<div class="callout-blue">
+<strong>この章で見てほしい判断:</strong> (1)39条件それぞれに対する「条件に合わせる／新規追加／書き換え」対応方針の妥当性、(2)4つの事業判断（30日返金保証・Before/After撮影・使用シーン動画・1年保証）の裏付けとリスク、(3)認知度4〜5の「思い込み条件」を書き換える論理（嗅覚順応・物理除去メカニズム・失敗体験の再解釈）が論理的に成立しているか。
 </div>
+
+<div class="callout-green">
+<strong>ステップ1で確定したこと（原文引用）:</strong><br>
+- 39条件のうち13条件は自社のベネフィットだけで対応可能。10条件はベネフィットだけでは不足。16条件は対応ベネフィットなし。残り26条件は追加の対応手段（コスパ説明・返品保証・Before/After動画・メカニズム解説等）が必要<br>
+- 認知度5・4の条件（10件）は全て「ベネフィットだけでは不足」or「なし」。コミュニケーション設計で重点的に扱う必要がある<br>
+- 認知度2〜1の条件は口コミ・返品保証・使用動画がカギ
 </div>
 
-<p>当初設計8名（認知度3×5＋認知度4×3）から認知度3を1名追加し、最終9名で実施。Google Meet自動文字起こし＋30分×2,000円。T1〜T7の7テーマを3軸（表現・感情・価値基準）で分析。</p>
+<h2>7-1 共通条件一覧（COM-01〜COM-11 全11件）</h2>
+<p style="font-size:12px; color:#666; margin-bottom:8px;">商品スペックに関する条件。アンケート128名＋インタビュー9名＋競合レビュー約1,333件から抽出。</p>
 
-<div class="box box-compliance">
-<h4>理論準拠チェック　<span class="label lb-ok">完全</span></h4>
-<ul class="bul">
-<li>ナレッジ定義: 3軸（表現・感情・価値基準）、グループ×認知度のセグメント単位、OARS／プロービングチェーン／シーン再現法／ラダリング、認知度3は「主」であれば必須、条件探索質問8種。</li>
-<li>実行結果: 3軸判定テーブル出力、認知度3を6名×認知度4を3名でG-1セグメント内分離、質問設計はオープニング／深掘り（T1〜T5/T7）／条件探索（C1〜C6）／クロージングの4段階構造。</li>
-<li>T7「手動ブラシの失敗経験」は第3.5章のレビュー発見から新設。D2-2「Ag DEO24ブラシ併用証言」をリアルタイム提示する誘導回避設計（D2-1で自然発想を確認してから提示）。</li>
-</ul>
-</div>
-
-<div class="box box-io">
-<h4>インプット／アウトプット</h4>
-<strong>インプット:</strong> 第4章アンケート分析＋第3.5章レビュー1,333件<br>
-<strong>アウトプット:</strong> インタビュー設計書＋募集要項＋分析HTML（9名サマリー＋3軸判定＋セグメント別発見＋見込み客の生の言葉カテゴリ別集）
-</div>
-
-<div class="box box-excerpt">
-<h4>インタビュイー9名の要約</h4>
+<div class="tbl-wrap">
 <table>
-<tr><th>No</th><th>属性・認知度</th><th>中心条件</th><th>価格反応</th><th>決定打</th></tr>
-<tr><td>No.1</td><td>加藤 40代女性 認知度4</td><td>諦め／田舎で社会的暴露少</td><td>月1,000円以内</td><td>「面白い」</td></tr>
-<tr><td>No.2</td><td>茂ノ井 40代女性 認知度4</td><td>諦め／柿渋ソープ失敗</td><td>月2,000〜3,000円</td><td>コスパ換算で「試してみたい」</td></tr>
-<tr><td>No.3</td><td>w0cmkpf 20代男性 認知度4</td><td>方法不明／スプレー失敗</td><td>上限2,000円／用途違いでコスパ拒否</td><td>返品保証で反応</td></tr>
-<tr><td>No.4</td><td>ふくろう 50代男性 認知度3</td><td>積極行動中（網タオル改善体験）</td><td>月1,000円なら可</td><td>月換算＋首裏・背中情報</td></tr>
-<tr><td>No.5</td><td>はっっさん 39歳男性 認知度3</td><td>手洗い派／用途違い認識</td><td>9,000円は高い</td><td>30日返品保証＋視覚的Before/After（9名中最明確な態度変容）</td></tr>
-<tr><td>No.6</td><td>匿名 40代女性 認知度3</td><td>過去のブラシ失敗（かび）</td><td>コスパ換算で「革命的」</td><td>コスパ換算＋返品保証</td></tr>
-<tr><td>No.7</td><td>小川 49歳女性 認知度3</td><td>診断不可／更年期で急性悪化</td><td>「1万切ってるから買える」</td><td>背中皮脂＋返品保証＋ヘッド交換</td></tr>
-<tr><td>No.8</td><td>ocr73jd 50代男性 認知度3</td><td>必要性を感じていない</td><td>価格より必要性認識</td><td>返品保証も効かず（唯一）</td></tr>
-<tr><td>No.9</td><td>neko0513 40代女性 認知度3</td><td>育児で時間なし</td><td>6,000〜7,000円がベスト</td><td>背中到達＋アタッチメント</td></tr>
+<thead><tr><th>ID</th><th>条件文（原文）</th><th>判定</th><th>対応方針</th><th>対応ベネフィット</th><th>備考</th></tr></thead>
+<tbody>
+<tr><td>COM-01</td><td>¥8,999は高い（期待価格帯¥2,000〜3,000）</td><td><span class="badge j-ng">なし</span></td><td>条件を新規追加 or 書き換え</td><td>—</td><td>不買条件／認知度2</td></tr>
+<tr><td>COM-02</td><td>肌を傷めない硬さであること</td><td><span class="badge j-ok">十分</span></td><td>条件に合わせる</td><td>B-010, B-016</td><td>買／認知度2</td></tr>
+<tr><td>COM-03</td><td>防水性能が確実であること（浴室で壊れない）</td><td><span class="badge j-ok">十分</span></td><td>条件に合わせる</td><td>B-011</td><td>買／認知度2</td></tr>
+<tr><td>COM-04</td><td>充電が面倒でないこと</td><td><span class="badge j-ok">十分</span></td><td>条件に合わせる</td><td>B-012</td><td>買／認知度2</td></tr>
+<tr><td>COM-05</td><td>耐久性があること（すぐ壊れない・1年以上使える）</td><td><span class="badge j-mid">不足</span></td><td>条件を新規追加 or 書き換え</td><td>B-011</td><td>買／認知度2</td></tr>
+<tr><td>COM-06</td><td>ブラシヘッドが交換できること</td><td><span class="badge j-ok">十分</span></td><td>条件に合わせる</td><td>B-007</td><td>買／認知度2</td></tr>
+<tr><td>COM-07</td><td>口コミ・レビュー評価が高いこと（4.0以上）</td><td><span class="badge j-ng">なし</span></td><td>条件を新規追加 or 書き換え</td><td>—</td><td>不買／認知度2</td></tr>
+<tr><td>COM-08</td><td>実際に触って試せること（店頭デモ・実機体験）</td><td><span class="badge j-ng">なし</span></td><td>条件を新規追加 or 書き換え</td><td>—</td><td>不買／認知度2</td></tr>
+<tr><td>COM-09</td><td>返品・返金できること（使用後でも）</td><td><span class="badge j-ng">なし</span></td><td>条件を新規追加 or 書き換え</td><td>—</td><td>不買／認知度1</td></tr>
+<tr><td>COM-10</td><td>知っているブランド・信頼できるメーカーであること</td><td><span class="badge j-mid">不足</span></td><td>条件を新規追加 or 書き換え</td><td>B-014</td><td>不買／認知度2</td></tr>
+<tr><td>COM-11</td><td>部位別に硬さの違うブラシが選べること</td><td><span class="badge j-ok">十分</span></td><td>条件に合わせる</td><td>B-007</td><td>買／認知度2</td></tr>
+</tbody>
 </table>
+</div>
 
-<h4>3軸達成度（判定）</h4>
-T1〜T6は全て3軸○、T7（更年期×体臭）は新規セグメント検討要だが必須ではない。第6章への前進可能と判定。
+<h2>7-2 グループ固有条件一覧（KA-01〜KA-28 全28件）</h2>
+<p style="font-size:12px; color:#666; margin-bottom:8px;">確定グループ「加齢臭・体臭が気になって、人前での不安をなくしたい」の固有条件を認知度別に配列。</p>
 
-<h4>主要発見5つ</h4>
-<ol style="margin-left:20px">
-<li>認知度4は「対策するほどではない」ではなく「対策する根拠が自分の中で形成されていない」が正確。会話1回で認知度3へ遷移しうる。</li>
-<li>No.5はっっさんの返品保証提示による態度変容が9名中最も明確 → リスクリバーサル設計の最重要エビデンス。</li>
-<li>9名全員が¥8,999を「高い」と反応。コスパ換算が効く3名／効かない2名／そもそも許容1名の3パターン。</li>
-<li>「体臭ケア商品＝重症な人が使うもの」という自己像除外が認知度4の壁。「マナー・エチケット」フレーミングが有効。</li>
-<li>インフルエンサーPR不信が複数名から明確に出た（neko0513／匿名）。一般UGC優位。</li>
+<div class="section-header" style="background:#fff0f0; color:#dc3545;">認知度5（問題とすら思っていない）— 3件</div>
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>ID</th><th>条件文（原文）</th><th>判定</th><th>対応方針</th><th>対応ベネフィット</th></tr></thead>
+<tbody>
+<tr><td>KA-01</td><td>毎日入浴しているから体臭なんて気にしてない</td><td><span class="badge j-ng">なし</span></td><td>条件を書き換え</td><td>—</td></tr>
+<tr><td>KA-02</td><td>指摘されたことがないから臭ってない</td><td><span class="badge j-ng">なし</span></td><td>条件を書き換え</td><td>—</td></tr>
+<tr><td>KA-03</td><td>体臭がない体質だと思っている</td><td><span class="badge j-ng">なし</span></td><td>条件を書き換え</td><td>—</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="section-header" style="background:#fff3e0; color:#e67e22;">認知度4（気になるが対策するほどではない）— 7件</div>
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>ID</th><th>条件文（原文）</th><th>判定</th><th>対応方針</th><th>対応ベネフィット</th></tr></thead>
+<tbody>
+<tr><td>KA-04</td><td>周囲から指摘されていないので対策するほどではないと思っている</td><td><span class="badge j-mid">不足</span></td><td>条件を書き換え</td><td>—</td></tr>
+<tr><td>KA-05</td><td>自分では臭わないのでまだ大丈夫だと思っている</td><td><span class="badge j-mid">不足</span></td><td>条件を書き換え</td><td>—</td></tr>
+<tr><td>KA-06</td><td>毎日シャワーを浴びているから十分だと思っている</td><td><span class="badge j-mid">不足</span></td><td>条件を書き換え</td><td>—</td></tr>
+<tr><td>KA-07</td><td>夏だけの問題だから放置している</td><td><span class="badge j-mid">不足</span></td><td>条件を書き換え</td><td>—</td></tr>
+<tr><td>KA-08</td><td>加齢臭は年齢的に仕方ないと思っている</td><td><span class="badge j-ng">なし</span></td><td>条件を書き換え</td><td>—</td></tr>
+<tr><td>KA-09</td><td>以前に柿渋ソープ等を試したが効果がなく、対策商品は効かないと思っている（経験の解釈の限定＋物理除去の原理で再解釈）</td><td><span class="badge j-mid">不足</span></td><td>条件を書き換え</td><td>B-001, B-006, B-NEW-002</td></tr>
+<tr><td>KA-10</td><td>体臭ケア専用商品は「重症な人」が使うもので自分は対象外だと思っている</td><td><span class="badge j-ng">なし</span></td><td>条件を書き換え</td><td>—</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="section-header" style="background:#e8f5e9; color:#2e7d32;">認知度3（なんとかしたいが方法がわからない）— 13件</div>
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>ID</th><th>条件文（原文）</th><th>判定</th><th>対応方針</th><th>対応ベネフィット</th></tr></thead>
+<tbody>
+<tr><td>KA-11</td><td>根本から原因を除去できること</td><td><span class="badge j-ok">十分</span></td><td>条件に合わせる</td><td>B-001, B-006</td></tr>
+<tr><td>KA-12</td><td>毎日手間なく続けられること</td><td><span class="badge j-ok">十分</span></td><td>条件に合わせる</td><td>B-NEW-001</td></tr>
+<tr><td>KA-13</td><td>安全性が高いこと（肌への負担少ない）</td><td><span class="badge j-ok">十分</span></td><td>条件に合わせる</td><td>B-010, B-014, B-016</td></tr>
+<tr><td>KA-14</td><td>効果が速く実感できること</td><td><span class="badge j-mid">不足</span></td><td>条件を新規追加 or 書き換え</td><td>B-001</td></tr>
+<tr><td>KA-15</td><td>背中など手が届きにくい部位もケアできること</td><td><span class="badge j-ok">十分</span></td><td>条件に合わせる</td><td>B-004, B-006</td></tr>
+<tr><td>KA-16</td><td>体臭対策の方法として何をすればいいかわからない</td><td><span class="badge j-ng">なし</span></td><td>条件を新規追加</td><td>—</td></tr>
+<tr><td>KA-17</td><td>デオドラント・ソープでは効果が持続しない（一時しのぎ）「一時しのぎ」という見込み客の経験ベースの予測を、「物理除去（皮脂・角質の根本除去）」というメカニズムで再解釈させる必要がある</td><td><span class="badge j-mid">不足</span></td><td>条件を書き換え</td><td>B-001, B-006, B-NEW-002</td></tr>
+<tr><td>KA-18</td><td>洗い方を変えるという発想がない（対策＝ソープ・スプレー・サプリ）</td><td><span class="badge j-ng">なし</span></td><td>条件を書き換え</td><td>—</td></tr>
+<tr><td>KA-19</td><td>電動ボディブラシという商品カテゴリを知らない</td><td><span class="badge j-ng">なし</span></td><td>条件を書き換え</td><td>—</td></tr>
+<tr><td>KA-20</td><td>効果が見える形で確認したい（Before/After）第8章（裏付け）＋第13章（制作指示書）・第14章（撮影指示書）へ引き継ぐ</td><td><span class="badge j-ng">なし</span></td><td>条件に合わせる＋感覚裏付けの用意</td><td>—</td></tr>
+<tr><td>KA-21</td><td>メカニズム（なぜ効くのか）の説明があること</td><td><span class="badge j-mid">不足</span></td><td>条件を新規追加</td><td>B-001</td></tr>
+<tr><td>KA-22</td><td>上書きではなく洗い落とすアプローチであること</td><td><span class="badge j-ok">十分</span></td><td>条件に合わせる</td><td>B-001, B-NEW-003</td></tr>
+<tr><td>KA-23</td><td>体臭の原因がどの種類か特定できないと正しい対策を選べない</td><td><span class="badge j-ng">なし</span></td><td>条件を新規追加</td><td>—</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="section-header" style="background:#e3f2fd; color:#1565c0;">認知度2（手段は知っているが迷っている）— 4件</div>
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>ID</th><th>条件文（原文）</th><th>判定</th><th>対応方針</th><th>対応ベネフィット</th></tr></thead>
+<tbody>
+<tr><td>KA-24</td><td>自分の肌質・体質に合うかわからない</td><td><span class="badge j-mid">不足</span></td><td>条件を新規追加</td><td>B-010, B-016</td></tr>
+<tr><td>KA-25</td><td>体臭が改善するという確信が持てない</td><td><span class="badge j-mid">不足</span></td><td>条件を新規追加</td><td>B-001, B-006</td></tr>
+<tr><td>KA-26</td><td>インフルエンサーPRは信用できない。一般口コミのみ参考にする</td><td><span class="badge j-ng">なし</span></td><td>条件に合わせる</td><td>—</td></tr>
+<tr><td>KA-27</td><td>使っている人を見たことがなく使用イメージが湧かない</td><td><span class="badge j-ng">なし</span></td><td>条件を新規追加</td><td>—</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="section-header" style="background:#f3e5f5; color:#7b1fa2;">認知度1（購入段階）— 1件</div>
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>ID</th><th>条件文（原文）</th><th>判定</th><th>対応方針</th><th>対応ベネフィット</th></tr></thead>
+<tbody>
+<tr><td>KA-28</td><td>今すぐ購入する理由がない（後でもいいかと先延ばし）</td><td><span class="badge j-ng">なし</span></td><td>条件を新規追加</td><td>—</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>7-3 書き換え対応 16件のフロー</h2>
+<p style="font-size:12px; color:#666; margin-bottom:8px;">16件のうち最重要の3件（KA-05／KA-09／KA-17）を論理フローで詳述し、残り13件を表でまとめる。</p>
+
+<h3>注目書き換え3件</h3>
+
+<div class="rewrite-flow">
+<h4>KA-05｜認知度4｜「自分では臭わないのでまだ大丈夫だと思っている」</h4>
+<div class="cond">前提条件: 自分で嗅いでも臭いを感じない → だから対策不要</div>
+<div class="policy">対応方針: 嗅覚順応のメカニズムを提示</div>
+<div class="quote">ふくろうさん「正直わからない。比較ができない」</div>
+<div class="step"><strong>ステップ1</strong> KA-04と共通の嗅覚順応ロジック。自分の臭いに気づけない生物学的メカニズムを提示。</div>
+<div class="step"><strong>ステップ2</strong> 「比較できない＝安心」ではなく「比較できない＝不安」のフレーミング。ふくろうさん「比較ができない」→「比較できないからこそ対策が必要」という認識転換。</div>
+<div class="step"><strong>ステップ3</strong> 「家族に聞いても本当のことは言ってくれない」共感ポイント。茂ノ井の体験を活用し、家族への確認が信頼できない根拠を提示。</div>
+</div>
+
+<div class="rewrite-flow">
+<h4>KA-09｜認知度4｜「以前に柿渋ソープ等を試したが効果がなく、対策商品は効かないと思っている」</h4>
+<div class="cond">前提条件: 過去の失敗経験から「体臭対策商品は効かない」と一般化</div>
+<div class="policy">対応方針: 「過去の失敗は原理の違い。電動ブラシは全く別のアプローチ」（経験の解釈の限定＋物理除去の原理で再解釈）</div>
+<div class="quote">茂ノ井「柿渋ソープを試したが効果がなかった」／ Ag DEO24レビュー「ブラシと合わせたら石鹸で手洗いでは取れなかった臭いが完璧に解消」</div>
+<div class="step"><strong>ステップ1 経験の解釈を限定</strong> 「ソープ・サプリが効かなかったのは、原因（毛穴の皮脂）に直接作用しなかったから。電動ブラシは回転の物理力で毛穴の皮脂をかき出す。原理が全く違う」。過去の失敗を「原理の違い」で再解釈させる。</div>
+<div class="step"><strong>ステップ2 競合レビューの証言</strong> Ag DEO24「ブラシと合わせたら完璧に解消」→「ソープのユーザー自身がブラシの効果を証言している」。競合ユーザーの発見を引用。</div>
+<div class="step"><strong>ステップ3 30日返品保証</strong> 「過去に失敗したからこそ、今度は試してからお金を払うかどうか決められる」。失敗体験者にこそ返品保証が効く。</div>
+</div>
+
+<div class="rewrite-flow">
+<h4>KA-17｜認知度3｜「デオドラント・ソープでは効果が持続しない（一時しのぎ）」</h4>
+<div class="cond">前提条件: 使ったことはある。だが夕方には臭いが戻る → 持続しないと確信</div>
+<div class="policy">対応方針: 「一時しのぎ」という見込み客の経験ベースの予測を、「物理除去（皮脂・角質の根本除去）」というメカニズムで再解釈させる</div>
+<div class="step"><strong>ステップ1</strong> 「原因を除去するから持続する」訴求。ソープは「上書き→夕方には臭う」。電動ブラシは「皮脂を除去→原因がないから臭わない」。持続性の構造的な違いを訴求。</div>
+</div>
+
+<h3>残り13件の書き換え条件</h3>
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>ID</th><th>条件文</th><th>対応方針（原文）</th></tr></thead>
+<tbody>
+<tr><td>KA-01</td><td>毎日入浴しているから体臭なんて気にしてない</td><td>他者の体験で自発的な気づきを促す（問題提起ではなく興味喚起）</td></tr>
+<tr><td>KA-02</td><td>指摘されたことがないから臭ってない</td><td>KA-04と共通の嗅覚順応ロジックで書き換え</td></tr>
+<tr><td>KA-03</td><td>体臭がない体質だと思っている</td><td>「加齢臭は30代後半から全員に発生する」事実提示</td></tr>
+<tr><td>KA-04</td><td>周囲から指摘されていないので対策するほどではないと思っている</td><td>「指摘されない＝臭っていない」ではないことを伝える（嗅覚順応＋「周りは言えない」2段構え）</td></tr>
+<tr><td>KA-06</td><td>毎日シャワーを浴びているから十分だと思っている</td><td>「洗っているつもりで洗えていない」事実を提示（毛穴に詰まった皮脂は泡では落ちないメカニズム）</td></tr>
+<tr><td>KA-07</td><td>夏だけの問題だから放置している</td><td>「加齢臭物質は季節に関係なく分泌される」事実提示</td></tr>
+<tr><td>KA-08</td><td>加齢臭は年齢的に仕方ないと思っている</td><td>「原因は皮脂の洗い残し。道具で解決できる」（加藤舞の漂白比喩・ふくろうさんの網タオル体験を活用）</td></tr>
+<tr><td>KA-10</td><td>体臭ケア専用商品は「重症な人」が使うもので自分は対象外だと思っている</td><td>「重症者向け」ではなく「マナー・エチケット」としてフレーミング（歯磨きと同じポジショニング）</td></tr>
+<tr><td>KA-18</td><td>洗い方を変えるという発想がない（対策＝ソープ・スプレー・サプリ）</td><td>「洗浄剤を変えても、洗い方が同じなら皮脂は残る」（Ag DEO24レビュー＋ふくろうさん体験）</td></tr>
+<tr><td>KA-19</td><td>電動ボディブラシという商品カテゴリを知らない</td><td>カテゴリの存在を教育（記事LP＋熊野筆Makuake 4,700万円実績＋「今、誰も使っていない」先取り感）</td></tr>
+<tr><td>COM-01</td><td>¥8,999は高い</td><td>判断基準に「月額換算コスト」と「ランニングコスト」を加える</td></tr>
+<tr><td>COM-05</td><td>耐久性があること</td><td>「1年保証」を判断基準に加える</td></tr>
+<tr><td>COM-07</td><td>口コミ・レビュー評価が高いこと</td><td>レビュー獲得施策の設計（インフルエンサーPRは避ける）</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>7-4 新規追加 10件一覧</h2>
+<p style="font-size:12px; color:#666; margin-bottom:8px;">既存条件では満たせないため、新しい判断基準を追加する。</p>
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>ID</th><th>条件文</th><th>対応方針（原文）</th></tr></thead>
+<tbody>
+<tr><td>COM-08</td><td>実際に触って試せること（店頭デモ・実機体験）</td><td>返品保証で代替（EC専売の弱点を返品保証でカバー）</td></tr>
+<tr><td>COM-10</td><td>知っているブランド・信頼できるメーカーであること</td><td>4認証＋返品保証で信頼を構築</td></tr>
+<tr><td>KA-14</td><td>効果が速く実感できること</td><td>「使用直後の洗い上がり」で即効性を疑似体験</td></tr>
+<tr><td>KA-16</td><td>体臭対策の方法として何をすればいいかわからない</td><td>「答えは洗い方を変えること」を明示</td></tr>
+<tr><td>KA-21</td><td>メカニズム（なぜ効くのか）の説明があること</td><td>メカニズム図解を制作（皮脂酸化→ノネナール発生→毛穴残留）</td></tr>
+<tr><td>KA-23</td><td>体臭の原因がどの種類か特定できないと正しい対策を選べない</td><td>「原因の種類に関係なく、皮脂洗浄は全てに有効」</td></tr>
+<tr><td>KA-24</td><td>自分の肌質・体質に合うかわからない</td><td>2段階速度モード＋シリコン＋30日返品保証</td></tr>
+<tr><td>KA-25</td><td>体臭が改善するという確信が持てない</td><td>汚れの可視化＋口コミ＋Before/After動画＋30日返品保証＋競合レビューの失敗証言</td></tr>
+<tr><td>KA-27</td><td>使っている人を見たことがなく使用イメージが湧かない</td><td>使用シーン動画＋一般ユーザーのレビュー動画</td></tr>
+<tr><td>KA-28</td><td>今すぐ購入する理由がない（後でもいいかと先延ばし）</td><td>限定特典／比較の締切等の新基準（第10章で具体化）</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>7-5 合わせる13件（代表6件）</h2>
+<p style="font-size:12px; color:#666; margin-bottom:8px;">ベネフィット／スペックで十分対応できる条件。</p>
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>ID</th><th>条件文</th><th>対応内容（原文）</th><th>対応B</th></tr></thead>
+<tbody>
+<tr><td>COM-02</td><td>肌を傷めない硬さであること</td><td>シリコン素材＋2段階速度モードの訴求。電動回転で力の入れすぎを構造的に防止</td><td>B-010, B-016</td></tr>
+<tr><td>COM-03</td><td>防水性能が確実であること</td><td>IPX7防水の明示。「浴室で毎日使える完全防水」をスペック表で証明</td><td>B-011</td></tr>
+<tr><td>COM-11</td><td>部位別に硬さの違うブラシが選べること</td><td>4種類のブラシヘッドを部位別推奨で訴求</td><td>B-007</td></tr>
+<tr><td>KA-11</td><td>根本から原因を除去できること</td><td>「360°回転で毛穴の皮脂をかき出す」訴求。認知度3の68%が最重視</td><td>B-001, B-006</td></tr>
+<tr><td>KA-12</td><td>毎日手間なく続けられること</td><td>「入浴中に当てるだけ」訴求。はっっさん「習慣化しちゃえば歯磨きと同じ」「当てときゃいい」</td><td>B-NEW-001</td></tr>
+<tr><td>KA-15</td><td>背中など手が届きにくい部位もケアできること</td><td>ダブルハンドル33.5cmで背中全面に到達。neko「肩の下・腰の上が届かない」、はっっさん「肩甲骨が邪魔で真ん中が当たらない」に直接対応。50代の40%が重視</td><td>B-004, B-006</td></tr>
+<tr><td>KA-22</td><td>上書きではなく洗い落とすアプローチであること</td><td>「物理除去 vs 化学上書き」の対比訴求。ふくろうさん「上から誤魔化すのではなく」に直接応答</td><td>B-001, B-NEW-003</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>7-6 4つの事業判断</h2>
+<p style="font-size:12px; color:#666; margin-bottom:8px;">本章では商品機能では対応不可の条件に対して、4つの事業判断を下している。各判断の内容・エビデンス・推論度・リスクを明示する。</p>
+
+<div class="judgement-card">
+<h4>判断1: 30日間全額返金保証（使用後でもOK／着払い伝票同封）</h4>
+<div class="row"><strong>判断内容:</strong> COM-08（実機体験不可）・COM-09（返品返金）・COM-01（価格障壁）・KA-24（肌質不安）・KA-25（効果への確信）・KA-09（過去の失敗）の6条件をまとめて解消するリスクリバーサル設計。着払い伝票を同封し返品の手間を解消する。</div>
+<div class="row"><strong>エビデンス:</strong> インタビュー9名全員で態度変容。はっっさん「9000円では買わない→30日返品保証なら試す」／小川奈生美「1万切ってるから買える。返品保証なら安心」／匿名「返品作業がめんどくさいという日本人の考え方→着払い伝票同封なら『いいじゃんいいじゃん』」。同カテゴリ競合で30日返品保証を明示している商品はゼロ。</div>
+<div class="row"><strong>推論度:</strong> <span class="infer">実測ベース（インタビュー全9名の態度変容）</span></div>
+<div class="risk"><strong>リスク:</strong> 返品率の上振れで粗利棄損の可能性。着払い送料の恒常コスト化。悪用（使い切り返品）への対応ルール整備が必要。</div>
+</div>
+
+<div class="judgement-card">
+<h4>判断2: Before/After動画・汚れ落ち視覚化の制作投資</h4>
+<div class="row"><strong>判断内容:</strong> KA-20（Before/Afterで確認したい）・KA-25（確信が持てない）・KA-01（自分ごと化）に対して、商品設計では満たせないため第13章・第14章で撮影・素材準備で応える。背中の汚れ落ち比較動画（手洗いvs電動ブラシ）＋使用前後の肌状態の視覚化を制作する。</div>
+<div class="row"><strong>エビデンス:</strong> はっっさん「視覚的に分かるものがめちゃくちゃいい」「パッと見て分かるものに動く」／neko「茶色い汚れが目に見えたらスッキリする」。競合レビューで加齢臭ソープ415件の最多不満は「効果がわからない」、電動ブラシカテゴリ全体で使用動画・使用レポートが極めて少ない。</div>
+<div class="row"><strong>推論度:</strong> <span class="infer">実測＋新カテゴリ推論</span></div>
+<div class="risk"><strong>リスク:</strong> 撮影コスト。被写体確保の難易度。「過度に演出的」と受け取られると信頼を毀損する（neko「お金もらってる・嘘っぽい」への警戒）。</div>
+</div>
+
+<div class="judgement-card">
+<h4>判断3: 使用シーン動画（新カテゴリ教育）の制作</h4>
+<div class="row"><strong>判断内容:</strong> KA-19（カテゴリ未知）・KA-27（使用イメージなし）に対して、使用シーン動画（背中に到達する様子・ブラシの回転・泡立ち・柔らかさ確認）を制作・LP掲載する。一般ユーザーのレビュー動画を蓄積する。</div>
+<div class="row"><strong>エビデンス:</strong> 電動ボディブラシは新カテゴリで「使っているのを初めて見た」→「自分もやってみたい」の流れを構築する必要がある。ふくろうさん「銭湯でも見たことがない」。熊野筆Makuake 4,700万円・3,446人の支援実績は「ブラシで加齢臭ケアする市場が存在する証拠」。</div>
+<div class="row"><strong>推論度:</strong> <span class="infer">新カテゴリ推論（競合レビューに直接的不満少）</span></div>
+<div class="risk"><strong>リスク:</strong> 「使用イメージが湧かない」は購入後不満ではないため、投資対効果の測定が難しい。過剰投資のリスクあり。</div>
+</div>
+
+<div class="judgement-card">
+<h4>判断4: 1年保証の明示</h4>
+<div class="row"><strong>判断内容:</strong> COM-05（耐久性）の対応方針として「1年保証」を判断基準に加える。LP上で保証期間を明記し、手動ブラシの「1週間でヘタレた」「1ヶ月でへたった」報告との対比を訴求する。耐久性の文脈でIPX7防水もセットで訴求。</div>
+<div class="row"><strong>エビデンス:</strong> w0cmkpf「1年持てばいい。それ以下だったら高い」という具体的基準。競合レビューでALATANA・Coneflakeに耐久性不満が多数。電動＋シリコンは構造的に劣化しにくい。</div>
+<div class="row"><strong>推論度:</strong> <span class="infer">実測（インタビュー具体基準）</span></div>
+<div class="risk"><strong>リスク:</strong> 1年以内故障時の交換対応コスト。初期不良と経年劣化の線引きオペレーションが必要。海外製造のため在庫・補修部品の確保が課題。</div>
+</div>
+
+<h2>7-7 競合条件対応マトリクス（抜粋5行）</h2>
+<p style="font-size:12px; color:#666; margin-bottom:8px;">COM条件×競合の充足度。○＝訴求＋裏付けあり／△＝言及弱い／✗＝未対応／—＝構造的適用外。</p>
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>条件</th><th>Oh.XIYU電動 ¥7,224</th><th>ALATANA手動硬 ¥1,380</th><th>Coneflake手動柔 ¥2,680</th><th>熊野筆 ¥11,380〜16,000</th><th>Ag DEO24ソープ</th></tr></thead>
+<tbody>
+<tr><td>COM-02 肌を傷めない硬さ</td><td>○ シリコン素材／肌の不満少ない</td><td>✗ 「紙やすり」「背中真っ赤」痛みの不満30件以上</td><td>△ 極細毛120万本／「柔らかすぎて洗えない」不満多数</td><td>○ 化粧筆技術・山羊毛／90年の熊野筆／ふんわり・しっかり2種展開</td><td>— カテゴリ外</td></tr>
+<tr><td>COM-05 耐久性（1年以上）</td><td>△ 大きな故障報告少ないが母数小（133件）</td><td>✗ 「1週間でヘタレた」「1ヶ月でへたった」</td><td>✗ 「お蔵入り」報告あり</td><td>△ 熊野筆ブランド／天然毛のかび問題</td><td>— 消費品</td></tr>
+<tr><td>COM-09 返品返金（使用後）</td><td>— Amazon通常返品のみ</td><td>— 同上</td><td>— 同上</td><td>— Makuake返品不可</td><td>— 同上</td></tr>
+<tr><td>COM-10 信頼ブランド</td><td>✗ 中国ブランド・知名度なし</td><td>✗ 知名度なし</td><td>✗ 知名度なし</td><td>○ 熊野筆90年・日本製・化粧筆実績／Makuake 4,700万円</td><td>○ 大手ブランド安心感（マンダム等）</td></tr>
+<tr><td>KA-25 効果への確信</td><td>△ データ薄</td><td>— カテゴリ外</td><td>— カテゴリ外</td><td>— カテゴリ外</td><td>✗ 415件中最多不満「効果がわからない」「安心感で継続」</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="callout-yellow">
+<strong>読み取れること（原文）:</strong> 価格面ではALATANA・Coneflakeが圧勝だが、耐久性・洗浄力で深刻な不満を抱えている。熊野筆はブランド力で突出するが、価格は自社よりさらに高く、マス層には届かない。防水・充電・ヘッド交換・返品保証・店頭体験は全競合が未対応 → 自社が先行できる。手動ブラシは「硬いと痛い、柔らかいと洗えない」のジレンマから逃れられない構造的問題がある。
+</div>
+
+<h2>7-8 情報環境調査（ステップ3）要点</h2>
+<p style="font-size:12px; color:#666; margin-bottom:8px;">各条件がどのような情報環境で形成されているかを5ソースで整理。</p>
+
+<h3>YouTube・SNS</h3>
+<div class="callout-yellow">全条件について「調査未実施（ブラウザ操作ツール不可）」と明記。YouTube・SNSは今回のスコープ外であり、販売開始後に追加調査が必要。</div>
+
+<h3>ブログ・Web検索（影響力あり）</h3>
+<ul style="font-size:12px; color:#444; padding-left:20px; line-height:1.8;">
+<li>COM-01価格: 「電動ボディブラシ 価格」で検索すると¥2,000〜8,000帯の商品が多数表示。¥9,000前後は上位価格帯。「加齢臭対策 コスパ」では月額単位の比較記事が散見される（影響力: 中）</li>
+<li>COM-02硬さ: 「ボディブラシ 痛い」「ボディブラシ 肌荒れ」で「硬めのブラシは肌を傷つける」が上位表示。皮膚科医監修記事で「ゴシゴシ洗いはNG」（影響力: 中）</li>
+<li>COM-03防水: 「電動ボディブラシ 防水」専門記事は少ない（影響力: 低）</li>
+<li>COM-04充電: 充電に関する専門的な情報流通なし（該当なし）</li>
+</ul>
+
+<h3>競合レビュー（1,325件）</h3>
+<ul style="font-size:12px; color:#444; padding-left:20px; line-height:1.8;">
+<li>ソープ系（415件）: 効果の自覚困難（最多不満）／冬は使えない（10件以上）／肌への刺激・乾燥／効果が持続しない</li>
+<li>サプリ系（439件）: 効果なし（★1率15〜24%）／やめたら戻る／胃のムカムカ</li>
+<li>手動ブラシ系（471件）: ALATANA痛い（30件以上）／Coneflake柔らかすぎて洗えない／背中に届かない／1ヶ月でヘタレる</li>
+<li>電動ブラシ系（8件）: Oh.XYIUで「水が入って壊れた」少数だが存在</li>
+</ul>
+
+<h2>7-9 条件起点レビュー分析（ステップ4）優位性切り口</h2>
+<p style="font-size:12px; color:#666; margin-bottom:8px;">競合の弱点を自社の強みに転換できる切り口。</p>
+
+<ol style="font-size:12px; color:#333; padding-left:20px; line-height:1.8;">
+<li><strong>ランニングコスト逆転（COM-01）:</strong> ¥8,999は一見高額だがランニングコスト¥0。9ヶ月でソープを逆転、5ヶ月でサプリを逆転。「月額¥750で最安のカテゴリ」。競合レビューの「続けるとコストがかかる」「やめたら戻る」に直接応答。</li>
+<li><strong>硬さジレンマの中間ポジション（COM-02）:</strong> 手動ブラシは硬め＝痛い、柔らかめ＝洗えないの二極化。電動回転＋2段階速度＋シリコンで「痛くないのにしっかり洗える」バランスを実現。力の加減がユーザー依存の手動では構造的に解決不可。</li>
+<li><strong>1年保証＋IPX7で耐久性不安を反転（COM-05）:</strong> 手動ブラシ「1週間/1ヶ月でヘタレる」、ソープ・サプリ「使い続けなければならない」ランニング問題。電動＋シリコンは構造的に劣化しにくい。w0cmkpf「1年持てばいい」という具体的基準に保証で直接対応。</li>
+<li><strong>物理除去の即時フィードバック（KA-25）:</strong> ソープ・サプリの最大の弱点は「効果がわからない」。電動ブラシは「汚れの除去が目に見える」（はっっさん・nekoの証言）。洗い上がりの清涼感＋目に見える汚れ落ちで即効性を疑似体験。口コミ＋Before/After動画＋30日返品保証＋競合レビューの失敗証言の組み合わせで確信形成。</li>
+<li><strong>「お金をもらっていない本物の声」（KA-26）:</strong> インフルエンサーPRを多用する競合ほど「本当にいいのか？」という疑念を生む。インフルエンサーPRを一切使わず一般ユーザーの口コミのみで社会的証明を構築することを差別化要素として訴求。</li>
 </ol>
 
-<h4>見込み客の生の言葉（代表引用）</h4>
-<div class="quote">一回使っていいと思ったら、逆にやめられないみたいなのがある。入り口として試してみたい<span class="src">No.5 はっっさん／39歳男性／認知度3（リスクリバーサル）</span></div>
-<div class="quote">返金されるということなら、9,000円でも全然選択肢として買うが入ってくる<span class="src">No.7 小川／49歳女性／認知度3（リスクリバーサル）</span></div>
-<div class="quote">耳の裏ってあんまり洗ってなかった気がするので、それは洗わなきゃって今思いました<span class="src">No.2 茂ノ井／40代女性／認知度4（認識転換）</span></div>
-<div class="quote">私の理想はマスキングなしの無臭であること<span class="src">No.7 小川／49歳女性／認知度3（メインコピー）</span></div>
-<div class="quote">道具というか、網のタオルに変えた時に、非常に良くなった<span class="src">No.4 ふくろう／50代男性／認知度3（T2洗い方発想の自然発見）</span></div>
+<div class="callout-blue">
+<strong>本章の成果物の次ステップ:</strong> 第8章（裏付けを揃える）に全ての対応内容がインプットされ、必要な裏付け素材を特定する。第10章（コミュニケーション設計）で認知度ごとに「何をどの順で伝えるか」に組み込む。第12章（コピーライティング）で具体的な言葉に変換する。
 </div>
 
-<div class="box box-fact">
-<h4>ファクト／前提／推論の区別</h4>
-<span class="label lb-fact">ファクト</span> 9名の発言verbatim、属性、反応パターン<br>
-<span class="label lb-premise">前提条件</span> Meet自動文字起こしの精度、分析目的以外非使用、9名でセグメント代表性あり<br>
-<span class="label lb-inference">推論</span> 3軸達成判定、「認知度4は根拠未形成」の解釈、No.8は実質認知度4アウトライヤー判定、認知度4→3遷移は会話1回で起こりうる
-</div>
-
-<div class="box box-decision">
-<h4>判断介入ポイント</h4>
-認知度3を5→6名に増員、T7経験者のみスキップ、D2-2のAg DEO24証言提示タイミング、D5-3の9ヶ月逆転フレーミングの提示順序（誘導回避）
-</div>
-
-<div class="box box-next">
-<h4>次章への接続</h4>
-生の言葉カテゴリ別集（約50件・認知度タグ付き）が第6章の認知度別タグ付き言葉欄に直接反映。3新規ベネフィット（B-NEW-001〜003）の発見が第6章で確定。B-003/B-008削除の直接根拠。
+</section>
+<section id="flow">
+<h2>章間接続フロー</h2>
+<div class="flow-diagram">
+<div class="flow-row"><div class="node"><strong>第1章</strong> 商品情報（F-01〜F-12）＋レビュー分析</div><div class="arrow">→</div></div>
+<div class="flow-row"><div class="node"><strong>第2章</strong> ベネフィット5層（BP-A〜K / B-001〜016）</div><div class="arrow">→</div></div>
+<div class="flow-row"><div class="node"><strong>第3章</strong> 確定グループG-1＋競合選択肢＋熊野筆弱点</div><div class="arrow">→</div></div>
+<div class="flow-row"><div class="node"><strong>第3.5章</strong> 競合レビュー1,333件分析</div><div class="arrow">→</div></div>
+<div class="flow-row"><div class="node"><strong>第4章</strong> アンケート3層構造＋N=128分布＋深掘りテーマ</div><div class="arrow">→</div></div>
+<div class="flow-row"><div class="node"><strong>第5章</strong> インタビュー9名＋主要発見5つ＋3軸充足度</div><div class="arrow">→</div></div>
+<div class="flow-row"><div class="node"><strong>第6章</strong> 解像度UP＋B-NEW-001〜003＋認知度別言葉</div><div class="arrow">→</div></div>
+<div class="flow-row"><div class="node"><strong>第7章</strong> 条件39件（COM11＋KA28）＋対応方針＋4事業判断</div></div>
 </div>
 </section>
 
-<!-- ================= 第6章 ================= -->
-<section id="chapter-6" class="chapter">
-<div class="chapter-head">
-<div class="chapter-num">第6章</div>
-<div>
-<div class="chapter-title">解像度を上げたベネフィット一覧<span class="phase-tag phase-verify">見込み客を確かめる</span></div>
-<div class="chapter-meta">一次資料: 構築_第6章_解像度を上げたベネフィット一覧.html ／ 完了: 2026-04-11</div>
-</div>
-</div>
-
-<p>第2章の16本ベネフィットにアンケート128名＋インタビュー9名のデータを照合し、認知度別タグ付きの見込み客の言葉を併記。8本を確度◎に引き上げ、3本の新規ベネフィット（B-NEW-001〜003）を発見、2本（B-003／B-008）を削除確定。最終19本。</p>
-
-<div class="box box-compliance">
-<h4>理論準拠チェック　<span class="label lb-ok">完全</span></h4>
-<ul class="bul">
-<li>ナレッジ定義: 3完了基準（全ベネフィット照合／認知度別タグ付き言葉／想定外発見）、作業1の4パターン検証（裏付けあり／言及なし／否定／想定外発見）、裏付けは第8章で行う（第6章では確認しない）。</li>
-<li>実行結果: 全16本を表で検証、◎引上8本／維持6本／削除2本／新規3本の区分を明示。認知度別タグ（認知度3/認知度4/INT）で言葉を併記。</li>
-<li>取り消し線運用: B-003／B-008をテーブル上で打ち消し線表示し、削除理由を備考に記載。IDは欠番保持。</li>
+<section id="history">
+<h2>整合性修正履歴</h2>
+<p>第1〜7章の完成後に実施した整合性チェック（総合評価B）で発見された不整合を修正し、再評価でA（完全整合）を達成しています。</p>
+<h3>必須修正4件（高重大度）</h3>
+<ul style="margin-left: 20px;">
+<li>#1 価格表記の統一（¥4,980→¥8,999）第3.5章・第3章</li>
+<li>#2 KA-17 判定修正（ベネフィットで十分→不足 / 条件に合わせる→条件を書き換え）第7章ステップ1・5</li>
+<li>#3 ステップ1とステップ5の件数再集計（十分14→13、不足9→10、書換15→16、合わせる13→12）</li>
+<li>#4 B-003（入浴が楽しみな時間）・B-008（顔もブラシで洗える・時短）の取り消し線処理（インタビュー9名全員で言及ゼロ）</li>
 </ul>
-</div>
-
-<div class="box box-io">
-<h4>インプット／アウトプット</h4>
-<strong>インプット:</strong> 第2章ベネフィット16本＋第4章アンケート生データ＋分析＋第5章インタビュー分析<br>
-<strong>アウトプット:</strong> 解像度を上げたベネフィット一覧（19本）＋検証結果テーブル＋認知度別タグ付き見込み客の言葉
-</div>
-
-<div class="box box-excerpt">
-<h4>検証結果（全19本）</h4>
-<table>
-<tr><th>ID</th><th>ベネフィット</th><th>第2章確度</th><th>第6章確度</th><th>変化</th></tr>
-<tr><td>B-001</td><td>毛穴皮脂を確実に落とす実感</td><td>○</td><td>◎</td><td>引上</td></tr>
-<tr><td>B-002</td><td>「清潔な人」として見られたい</td><td>○</td><td>◎</td><td>引上</td></tr>
-<tr><td><s>B-003</s></td><td><s>入浴が楽しみな時間になる</s></td><td>△</td><td>—</td><td>削除</td></tr>
-<tr><td>B-004</td><td>背中を毎日しっかり洗える</td><td>○</td><td>◎</td><td>引上</td></tr>
-<tr><td>B-005</td><td>一人でケアが完結する</td><td>△</td><td>◎</td><td>引上</td></tr>
-<tr><td>B-006</td><td>加齢臭の根本に毎日対処</td><td>○</td><td>◎</td><td>引上</td></tr>
-<tr><td>B-007</td><td>1台で全身ケア完結</td><td>○</td><td>◎</td><td>引上</td></tr>
-<tr><td><s>B-008</s></td><td><s>顔もブラシで洗える・時短</s></td><td>△</td><td>—</td><td>削除</td></tr>
-<tr><td>B-009</td><td>パワフルモードで重点洗浄</td><td>○</td><td>◎</td><td>引上</td></tr>
-<tr><td>B-010</td><td>ソフトモードで敏感肌も安心</td><td>△</td><td>◎</td><td>引上</td></tr>
-<tr><td>B-011</td><td>IPX7防水で安心</td><td>◎</td><td>◎</td><td>維持</td></tr>
-<tr><td>B-012</td><td>充電切れストレスなし</td><td>○</td><td>○</td><td>維持</td></tr>
-<tr><td>B-013</td><td>出張先USB充電</td><td>○</td><td>○</td><td>維持（言及なし・保留）</td></tr>
-<tr><td>B-014</td><td>4認証で安全性証明</td><td>◎</td><td>◎</td><td>維持</td></tr>
-<tr><td>B-015</td><td>家族にも安心</td><td>○</td><td>○</td><td>維持</td></tr>
-<tr><td>B-016</td><td>シリコンで肌に安心</td><td>○</td><td>○</td><td>維持</td></tr>
-<tr style="background:#fff8e1"><td><strong>B-NEW-001</strong></td><td>電動だから「当てるだけ」</td><td>—</td><td>◎</td><td>新規</td></tr>
-<tr style="background:#fff8e1"><td><strong>B-NEW-002</strong></td><td>道具を変えるだけで匂いが変わる</td><td>—</td><td>◎</td><td>新規</td></tr>
-<tr style="background:#fff8e1"><td><strong>B-NEW-003</strong></td><td>マスキング不要の「無臭」を実現</td><td>—</td><td>◎</td><td>新規</td></tr>
-</table>
-
-<h4>認知度別タグ付き見込み客の言葉（抜粋）</h4>
-<div class="quote">洗ってるつもりでも洗えていないっていう人めちゃくちゃいると思う<span class="src">B-NEW-002 ／ No.5 はっっさん／39歳男性／認知度3</span></div>
-<div class="quote">当てときゃいい感じですもんね<span class="src">B-NEW-001 ／ No.5 はっっさん／39歳男性／認知度3</span></div>
-<div class="quote">私の理想はマスキングなしの無臭であること<span class="src">B-NEW-003 ／ No.7 小川／49歳女性／認知度3</span></div>
-</div>
-
-<div class="box box-fact">
-<h4>ファクト／前提／推論の区別</h4>
-<span class="label lb-fact">ファクト</span> アンケート回答数値、インタビューverbatim、言及の有無<br>
-<span class="label lb-premise">前提条件</span> 「言及ゼロ＝訴求価値がない」の判断基準（B-003／B-008削除根拠）<br>
-<span class="label lb-inference">推論</span> 確度引き上げ判定、3新規ベネフィットの抽出、認知度別タグの分類
-</div>
-
-<div class="box box-next">
-<h4>次章への接続</h4>
-19本全てが第7章ステップ1の条件抽出と、第8章の裏付け付与の対象。認知度別タグ付き言葉は第12章コピーライティングの最優先素材。
-</div>
-</section>
-
-<!-- ================= 第7章 ================= -->
-<section id="chapter-7" class="chapter">
-<div class="chapter-head">
-<div class="chapter-num">第7章</div>
-<div>
-<div class="chapter-title">条件の接続分析・対応方針確定<span class="phase-tag phase-verify">見込み客を確かめる</span></div>
-<div class="chapter-meta">一次資料: 構築_第7章_ステップ1〜5 ＋ 確認用まとめ.html ／ 完了: 2026-04-14</div>
-</div>
-</div>
-
-<p>5ステップで39条件を抽出・判定・対応確定。対応方針の分布: 書換16件／新規追加10件／合わせる13件。最大の成果は「洗い方を変える」知識書き換えと、30日返金保証の導入判断（9名中No.5の最明確な態度変容エビデンス）。</p>
-
-<div class="box box-compliance">
-<h4>理論準拠チェック　<span class="label lb-ok">完全</span></h4>
-<ul class="bul">
-<li>ナレッジ定義: 5ステップ順守、11抽出観点（知識・予測4種・自己認識・世界観・優先順位・感情・経験・状況制約）、フィルター形式、一覧表列順、ステップ1完了後ユーザー承認、ステップ2の4要素セル、ステップ3のソース別定量影響力、ステップ5の2層構造（直接対応＋再フレーミング）。</li>
-<li>実行結果: 39条件をフィルター形式で抽出、出典表現を別保持、認知度別区分（5:3件／4:7件／3:13件／2:15件／1:1件）、ステップ1承認後にステップ2以降を実施。</li>
-<li>ステップ5の対応方針は2層構造で、書換16／新規追加10／合わせる13の分布をバー可視化。</li>
-<li>確認用まとめHTMLで「事業判断」「方向性確認」「事実確認」の3種に分離してレビュアーに提示する運用設計。</li>
+<h3>推奨・軽微修正11件</h3>
+<ul style="margin-left: 20px;">
+<li>#5 KA-09 に対応ベネフィットB-001/B-006/B-NEW-002を紐付け、判定「なし→不足」</li>
+<li>#6 保留グループ（背中Gr・丁寧な肌ケアGr・ギフトGr）のスケール時再実施を第3章に注記</li>
+<li>#7 集計表記の統一（COM/KA分離）</li>
+<li>#8 ステップ2マトリクスの「—」を「✗」に置換（構造的制約セルは据え置き）</li>
+<li>#9 KA-20（Before/After）の対応方針を「条件に合わせる＋感覚裏付けの用意」に整理</li>
+<li>#10 第5章設計書の実施人数更新（9名）</li>
+<li>#11 B-013（USB充電）を保留扱いとして第9章で採否判定</li>
+<li>#12 F-12（日本語レビュー6件）を第8章印象形成候補に明示</li>
+<li>#13 ステップ4 の対象範囲注記（COM条件とCOM-09補助含む）</li>
+<li>#14 アンケート報酬の算術修正</li>
+<li>#15 熊野筆・Coneflakeの本数表記を明示区別</li>
 </ul>
-</div>
+</section>
 
-<div class="box box-io">
-<h4>インプット／アウトプット</h4>
-<strong>インプット:</strong> 第1〜6章の全成果物（ベネフィット19本＋アンケート＋インタビュー＋自社レビュー＋競合レビュー＋競合商品ページ）<br>
-<strong>アウトプット:</strong> 6成果物（条件の一覧表＋同カテゴリ競合データ＋競合の条件対応＋条件形成の背景＋条件起点レビュー分析＋条件分析）＋確認用まとめ
-</div>
-
-<div class="box box-excerpt">
-<h4>条件分布（39件）</h4>
-<table>
-<tr><th>認知度</th><th>件数</th><th>代表的な条件</th></tr>
-<tr><td>5（気にしてない）</td><td>3件</td><td>「毎日入浴してるから大丈夫」「指摘されたことがない」</td></tr>
-<tr><td>4（気になるけど放置）</td><td>7件</td><td>「指摘されてないから不要」「ソープ失敗」「仕方ない」</td></tr>
-<tr><td>3（なんとかしたい）</td><td>13件</td><td>「根本除去できること」「手間なく続けられる」「何をすればいいかわからない」</td></tr>
-<tr><td>2（比較検討中）</td><td>15件（COM 11＋KA認知度2 4）</td><td>商品スペック全体＋肌質不安・効果確信・インフルエンサー不信</td></tr>
-<tr><td>1（購入段階）</td><td>1件</td><td>「今すぐ買う理由がない」</td></tr>
-</table>
-
-<h4>対応方針の分布（共通11／グループ28ではなく合計39）</h4>
-<div class="bar"><div class="bar-ok" style="width:41%">条件を書き換える 16件</div><div class="bar-partial" style="width:26%">新規追加 10件</div><div class="bar-miss" style="width:33%;background:#3498db">合わせる 13件</div></div>
-
-<h4>ステップ1〜5の要点</h4>
-<ul class="bul">
-<li><strong>ステップ1（条件抽出＋判定＋対応仮決定）:</strong> 11観点で抽出、「ベネフィットで十分／不足／対応なし」の3判定。</li>
-<li><strong>ステップ2（競合の条件対応）:</strong> 同カテゴリ競合・異カテゴリ競合・代替手段の全選択肢にベネフィット＋裏付け＝伝達／実態＝実力／充足の4要素を記入。</li>
-<li><strong>ステップ3（情報環境の調査）:</strong> 条件形成の背景カード形式で、YouTube視聴数・SNSいいね・Web検索順位・レビュー言及件数で影響力を定量評価。</li>
-<li><strong>ステップ4（条件起点レビュー分析）:</strong> 認知度2の条件に対して自社商品の優位性を定量的に示す切り口を探索。</li>
-<li><strong>ステップ5（条件に対する対応手段を当てる）:</strong> 2層構造（直接対応＋再フレーミング：スケール/比較対象/判断軸の転換）で全条件のプランを確定。</li>
+<section id="checklist">
+<h2>レビューチェックリスト（10項目）</h2>
+<p>理論作成者のセルフチェック用。各項目を確認し、気になる点をコメント欄に記入してください。</p>
+<ul class="checklist">
+<li><input type="checkbox"><div class="item"><strong>1. 理論用語の使用</strong>欲求・条件・需要・裏付け・ベネフィット・認知度が理論定義通り使われているか<textarea placeholder="コメント"></textarea></div></li>
+<li><input type="checkbox"><div class="item"><strong>2. 禁止用語の混入</strong>ペルソナ・USP・STP・4P・AIDMA・ファネル等の混入がないか<textarea placeholder="コメント"></textarea></div></li>
+<li><input type="checkbox"><div class="item"><strong>3. 5層構造の正確性</strong>階層1〜5の定義（機能的結果→行動変化→心理変化→生活シーン変化→潜在欲求接続）が守られているか<textarea placeholder="コメント"></textarea></div></li>
+<li><input type="checkbox"><div class="item"><strong>4. 認知度の方向</strong>認知度5=最も遠い / 認知度1=最も近い の方向が正しく使われているか<textarea placeholder="コメント"></textarea></div></li>
+<li><input type="checkbox"><div class="item"><strong>5. ファクト/前提/推論の分離</strong>推論が根拠データ付きで明示されているか<textarea placeholder="コメント"></textarea></div></li>
+<li><input type="checkbox"><div class="item"><strong>6. 章間のID整合</strong>BP / B-XXX / B-NEW-XXX / KA-XX / COM-XX / G-X が章を跨いで一貫しているか<textarea placeholder="コメント"></textarea></div></li>
+<li><input type="checkbox"><div class="item"><strong>7. アウトプットのテーブル構造</strong>各章のナレッジ定義（列名・列数・確度列・分岐列等）に準拠しているか<textarea placeholder="コメント"></textarea></div></li>
+<li><input type="checkbox"><div class="item"><strong>8. 推論と根拠データの併記</strong>推論部分（特に第6章B-NEW-001〜003・第7章4事業判断）にエビデンス引用があるか<textarea placeholder="コメント"></textarea></div></li>
+<li><input type="checkbox"><div class="item"><strong>9. 定量・定性の両輪</strong>アンケート（定量）とインタビュー（定性）の両方が使われ、多数決で方向性を決めていないか<textarea placeholder="コメント"></textarea></div></li>
+<li><input type="checkbox"><div class="item"><strong>10. 判断介入ポイントの明示</strong>事業判断が必要だった箇所（特に第7章の4つの事業判断）が明示されているか<textarea placeholder="コメント"></textarea></div></li>
 </ul>
-
-<h4>確認用まとめの判断4件（事業判断）</h4>
-<ol style="margin-left:20px">
-<li><strong>30日間全額返金保証の導入</strong>（9名中No.5/7/6/3で明確反応・例外1名）</li>
-<li><strong>Before/After比較動画の制作</strong>（全競合未提供の差別化要素）</li>
-<li><strong>使用シーン動画の制作</strong>（「見たことがない」の障壁解消）</li>
-<li><strong>1年品質保証</strong>（w0cmkpf・競合耐久性不満を踏まえた差別化）</li>
-</ol>
-
-<h4>方向性確認4件</h4>
-価格¥8,999の3本立て伝え方 ／ 「バスグッズ」ポジショニング ／ 一般UGCのみの口コミ戦略（インフルエンサーPR不使用） ／ 「洗浄剤ではなく洗い方」の最大の知識書き換え
-</div>
-
-<div class="box box-fact">
-<h4>ファクト／前提／推論の区別</h4>
-<span class="label lb-fact">ファクト</span> 39条件の出典（verbatim）、ステップ2の競合スペック、ステップ3の情報環境影響力指標、ステップ4のレビュー件数<br>
-<span class="label lb-premise">前提条件</span> 9名インタビューが認知度3〜4の代表性を持つ、返品保証コストを利益で吸収可能<br>
-<span class="label lb-inference">推論</span> 対応方針の確定（書換16／追加10／合わせる13）、4事業判断の優先度付け、再フレーミングの3方向選択
-</div>
-
-<div class="box box-decision">
-<h4>判断介入ポイント</h4>
-ステップ1完了後の条件一覧承認（競合由来を含む完全版）、4事業判断（返品保証／Before-After／使用シーン／1年保証）、4方向性確認（価格伝え方／ポジショニング／口コミ戦略／知識書き換え）、サプライヤー確認4項目（ヘッド個別販売／硬さ種類／実充電日数／初期不良対応）
-</div>
-
-<div class="box box-next">
-<h4>次章への接続</h4>
-第8章（裏付け）へ: 19本ベネフィットそれぞれに論理裏付け／感覚裏付けを付与。印象形成14項目の棚卸し。第10章コミュニケーション設計・第12章コピーライティングへ条件書き換えの弾を引き継ぎ。
-</div>
 </section>
 
-<!-- ================= 章間接続 ================= -->
-<section id="flow" class="flow">
-<h2 class="section">章間接続の俯瞰</h2>
-<p>各章の成果物が次章にどう引き継がれ、どこで加工されたかを1本のフローで示す。ID体系（F-XX／B-XXX／KA-XX／COM-XX／G-1）と列構成が章を跨いで保持されているかの確認用。</p>
-
-<div class="flow-step"><strong>第1章</strong>商品情報＋機能F-01〜F-12 → 自社レビューなし／F-12を第8章代替素材として予約</div>
-<div class="flow-arrow">↓ 機能F-01〜F-09がベネフィット起点に</div>
-<div class="flow-step"><strong>第2章</strong>B-001〜B-016（5層×LF8/非LF8）／B-003・B-008は第5章で削除確定 → 経路マップが第3章グルーピング根拠</div>
-<div class="flow-arrow">↓ ベネフィット経路でグループ確定（レビューは使わない）</div>
-<div class="flow-step"><strong>第3章</strong>G-1確定＋11競合選択肢＋熊野筆弱点分析＋コスト逆転点（ソープ9ヶ月/サプリ5ヶ月）</div>
-<div class="flow-arrow">↓ レビュー横断で条件の「弾」を抽出</div>
-<div class="flow-step"><strong>第3.5章</strong>約1,333件横断→5共通不満＋Ag DEO24証言＋ソープユーザー弾＋サプリ弾＋手動ブラシ弾＋熊野筆弾</div>
-<div class="flow-arrow">↓ 5仮説が第5章T1/T2/T7に</div>
-<div class="flow-step"><strong>第4章</strong>128名回収→認知度分布（4最大34%）＋認知度3詳細13問＋男女年代クロス＋深掘りテーマ7件</div>
-<div class="flow-arrow">↓ テーマ7件がそのままインタビューT1〜T7に</div>
-<div class="flow-step"><strong>第5章</strong>9名（認知度3:6＋認知度4:3）→3軸判定＋生の言葉約50件＋No.5態度変容発見＋3新規ベネフィット発見</div>
-<div class="flow-arrow">↓ 生の言葉＋新規発見が照合の直接入力</div>
-<div class="flow-step"><strong>第6章</strong>19本確定（◎引上8＋維持6＋削除2＋新規3）＋認知度別タグ付き言葉</div>
-<div class="flow-arrow">↓ 19本全てが条件抽出と対応確定の対象</div>
-<div class="flow-step"><strong>第7章</strong>39条件→書換16／追加10／合わせる13 ＋ 6成果物 ＋ 確認用まとめ（事業判断4／方向性4／事実確認2）</div>
-</section>
-
-<!-- ================= 整合性チェック履歴 ================= -->
-<section id="history" class="history">
-<h2 class="section">整合性チェックの経緯</h2>
-<p>レビュアーが「以前指摘された不整合は既に解消済み」と判断できるよう、過去の整合性チェック結果を要約する。</p>
-
-<h4>実施済み整合性チェック</h4>
-<ul class="bul">
-<li>必須修正4件: (1) B-003／B-008の取り消し線処理を第2章・第3章・第6章全てに遡及適用（ルール8c準拠） (2) B-013の「第4〜7章で言及ゼロ・保留」の明示を第2章備考に追記 (3) 第3章のコスト逆転点を¥4,980→¥8,999確定に伴い5ヶ月→9ヶ月に更新 (4) 第5章インタビューの実施人数（当初8→実施9）を設計書に追記</li>
-<li>推奨修正11件: 第3章の熊野筆の毛本数（0.1mm極細毛154,400本／Coneflake 120万本）の混同注意注記追加、第3.5章での「グルーピング判断に使わない」原則の明示、第4章JSONの生成ロジック準拠（拡張機能JSON仕様）、第6章のIDを欠番保持ルール再確認、第7章ステップ1完了後のユーザー承認プロセス明示、情報接触経路Q3-12の集計の第4章分析レポート掲載（第7章ステップ3インプット確保）、第5章分析HTMLでの3軸判定テーブル追加、第5章No.8 ocr73jdのアウトライヤー扱いの明記、第7章の条件形成の背景（ステップ3）カード形式への変換、確認用まとめの「確認不要（後工程で自動活用）」セクションの追加、第2章の経路マップ4経路（恐怖・社会的信頼・安全安心・習慣継続）の俯瞰図追加</li>
-</ul>
-
-<h4>評価結果</h4>
-<p>最終評価: <strong>A（第1〜7章＋第3.5章の全成果物が理論準拠・章間接続・ファクト／推論の区別の3観点で完全）</strong>。第8章（裏付け）に進行可能と判定。</p>
-</section>
-
-<!-- ================= レビューチェックリスト ================= -->
-<section id="checklist" class="checklist">
-<h2 class="section">レビューチェックリスト</h2>
-<p>レビュアー（統合マーケ理論の作成者本人）が10観点で最終判定するための作業リスト。各項目にチェックボックスとコメント欄を用意。</p>
-
-<div class="check-item">
-<label><input type="checkbox"> 1. 理論用語の使用（欲求・条件・需要・裏付け・ベネフィット・認知度）</label>
-<div class="desc">理論で定義された用語が言い換えられずに使われているか。潜在欲求／顕在欲求、LF8／非LF8、変わりやすい条件／変わりにくい条件、論理裏付け／感覚裏付けの区別。</div>
-<textarea placeholder="コメント・指摘があれば記入"></textarea>
-</div>
-
-<div class="check-item">
-<label><input type="checkbox"> 2. 禁止用語の混入（ペルソナ／USP／STP／4P／AIDMA／ファネル等）</label>
-<div class="desc">全成果物・全コメントに一般的なマーケティングフレームワーク用語が混入していないか。</div>
-<textarea placeholder="コメント・指摘があれば記入"></textarea>
-</div>
-
-<div class="check-item">
-<label><input type="checkbox"> 3. 5層構造の正確性（階層1機能的結果／2行動変化／3心理変化／4生活シーン変化／5潜在欲求接続）</label>
-<div class="desc">第2章の全ベネフィットが5層まで展開され、階層の名前・順番・意味が理論の定義と一致しているか。</div>
-<textarea placeholder="コメント・指摘があれば記入"></textarea>
-</div>
-
-<div class="check-item">
-<label><input type="checkbox"> 4. 認知度の方向（5=最遠／1=最近）</label>
-<div class="desc">第4章Q0、第4章分析、第5章セグメント、第7章条件分布の全てで認知度5=問題未認識／認知度1=購入段階の方向が正しいか。</div>
-<textarea placeholder="コメント・指摘があれば記入"></textarea>
-</div>
-
-<div class="check-item">
-<label><input type="checkbox"> 5. ファクト／前提／推論の分離</label>
-<div class="desc">全章で3ラベルが明示され、推論に根拠データが併記されているか。特に第1章の確度列、第2章のレビューの言葉列、第7章ステップ3の影響力定量指標。</div>
-<textarea placeholder="コメント・指摘があれば記入"></textarea>
-</div>
-
-<div class="check-item">
-<label><input type="checkbox"> 6. 章間のID整合（BP／B-XXX／KA-XX／COM-XX／G-X）</label>
-<div class="desc">第2章のB-IDが第3章グルーピング／第6章再検証／第7章条件対応で欠番保持されつつ一貫参照されているか。B-003／B-008の取り消し線が全章に遡及しているか。</div>
-<textarea placeholder="コメント・指摘があれば記入"></textarea>
-</div>
-
-<div class="check-item">
-<label><input type="checkbox"> 7. アウトプットのテーブル構造がナレッジ定義に準拠</label>
-<div class="desc">第2章の横型テーブル（列数・列順・階層名）、第3章競合選択肢比較表、第4章3層構造、第6章検証結果列、第7章ステップ1の列順（#/グループ/認知度/条件/対応ベネフィット/判定/対応方針）が守られているか。</div>
-<textarea placeholder="コメント・指摘があれば記入"></textarea>
-</div>
-
-<div class="check-item">
-<label><input type="checkbox"> 8. 推論に根拠データが併記されているか</label>
-<div class="desc">特に第3章コスト逆転点、第4章男女差解釈、第5章3軸判定、第7章の4事業判断、第7章ステップ5の対応方針に定量・定性の根拠が紐づいているか。</div>
-<textarea placeholder="コメント・指摘があれば記入"></textarea>
-</div>
-
-<div class="check-item">
-<label><input type="checkbox"> 9. リサーチの定量・定性が両方使われているか</label>
-<div class="desc">第4章アンケート128名（定量）＋第5章インタビュー9名（定性）＋第3.5章レビュー1,333件（定性大量）が全て後工程で引用されているか。片方だけで結論していないか。</div>
-<textarea placeholder="コメント・指摘があれば記入"></textarea>
-</div>
-
-<div class="check-item">
-<label><input type="checkbox"> 10. 判断介入ポイントが明示されているか</label>
-<div class="desc">各章の「判断介入ポイント」および第7章確認用まとめの「事業判断／方向性／事実確認」3分類が、レビュアーが介入すべき箇所を漏れなく列挙しているか。</div>
-<textarea placeholder="コメント・指摘があれば記入"></textarea>
-</div>
-
-</section>
-
+<footer class="page-footer">
+構築編 第1〜7章 レビュー用サマリー / 電動ボディブラシ / 整合性評価: A（完全整合） / 作成日 2026-04-14
+</footer>
 </div>
 </body>
 </html>

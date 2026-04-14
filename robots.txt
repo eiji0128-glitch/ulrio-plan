@@ -1,2 +1,3 @@
 User-agent: *
 Disallow: /color-survey-report.html
+Disallow: /bodybrush-chapters-1-7-review.html

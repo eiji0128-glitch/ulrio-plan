@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: /color-survey-report.html
 Disallow: /bodybrush-chapters-1-7-review.html
-Disallow: /interview-momose-yuri-seg6.html
+Disallow: /interview-yuri-seg6.html

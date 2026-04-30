@@ -2,3 +2,16 @@ User-agent: *
 Disallow: /color-survey-report.html
 Disallow: /bodybrush-chapters-1-7-review.html
 Disallow: /interview-yuri-seg6.html
+Disallow: /kozo-ch1-1-product-info-ulrio.html
+Disallow: /kozo-ch1-2-review-analysis-ulrio.html
+Disallow: /kozo-ch2-benefit-list-ulrio.html
+Disallow: /kozo-ch3-desire-grouping-ulrio.html
+Disallow: /kozo-ch4-survey-analysis-ulrio.html
+Disallow: /kozo-ch4-gh3-survey-design-ulrio.html
+Disallow: /kozo-ch4-gh3-survey-analysis-ulrio.html
+Disallow: /kozo-ch5-interview-results-ulrio.html
+Disallow: /kozo-ch6-refined-benefit-ulrio.html
+Disallow: /kozo-ch7-condition-analysis-ulrio.html
+Disallow: /kozo-ch8-evidence-ulrio.html
+Disallow: /kozo-ch9-value-definition-ulrio.html
+Disallow: /kozo-ch10-distribution-ulrio.html

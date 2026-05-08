@@ -15,3 +15,4 @@ Disallow: /kozo-ch7-condition-analysis-ulrio.html
 Disallow: /kozo-ch8-evidence-ulrio.html
 Disallow: /kozo-ch9-value-definition-ulrio.html
 Disallow: /kozo-ch10-distribution-ulrio.html
+Disallow: /kozo-ch11-communication-design-ulrio.html

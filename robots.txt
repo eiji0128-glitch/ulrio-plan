@@ -16,3 +16,4 @@ Disallow: /kozo-ch8-evidence-ulrio.html
 Disallow: /kozo-ch9-value-definition-ulrio.html
 Disallow: /kozo-ch10-distribution-ulrio.html
 Disallow: /kozo-ch11-communication-design-ulrio.html
+Disallow: /tiktok-shop-japan-market-research-20260522.html

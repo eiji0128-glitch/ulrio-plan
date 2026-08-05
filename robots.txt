@@ -18,3 +18,5 @@ Disallow: /kozo-ch10-distribution-ulrio.html
 Disallow: /kozo-ch11-communication-design-ulrio.html
 Disallow: /tiktok-shop-japan-market-research-20260522.html
 Disallow: /bodybrush-review.html
+Disallow: /middleeight-return-receipt-manual.html
+Disallow: /middleeight-return-receipt-qr.png

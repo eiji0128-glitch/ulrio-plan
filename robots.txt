@@ -20,5 +20,3 @@ Disallow: /tiktok-shop-japan-market-research-20260522.html
 Disallow: /bodybrush-review.html
 Disallow: /middleeight-return-receipt-manual.html
 Disallow: /middleeight-return-receipt-qr.png
-Disallow: /rakuten-lp-preview-ulrio.html
-Disallow: /rakuten-prospect-profiles-ulrio.html

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>クリックポストで発送している商品の確認 — 堀内鏡工業自社倉庫</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --bg: #fafaf8;
+  --surface: #ffffff;
+  --surface-alt: #f5f4f0;
+  --border: #e8e6e1;
+  --border-light: #f0eeea;
+  --text: #1a1a1a;
+  --text-secondary: #6b6860;
+  --text-muted: #9b978f;
+  --accent: #2563eb;
+  --accent-light: #eff4ff;
+  --positive: #0c7a5c;
+  --positive-bg: #eef8f4;
+  --positive-border: #c4e8db;
+  --caution: #92400e;
+  --caution-bg: #fffbeb;
+  --caution-border: #fde68a;
+  --negative: #dc4a22;
+  --negative-bg: #fef2ee;
+  --negative-border: #fcd5c8;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.04);
+  --radius: 10px;
+  --radius-sm: 6px;
+  --font-sans: 'Noto Sans JP', -apple-system, sans-serif;
+  --font-serif: 'Source Serif 4', Georgia, serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.hero {
+  background: linear-gradient(135deg, #f8f7f4 0%, #eef0f5 50%, #f0f4ff 100%);
+  border-bottom: 1px solid var(--border);
+  padding: 72px 0 56px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '配送';
+  position: absolute;
+  right: -20px;
+  top: -30px;
+  font-family: var(--font-serif);
+  font-size: 220px;
+  font-weight: 600;
+  color: rgba(37,99,235,.05);
+  line-height: 1;
+  pointer-events: none;
+}
+.hero-inner { max-width: 860px; margin: 0 auto; padding: 0 32px; position: relative; }
+.pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--accent-light); color: var(--accent);
+  font-size: 12px; font-weight: 600; letter-spacing: .04em;
+  padding: 5px 14px; border-radius: 100px; margin-bottom: 20px;
+}
+.hero h1 { font-family: var(--font-serif); font-size: 34px; font-weight: 600; line-height: 1.3; margin-bottom: 14px; }
+.hero-meta { display: flex; flex-wrap: wrap; gap: 20px; font-size: 13px; color: var(--text-muted); }
+.hero-meta span::before { content: '— '; }
+
+.container { max-width: 860px; margin: 0 auto; padding: 0 32px; }
+.sec { padding: 48px 0; border-bottom: 1px solid var(--border-light); }
+.sec:last-child { border-bottom: none; }
+.sec h2 { font-family: var(--font-serif); font-size: 24px; font-weight: 600; margin-bottom: 16px; }
+.sec h3 { font-size: 16px; font-weight: 600; border-left: 3px solid var(--accent); padding-left: 12px; margin: 32px 0 16px; }
+.section-label {
+  display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+  color: var(--accent); text-transform: uppercase; margin-bottom: 8px;
+}
+.report-footer {
+  border-top: 1px solid var(--border-light);
+  padding: 40px 0 56px; text-align: center; font-size: 12px; color: var(--text-muted);
+}
+.report-footer p { margin: 6px 0; }
+
+.section-desc { font-size: 14px; color: var(--text-secondary); max-width: 720px; margin-bottom: 24px; line-height: 1.7; }
+.guide-box {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 18px 22px; font-size: 14px; line-height: 1.7; margin-bottom: 32px;
+}
+.guide-box h4 { font-size: 14px; font-weight: 600; margin: 0 0 8px; }
+.guide-box p { margin-bottom: 8px; }
+.guide-box p:last-child { margin-bottom: 0; }
+.guide-box ul { margin: 0 0 8px; padding-left: 18px; }
+.guide-box li { margin-bottom: 4px; }
+
+.table-container { margin-bottom: 24px; }
+.table-wrap {
+  border: 1px solid var(--border); border-radius: var(--radius);
+  background: var(--surface); box-shadow: var(--shadow-sm); overflow: hidden;
+}
+.table-wrap table { width: 100%; border-collapse: collapse; font-size: 13px; }
+thead th {
+  background: var(--surface-alt); color: var(--text-secondary);
+  font-size: 12px; font-weight: 600; letter-spacing: 0.02em;
+  padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border);
+}
+tbody td { padding: 12px 16px; border-bottom: 1px solid var(--border-light); min-width: 140px; }
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover { background: #fafaf6; }
+tbody td.col-fixed-vocab { white-space: nowrap; text-align: center; }
+tbody td.col-longtext { min-width: 260px; }
+.table-scroll { overflow-x: auto; }
+
+.interpretation-comment {
+  background: var(--accent-light); border: 1px solid #c7d7fd; color: #1e40af;
+  border-radius: var(--radius); padding: 18px 22px; font-size: 14px; line-height: 1.7; margin: 28px 0;
+}
+.interpretation-comment h4 { font-size: 13px; font-weight: 600; margin: 0 0 8px; }
+.interpretation-comment p { margin: 0; }
+.interpretation-comment p + p { margin-top: 8px; }
+
+.confirmed-box {
+  background: var(--positive-bg); border: 1px solid var(--positive-border); color: var(--text);
+  border-radius: var(--radius); padding: 18px 22px; font-size: 14px; line-height: 1.7; margin: 24px 0;
+}
+.confirmed-box h4 { font-size: 13px; font-weight: 600; color: var(--positive); margin: 0 0 10px; }
+.confirmed-box ul { margin: 0; padding-left: 18px; }
+.confirmed-box li { margin-bottom: 4px; }
+.confirmed-box li:last-child { margin-bottom: 0; }
+
+.box-quote {
+  background: var(--surface-alt); border: 1px solid var(--border); color: var(--text);
+  border-radius: var(--radius); padding: 18px 22px; font-size: 14px; line-height: 1.8;
+  font-style: italic; margin: 12px 0;
+}
+.box-quote cite { display: block; font-style: normal; font-size: 12px; color: var(--text-secondary); margin-top: 8px; }
+
+.badge { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 10px; border-radius: 100px; white-space: nowrap; border: 1px solid; }
+.badge-positive { background: var(--positive-bg); color: var(--positive); border-color: var(--positive-border); }
+.badge-caution { background: var(--caution-bg); color: var(--caution); border-color: var(--caution-border); }
+.badge-negative { background: var(--negative-bg); color: var(--negative); border-color: var(--negative-border); }
+.badge-neutral { background: var(--surface-alt); color: var(--text-secondary); border-color: var(--border); }
+
+.summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
+.summary-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; text-align: center; }
+.summary-card .label { font-size: 12px; color: var(--text-secondary); margin-bottom: 6px; }
+.summary-card .value { font-family: var(--font-serif); font-size: 26px; font-weight: 600; color: var(--accent); }
+.summary-card .unit { font-size: 13px; color: var(--text-muted); margin-left: 4px; }
+.summary-card .sub { font-size: 12px; color: var(--text-secondary); margin-top: 4px; }
+.summary-card.status-positive .value { color: var(--positive); }
+.summary-card.status-caution .value { color: var(--caution); }
+.summary-card.status-muted .value { color: var(--text-muted); }
+
+.flow-step {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 16px 20px; margin-bottom: 10px; display: flex; gap: 16px; align-items: flex-start;
+}
+.flow-step .num {
+  flex: 0 0 auto; width: 26px; height: 26px; border-radius: 100px;
+  background: var(--accent-light); color: var(--accent);
+  font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center;
+}
+.flow-step .body { flex: 1 1 auto; }
+.flow-step .who { font-size: 12px; color: var(--text-muted); margin-bottom: 2px; }
+.flow-step .what { font-size: 14px; }
+
+.input-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.input-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+.input-card .input-title { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+.input-card .input-desc { font-size: 13px; color: var(--text-secondary); margin-bottom: 10px; }
+.input-card .input-badge { display: inline-block; font-size: 12px; font-weight: 600; padding: 3px 12px; border-radius: 100px; border: 1px solid; }
+.input-badge.real { background: var(--positive-bg); color: var(--positive); border-color: var(--positive-border); }
+.input-badge.mock { background: var(--caution-bg); color: var(--caution); border-color: var(--caution-border); }
+
+@media (max-width: 768px) {
+  .hero { padding: 48px 0 36px; }
+  .hero h1 { font-size: 24px; }
+  .hero-inner { padding: 0 16px; }
+  .container { padding: 0 16px; }
+  .sec { padding: 32px 0; }
+  .input-grid { grid-template-columns: 1fr; }
+}
+@media print {
+  body { background: #fff; }
+  .hero { padding: 32px 0 24px; }
+  .hero::before { display: none; }
+  .table-wrap { overflow: visible; box-shadow: none; }
+  thead { display: table-header-group; }
+  tr { break-inside: avoid; }
+  .sec, .guide-box, .interpretation-comment, .confirmed-box, .flow-step { break-inside: avoid; }
+  .sec { padding: 24px 0; }
+}
+
+
+.container { max-width: 1080px; }
+.hero-inner { max-width: 1080px; }
+.table-scroll { overflow-x: visible; }
+tbody td, thead th { min-width: 0; }
+table { table-layout: fixed; }
+col.c-no { width: 46px; }
+col.c-name { width: auto; }
+col.c-kata { width: 130px; }
+col.c-vari { width: 210px; }
+col.c-sku { width: 62px; }
+col.c-mark { width: 108px; }
+.mark-cell { width: 108px; text-align:center; }
+.mark-box { display:block; width:56px; height:34px; border:1.5px solid #b9b5ac; border-radius:6px; margin:0 auto; background:#fff; }
+.cp-label { display:flex; align-items:center; justify-content:center; cursor:pointer; padding:6px 0; }
+.cp-label input { width:26px; height:26px; cursor:pointer; accent-color: var(--positive); }
+tr.checked td { background: var(--positive-bg) !important; }
+.summary-bar {
+  position: sticky; bottom: 0; z-index: 20;
+  background: var(--surface); border-top: 1px solid var(--border);
+  box-shadow: 0 -2px 12px rgba(0,0,0,.06);
+  padding: 14px 0;
+}
+.summary-inner { max-width: 1080px; margin: 0 auto; padding: 0 32px; display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+.summary-count { font-size: 14px; font-weight: 600; }
+.summary-count strong { font-family: var(--font-serif); font-size: 22px; color: var(--positive); margin: 0 3px; }
+.summary-nums { font-size: 13px; color: var(--text-secondary); flex: 1 1 240px; }
+.btn {
+  font-family: var(--font-sans); font-size: 13px; font-weight: 600;
+  padding: 9px 18px; border-radius: 100px; border: 1px solid var(--accent);
+  background: var(--accent); color: #fff; cursor: pointer;
+}
+.btn.ghost { background: transparent; color: var(--text-secondary); border-color: var(--border); }
+.btn:disabled { opacity: .45; cursor: default; }
+.copied { font-size: 13px; color: var(--positive); font-weight: 600; }
+@media (max-width: 768px) { .summary-inner { padding: 0 16px; } }
+.rownum { font-family: var(--font-serif); font-size:18px; font-weight:600; color: var(--text-secondary); text-align:center; width:44px; }
+.catrow td { background: var(--surface-alt); font-weight:600; font-size:13px; letter-spacing:.03em; }
+.pname { font-size:14px; font-weight:600; }
+.pnote { font-size:12px; color: var(--negative); margin-top:3px; }
+.kataban { font-size:12px; color: var(--text-secondary); font-family: ui-monospace, Menlo, monospace; }
+.plink { font-size:12px; margin-top:5px; }
+.plink a { color: var(--accent); text-decoration: none; border-bottom: 1px solid #c7d7fd; }
+.plink a:hover { border-bottom-color: var(--accent); }
+.plink .sep { color: var(--text-muted); margin: 0 4px; }
+.plink .dead { color: var(--text-muted); }
+@media print { .plink { color: var(--text-muted); } .plink a { color: var(--text-secondary); border:none; } }
+.vari { font-size:12px; color: var(--text-secondary); }
+tbody td { vertical-align: middle; }
+@media print {
+  .no-print, .summary-bar { display:none !important; }
+  .sec { padding:16px 0; }
+  .cp-label input { -webkit-appearance:none; appearance:none; width:34px; height:26px; border:1.5px solid #666; border-radius:5px; }
+  tr.checked td { background: #fff !important; }
+}
+
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="pill">ご確認のお願い</div>
+    <h1>クリックポストで発送している商品を教えてください</h1>
+    <div class="hero-meta">
+      <span>宛先: 堀内鏡工業株式会社 堀之内 様</span>
+      <span>作成: 合同会社ジャパングローバルトレイド 河野</span>
+      <span>2026-08-07</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+<section class="sec">
+  <span class="section-label">お願いしたいこと</span>
+  <h2>右端の欄に、クリックポストで送っているものへ丸を付けてください</h2>
+
+  <p class="section-desc">
+    先日は配送業者についてお教えいただき、ありがとうございました。
+    いただいたご回答をもとに、シッピーノの設定を直せば、購入者様に正しい配送業者と追跡番号が届くようになる見込みが立ちました。
+  </p>
+
+  <div class="guide-box">
+    <h4>なぜこのリストが必要か</h4>
+    <p>シッピーノは<strong>商品ごとに「日本郵便で送るもの」「佐川急便で送るもの」を持つことができます</strong>。
+    ここを実際の運用に合わせておけば、以降は自動で正しい配送業者が購入者様に伝わります。</p>
+    <p>いまの設定は実際とずれており、そのままでは使えません。
+    たとえば今回お問い合わせのあった「ハイパービュー プロモデル折立ミラー L」は、クリックポストで発送されているのに佐川急便の扱いになっていました。
+    お手数ですが、現物をご存じの堀之内様に教えていただくのが確実です。</p>
+  </div>
+
+  <div class="confirmed-box">
+    <h4>ご記入方法</h4>
+    <ul>
+      <li>クリックポスト（日本郵便）で送っている商品の<strong>右端のチェック欄</strong>にチェックを入れてください</li>
+      <li>チェックが付かないものは佐川急便（北海道は西濃運輸）として扱います</li>
+      <li>チェックし終えたら、画面下の<strong>「選んだ商品をコピー」</strong>を押して、メールに貼り付けてご返信ください</li>
+      <li>チェックした内容はこの画面に残ります。途中で閉じても、開き直せば続きから進められます</li>
+      <li>印刷してペンでご記入いただいても結構です</li>
+      <li>色違い・柄違いは<strong>1行にまとめています</strong>。同じ商品でも色や柄によって送り方が変わる場合は、その旨を書き添えてください</li>
+      <li>「その時の梱包によって変わる」ものがあれば、それも書き添えてください</li>
+      <li>どの商品か分かりにくいときは、商品名の下の<strong>「楽天ページ」のリンク</strong>から実際の商品ページをご覧いただけます</li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec">
+  <span class="section-label">商品リスト</span>
+  <h2>楽天デッフィで自社倉庫から出荷している商品（全28品目・72SKU）</h2>
+
+  <p class="section-desc">
+    シッピーノに登録されている商品をすべて並べ、種類ごとにまとめました。型番は倉庫商品番号です。
+  </p>
+
+  <div class="table-container">
+    <div class="table-wrap">
+      <div class="table-scroll">
+        <table>
+          <colgroup>
+            <col class="c-no"><col class="c-name"><col class="c-kata"><col class="c-vari"><col class="c-sku"><col class="c-mark">
+          </colgroup>
+          <thead>
+            <tr>
+              <th style="text-align:center;">No</th>
+              <th>商品名</th>
+              <th>型番</th>
+              <th>色・柄・サイズ</th>
+              <th style="text-align:center;">SKU数</th>
+              <th style="text-align:center;">クリックポスト</th>
+            </tr>
+          </thead>
+          <tbody>
+<tr class="catrow"><td colspan="6">折りたたみミラー</td></tr>
+<tr><td class="rownum">1</td><td><div class="pname">3倍拡大鏡付き プロモデル折立ナピュアミラー M</div><div class="plink">楽天ページ: <a href="https://item.rakuten.co.jp/horiuchimirror/hp-50-34/" target="_blank" rel="noopener">hp-50-34</a></div></td><td class="kataban">hp-50-34</td><td class="vari">ブラック、ピンク</td><td class="col-fixed-vocab">2</td><td class="mark-cell"><label class="cp-label"><input type="checkbox" data-no="1" data-name="3倍拡大鏡付き プロモデル折立ナピュアミラー M"></label></td></tr>
+<tr><td class="rownum">2</td><td><div class="pname">5倍拡大鏡付き プロモデル折立ナピュアミラー M</div><div class="plink">楽天ページ: <a href="https://item.rakuten.co.jp/horiuchimirror/hp-50-34-5/" target="_blank" rel="noopener">hp-50-34-5</a></div></td><td class="kataban">hp-50-34-5</td><td class="vari">ブラック、ピンク</td><td class="col-fixed-vocab">2</td><td class="mark-cell"><label class="cp-label"><input type="checkbox" data-no="2" data-name="5倍拡大鏡付き プロモデル折立ナピュアミラー M"></label></td></tr>
+<tr><td class="rownum">3</td><td><div class="pname">3倍拡大鏡付き プロモデル折立ナピュアミラー L</div><div class="plink">楽天ページ: <a href="https://item.rakuten.co.jp/horiuchimirror/hp-51-35/" target="_blank" rel="noopener">hp-51-35</a></div></td><td class="kataban">hp-51-35</td><td class="vari">ブラック、ピンク</td><td class="col-fixed-vocab">2</td><td class="mark-cell"><label class="cp-label"><input type="checkbox" data-no="3" data-name="3倍拡大鏡付き プロモデル折立ナピュアミラー L"></label></td></tr>
+<tr><td class="rownum">4</td><td><div class="pname">5倍拡大鏡付き プロモデル折立ナピュアミラー L</div><div class="plink">楽天ページ: <a href="https://item.rakuten.co.jp/horiuchimirror/hp-51-35-5/" target="_blank" rel="noopener">hp-51-35-5</a></div></td><td class="kataban">hp-51-35-5</td><td class="vari">ブラック、ピンク</td><td class="col-fixed-vocab">2</td><td class="mark-cell"><label class="cp-label"><input type="checkbox" data-no="4" data-name="5倍拡大鏡付き プロモデル折立ナピュアミラー L"></label></td></tr>
+<tr><td class="rownum">5</td><td><div class="pname">3倍拡大鏡付き プロモデル折立ナピュアミラー LL</div><div class="plink">楽天ページ: <a href="https://item.rakuten.co.jp/horiuchimirror/hp-52-38/" target="_blank" rel="noopener">hp-52-38</a></div></td><td class="kataban">hp-52-38</td><td class="vari">ブラック、ピンク</td><td class="col-fixed-vocab">2</td><td class="mark-cell"><label class="cp-label"><input type="checkbox" data-no="5" data-name="3倍拡大鏡付き プロモデル折立ナピュアミラー LL"></label></td></tr>
+<tr><td class="rownum">6</td><td><div class="pname">5倍拡大鏡付き プロモデル折立ナピュアミラー LL</div><div class="plink">楽天ページ: <a href="https://item.rakuten.co.jp/horiuchimirror/hp-52-38-5/" target="_blank" rel="noopener">hp-52-38-5</a></div></td><td class="kataban">hp-52-38-5</td><td class="vari">ブラック、ピンク</td><td class="col-fixed-vocab">2</td><td class="mark-cell"><label class="cp-label"><input type="checkbox" data-no="6" data-name="5倍拡大鏡付き プロモデル折立ナピュアミラー LL"></label></td></tr>
+<tr><td class="rownum">7</td><td><div class="pname">3倍拡大鏡付き プロモデル折立ナピュアミラー 3L</div><div class="plink">楽天ページ: <a href="https://item.rakuten.co.jp/horiuchimirror/hp-53-39/" target="_blank" rel="noopener">hp-53-39</a></div></td><td class="kataban">hp-53-39</td><td class="vari">ブラック、ピンク</td><td class="col-fixed-vocab">2</td><td class="mark-cell"><label class="cp-label"><input type="checkbox" data-no="7" data-name="3倍拡大鏡付き プロモデル折立ナピュアミラー 3L"></label></td></tr>
+<tr><td class="rownum">8</td><td><div class="pname">5倍拡大鏡付き プロモデル折立ナピュアミラー 3L</div><div class="plink">楽天ページ: <a href="https://item.rakuten.co.jp/horiuchimirror/hp-53-39-5/" target="_blank" rel="noopener">hp-53-39-5</a></div></td><td class="kataban">hp-53-39-5</td><td class="vari">ブラック、ピンク</td><td class="col-fixed-vocab">2</td><td class="mark-cell"><label class="cp-label"><input type="checkbox" data-no="8" data-name="5倍拡大鏡付き プロモデル折立ナピュアミラー 3L"></label></td></tr>
+<tr><td class="rownum">9</td><td><div class="pname">ハイパービュー プロモデル折立ミラー M</div><div class="plink">楽天ページ: <a href="https://item.rakuten.co.jp/horiuchimirror/am-80-81/" target="_blank" rel="noopener">am-80-81</a></div></td><td class="kataban">AM-80<br>AM-81</td><td class="vari">ホワイト、ブラック</td><td class="col-fixed-vocab">2</td><td class="mark-cell"><label class="cp-label"><input type="checkbox" data-no="9" data-name="ハイパービュー プロモデル折立ミラー M"></label></td></tr>
+<tr><td class="rownum">10</td><td><div class="pname">ハイパービュー プロモデル折立ミラー L</div><div class="pnote">今回お問い合わせのあった商品</div><div class="plink">楽天ページ: <a href="https://item.rakuten.co.jp/horiuchimirror/am-82-83/" target="_blank" rel="noopener">am-82-83</a></div></td><td class="kataban">AM-82<br>AM-83</td><td class="vari">ホワイト、ブラック</td><td class="col-fixed-vocab">2</td><td class="mark-cell"><label class="cp-label"><input type="checkbox" data-no="10" data-name="ハイパービュー プロモデル折立ミラー L"></label></td></tr>
+<tr class="catrow"><td colspan="6">コンパクトミラー・携帯ミラー</td></tr>
+<tr><td class="rownum">11</td><td><div class="pname">両面角型コンパクトナピュアミラー（2倍・3倍）</div><div class="pnote">楽天に3つの商品番号で登録されていますが、現物は同じ4種類です（うち2つは楽天ページが既にありません）</div><div class="plink">楽天ページ: <span class="dead">am-22（楽天ページなし）</span><span class="sep">/</span><a href="https://item.rakuten.co.jp/horiuchimirror/am-22-23/" target="_blank" rel="noopener">am-22-23</a><span class="sep">/</span><span class="dead">am-23（楽天ページなし）</span></div></td><td class="kataban">AD-PH9G-57ZX<br>HY-YPIS-VSGC<br>JK-E059-3ZJ5<br>UC-8J6E-GFT9</td><td class="vari">2倍 ブラック、3倍 シルバー、2倍 シルバー、3倍 ブラック</td><td class="col-fixed-vocab">8</td><td class="mark-cell"><label class="cp-label"><input type="checkbox" data-no="11" data-name="両面角型コンパクトナピュアミラー（2倍・3倍）"></label></td></tr>
+<tr><td class="rownum">12</td><td><div class="pname">軽量・薄型コンパクトミラー M サイズ</div><div class="plink">楽天ページ: <a href="https://item.rakuten.co.jp/horiuchimirror/am-210-215/" target="_blank" rel="noopener">am-210-215</a></div></td><td class="kataban">AM-210<br>AM-211<br>AM-212</td><td class="vari">ホワイト、ブラック、シルバー</td><td class="col-fixed-vocab">3</td><td class="mark-cell"><label class="cp-label"><input type="checkbox" data-no="12" data-name="軽量・薄型コンパクトミラー M サイズ"></label></td></tr>
+<tr><td class="rownum">13</td><td><div class="pname">軽量・薄型コンパクトミラー L サイズ</div><div class="plink">楽天ページ: <a href="https://item.rakuten.co.jp/horiuchimirror/am-210-215/" target="_blank" rel="noopener">am-210-215</a></div></td><td class="kataban">AM-213<br>AM-214<br>AM-215</td><td class="vari">ホワイト、ブラック、シルバー</td><td class="col-fixed-vocab">3</td><td class="mark-cell"><label class="cp-label"><input type="checkbox" data-no="13" data-name="軽量・薄型コンパクトミラー L サイズ"></label></td></tr>
+<tr><td class="rownum">14</td><td><div class="pname">UVチェック・コンパクトミラー ミニ</div><div class="plink">楽天ページ: <a href="https://item.rakuten.co.jp/horiuchimirror/uv-10/" target="_blank" rel="noopener">uv-10</a></div></td><td class="kataban">UV-10</td><td class="vari">—</td><td class="col-fixed-vocab">1</td><td class="mark-cell"><label class="cp-label"><input type="checkbox" data-no="14" data-name="UVチェック・コンパクトミラー ミニ"></label></td></tr>
+<tr><td class="rownum">15</td><td><div class="pname">UVレベルチェック・コンパクトミラー</div><div class="plink">楽天ページ: <a href="https://item.rakuten.co.jp/horiuchimirror/uv-100/" target="_blank" rel="noopener">uv-100</a></div></td><td class="kataban">UV-100</td><td class="vari">—</td><td class="col-fixed-vocab">1</td><td class="mark-cell"><label class="cp-label"><input type="checkbox" data-no="15" data-name="UVレベルチェック・コンパクトミラー"></label></td></tr>
+<tr><td class="rownum">16</td><td><div class="pname">UVレベルチェック・リップミラー</div><div class="plink">楽天ページ: <a href="https://item.rakuten.co.jp/horiuchimirror/uv-101/" target="_blank" rel="noopener">uv-101</a></div></td><td class="kataban">UV-101</td><td class="vari">—</td><td class="col-fixed-vocab">1</td><td class="mark-cell"><label class="cp-label"><input type="checkbox" data-no="16" data-name="UVレベルチェック・リップミラー"></label></td></tr>
+<tr><td class="rownum">17</td><td><div class="pname">Plune.Mirror（プルーン）</div><div class="plink">楽天ページ: <a href="https://item.rakuten.co.jp/horiuchimirror/pl/" target="_blank" rel="noopener">pl</a></div></td><td class="kataban">PL-01NEW<br>PL-02NEW<br>PL-03NEW<br>PL-04NEW<br>PL-05NEW<br>PL-006NEW</td><td class="vari">手描きハート、カラフルお花、ｃｏｓｍｅ、ＯＨＡＮＡ、モノトーンドッグ、いろいろねこ</td><td class="col-fixed-vocab">6</td><td class="mark-cell"><label class="cp-label"><input type="checkbox" data-no="17" data-name="Plune.Mirror（プルーン）"></label></td></tr>
+<tr><td class="rownum">18</td><td><div class="pname">Maki-e Mirror（蒔絵ミラー）</div><div class="plink">楽天ページ: <a href="https://item.rakuten.co.jp/horiuchimirror/am-101-102-103-104/" target="_blank" rel="noopener">am-101-102-103-104</a></div></td><td class="kataban">AM-101<br>AM-102<br>AM-103<br>AM-104</td><td class="vari">浪裏富士、赤富士、富士と桜、舞妓</td><td class="col-fixed-vocab">4</td><td class="mark-cell"><label class="cp-label"><input type="checkbox" data-no="18" data-name="Maki-e Mirror（蒔絵ミラー）"></label></td></tr>
+<tr class="catrow"><td colspan="6">スタンドミラー・ハンドミラー</td></tr>
+<tr><td class="rownum">19</td><td><div class="pname">ナピュアミラー スタンド＆ハンドミラー</div><div class="plink">楽天ページ: <a href="https://item.rakuten.co.jp/horiuchimirror/am-008/" target="_blank" rel="noopener">am-008</a></div></td><td class="kataban">AM-008SV<br>EU-F1P8-W36D<br>SZ-E36R-1NXS</td><td class="vari">シルバー、ホワイト、ブラック</td><td class="col-fixed-vocab">3</td><td class="mark-cell"><label class="cp-label"><input type="checkbox" data-no="19" data-name="ナピュアミラー スタンド＆ハンドミラー"></label></td></tr>
+<tr><td class="rownum">20</td><td><div class="pname">ハイパービュー スタンド＆ハンドミラー</div><div class="plink">楽天ページ: <a href="https://item.rakuten.co.jp/horiuchimirror/am-78-79/" target="_blank" rel="noopener">am-78-79</a></div></td><td class="kataban">AM-78<br>AM-79</td><td class="vari">ホワイト、ブラック</td><td class="col-fixed-vocab">2</td><td class="mark-cell"><label class="cp-label"><input type="checkbox" data-no="20" data-name="ハイパービュー スタンド＆ハンドミラー"></label></td></tr>
+<tr><td class="rownum">21</td><td><div class="pname">細部が大きく見える 両面スタンドミラー</div><div class="plink">楽天ページ: <a href="https://item.rakuten.co.jp/horiuchimirror/ahw-02-07/" target="_blank" rel="noopener">ahw-02-07</a></div></td><td class="kataban">AHW-02<br>AHW-03<br>AHW-05<br>AHW-07</td><td class="vari">2倍、3倍、5倍、7倍</td><td class="col-fixed-vocab">4</td><td class="mark-cell"><label class="cp-label"><input type="checkbox" data-no="21" data-name="細部が大きく見える 両面スタンドミラー"></label></td></tr>
+<tr><td class="rownum">22</td><td><div class="pname">シェルダンスタンドミラー L</div><div class="plink">楽天ページ: <a href="https://item.rakuten.co.jp/horiuchimirror/am-68-69/" target="_blank" rel="noopener">am-68-69</a></div></td><td class="kataban">am-68-69</td><td class="vari">ブラック、ウッディ</td><td class="col-fixed-vocab">2</td><td class="mark-cell"><label class="cp-label"><input type="checkbox" data-no="22" data-name="シェルダンスタンドミラー L"></label></td></tr>
+<tr><td class="rownum">23</td><td><div class="pname">ナピュアミラー LED スタンドミラー</div><div class="plink">楽天ページ: <a href="https://item.rakuten.co.jp/horiuchimirror/am-90/" target="_blank" rel="noopener">am-90</a></div></td><td class="kataban">AM-90</td><td class="vari">—</td><td class="col-fixed-vocab">1</td><td class="mark-cell"><label class="cp-label"><input type="checkbox" data-no="23" data-name="ナピュアミラー LED スタンドミラー"></label></td></tr>
+<tr class="catrow"><td colspan="6">割れないミラー・壁掛けミラー</td></tr>
+<tr><td class="rownum">24</td><td><div class="pname">シールタイプ 割れないミラー ハート</div><div class="plink">楽天ページ: <a href="https://item.rakuten.co.jp/horiuchimirror/am-57/" target="_blank" rel="noopener">am-57</a></div></td><td class="kataban">AM-57</td><td class="vari">—</td><td class="col-fixed-vocab">1</td><td class="mark-cell"><label class="cp-label"><input type="checkbox" data-no="24" data-name="シールタイプ 割れないミラー ハート"></label></td></tr>
+<tr><td class="rownum">25</td><td><div class="pname">シールタイプ 割れないミラー スター</div><div class="plink">楽天ページ: <a href="https://item.rakuten.co.jp/horiuchimirror/am-58/" target="_blank" rel="noopener">am-58</a></div></td><td class="kataban">AM-58</td><td class="vari">—</td><td class="col-fixed-vocab">1</td><td class="mark-cell"><label class="cp-label"><input type="checkbox" data-no="25" data-name="シールタイプ 割れないミラー スター"></label></td></tr>
+<tr><td class="rownum">26</td><td><div class="pname">割れないミラー ビッグ</div><div class="plink">楽天ページ: <a href="https://item.rakuten.co.jp/horiuchimirror/am-59/" target="_blank" rel="noopener">am-59</a></div></td><td class="kataban">am-59</td><td class="vari">—</td><td class="col-fixed-vocab">1</td><td class="mark-cell"><label class="cp-label"><input type="checkbox" data-no="26" data-name="割れないミラー ビッグ"></label></td></tr>
+<tr><td class="rownum">27</td><td><div class="pname">割れないミラー ステンレスミラー</div><div class="plink">楽天ページ: <a href="https://item.rakuten.co.jp/horiuchimirror/am-60-63/" target="_blank" rel="noopener">am-60-63</a></div></td><td class="kataban">AM-60NEW<br>AM-61NEW<br>AM-62NEW<br>AM-63NEW</td><td class="vari">ピンク、ブルー、パープル、グリーン</td><td class="col-fixed-vocab">4</td><td class="mark-cell"><label class="cp-label"><input type="checkbox" data-no="27" data-name="割れないミラー ステンレスミラー"></label></td></tr>
+<tr><td class="rownum">28</td><td><div class="pname">ネコ形 壁掛けミラー Cat Mirror</div><div class="plink">楽天ページ: <a href="https://item.rakuten.co.jp/horiuchimirror/cm-01-06/" target="_blank" rel="noopener">cm-01-06</a></div></td><td class="kataban">CM-01<br>CM-02<br>CM-03<br>CM-04<br>CM-05<br>CM-06</td><td class="vari">窓際にゃんこ ブラック、窓際にゃんこ ホワイト、まどろみにゃんこ ブラック、まどろみにゃんこ ホワイト、にぎにぎにゃんこ ブラック、にぎにぎにゃんこ ホワイト</td><td class="col-fixed-vocab">6</td><td class="mark-cell"><label class="cp-label"><input type="checkbox" data-no="28" data-name="ネコ形 壁掛けミラー Cat Mirror"></label></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<footer class="report-footer">
+  <div class="container">
+    <p>合同会社ジャパングローバルトレイド 河野永治</p>
+    <p>info@japanglobaltrade.com / 080-5507-8435</p>
+  </div>
+</footer>
+
+<div class="summary-bar no-print">
+  <div class="summary-inner">
+    <div class="summary-count">クリックポストに選んだ商品 <strong id="cnt">0</strong> 品目</div>
+    <div class="summary-nums" id="nums">まだ選ばれていません</div>
+    <button class="btn" id="copy" disabled>選んだ商品をコピー</button>
+    <button class="btn ghost" id="clear">すべて外す</button>
+    <span class="copied" id="done" style="display:none;">コピーしました</span>
+  </div>
+</div>
+
+<script>
+(function () {
+  var KEY = 'horiuchi-clickpost-20260807';
+  var boxes = Array.prototype.slice.call(document.querySelectorAll('.cp-label input'));
+  var cnt = document.getElementById('cnt');
+  var nums = document.getElementById('nums');
+  var copyBtn = document.getElementById('copy');
+  var clearBtn = document.getElementById('clear');
+  var done = document.getElementById('done');
+
+  function saved() {
+    try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch (e) { return []; }
+  }
+  function store() {
+    try { localStorage.setItem(KEY, JSON.stringify(picked().map(function (b) { return b.dataset.no; }))); } catch (e) {}
+  }
+  function picked() {
+    return boxes.filter(function (b) { return b.checked; });
+  }
+  function render() {
+    var p = picked();
+    cnt.textContent = p.length;
+    nums.textContent = p.length ? 'No. ' + p.map(function (b) { return b.dataset.no; }).join(', ') : 'まだ選ばれていません';
+    copyBtn.disabled = p.length === 0;
+    boxes.forEach(function (b) { b.closest('tr').classList.toggle('checked', b.checked); });
+    done.style.display = 'none';
+  }
+
+  var pre = saved();
+  boxes.forEach(function (b) {
+    if (pre.indexOf(b.dataset.no) !== -1) { b.checked = true; }
+    b.addEventListener('change', function () { store(); render(); });
+  });
+
+  copyBtn.addEventListener('click', function () {
+    var p = picked();
+    var text = 'クリックポスト（日本郵便）で発送しているのは以下の ' + p.length + ' 品目です。\n\n'
+      + p.map(function (b) { return b.dataset.no + '. ' + b.dataset.name; }).join('\n');
+    function ok() { done.style.display = 'inline'; }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(ok, fallback);
+    } else { fallback(); }
+    function fallback() {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); ok(); } catch (e) {}
+      document.body.removeChild(ta);
+    }
+  });
+
+  clearBtn.addEventListener('click', function () {
+    boxes.forEach(function (b) { b.checked = false; });
+    store();
+    render();
+  });
+
+  render();
+})();
+</script>
+
+</body>
+</html>

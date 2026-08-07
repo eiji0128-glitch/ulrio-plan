@@ -20,3 +20,4 @@ Disallow: /tiktok-shop-japan-market-research-20260522.html
 Disallow: /bodybrush-review.html
 Disallow: /middleeight-return-receipt-manual.html
 Disallow: /middleeight-return-receipt-qr.png
+Disallow: /horiuchi-clickpost-check-20260807.html

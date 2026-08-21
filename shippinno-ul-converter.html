@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>シッピーノ アップロード用データ 作成ページ</title>
+<style>
+  :root{
+    --ink:#1a1d21; --sub:#5b6570; --line:#dfe4ea; --bg:#f4f6f8; --card:#fff;
+    --ok:#137a4a; --okbg:#e8f6ef; --warn:#8a5a00; --warnbg:#fff4e0; --ng:#b3261e; --ngbg:#fdecea;
+    --accent:#1f5fa9;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font-family:"Yu Gothic UI","Yu Gothic","Hiragino Kaku Gothic ProN","Meiryo",sans-serif;
+       font-size:16px; line-height:1.75;}
+  .wrap{max-width:860px;margin:0 auto;padding:24px 16px 80px}
+  header h1{font-size:24px;margin:0 0 6px}
+  header p{margin:0;color:var(--sub);font-size:15px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px;margin:18px 0}
+  h2{font-size:18px;margin:0 0 12px;padding-bottom:8px;border-bottom:2px solid var(--line)}
+  ol.steps{margin:0;padding-left:1.4em} ol.steps li{margin-bottom:6px}
+  #drop{border:3px dashed #b9c3cd;border-radius:12px;background:#fbfcfd;padding:44px 20px;text-align:center;cursor:pointer;transition:.15s}
+  #drop:hover,#drop.over{border-color:var(--accent);background:#eef4fb}
+  #drop .big{font-size:19px;font-weight:700;margin-bottom:6px}
+  #drop .small{color:var(--sub);font-size:14px}
+  button{font-family:inherit;font-size:16px;border-radius:8px;border:0;cursor:pointer}
+  .btn-main{background:var(--accent);color:#fff;padding:16px 28px;font-size:18px;font-weight:700;width:100%}
+  .btn-main:disabled{background:#b6bfc9;cursor:not-allowed}
+  .btn-sub{background:#fff;border:1px solid var(--line);color:var(--ink);padding:9px 16px;font-size:14px}
+  .msg{border-radius:8px;padding:14px 16px;margin:10px 0;border-left:6px solid}
+  .msg.ok{background:var(--okbg);border-color:var(--ok)}
+  .msg.warn{background:var(--warnbg);border-color:var(--warn)}
+  .msg.ng{background:var(--ngbg);border-color:var(--ng)}
+  .msg .t{font-weight:700;margin-bottom:4px}
+  .msg ul{margin:6px 0 0;padding-left:1.3em}
+  .nums{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+  .num{flex:1;min-width:130px;background:#f7f9fb;border:1px solid var(--line);border-radius:8px;padding:12px;text-align:center}
+  .num b{display:block;font-size:26px;line-height:1.2}
+  .num span{font-size:13px;color:var(--sub)}
+  table{border-collapse:collapse;width:100%;font-size:14px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:left}
+  th{background:#f2f5f8;font-weight:700}
+  td.mono{font-family:"Consolas","Menlo",monospace}
+  .scroll{max-height:340px;overflow:auto;border:1px solid var(--line);border-radius:8px}
+  .scroll table{border:0} .scroll th{position:sticky;top:0;z-index:1}
+  .hide{display:none}
+  .note{font-size:14px;color:var(--sub)}
+  .filename{font-family:"Consolas","Menlo",monospace;background:#f2f5f8;padding:3px 8px;border-radius:5px;display:inline-block}
+  .bad{color:var(--ng);font-weight:700}
+  footer{color:var(--sub);font-size:13px;text-align:center;margin-top:30px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>シッピーノ アップロード用データ 作成ページ</h1>
+  <p>佐川急便の発送実績（e飛伝3のCSV）から、シッピーノへ登録するファイルを作ります。</p>
+</header>
+
+<div class="card">
+  <h2>使い方</h2>
+  <ol class="steps">
+    <li>佐川急便「e飛伝3」から発送実績を <b>CSV</b> でダウンロードします（Excelで開く必要はありません）。</li>
+    <li>そのファイルを、下の枠に置きます。</li>
+    <li>中身が画面に出ますので、件数をご確認のうえ「ダウンロード」を押します。</li>
+    <li>できたファイルを、そのままシッピーノへアップロードします。</li>
+  </ol>
+  <p class="note" style="margin-top:12px">
+    ・<b>Excelで開かないでください。</b>Excelは長い送り状番号を「4.91312E+11」のように短くしてしまい、下の桁が消えます。このページは番号を文字として扱うので、桁が消えることはありません。<br>
+    ・できあがるファイルは<b>いつも1つだけ</b>です。取りちがえは起こりません。<br>
+    ・ファイルはこのパソコンの中だけで処理されます。<b>外部へは一切送信されません</b>（インターネットに繋がっていなくても動きます）。
+  </p>
+</div>
+
+<div class="card">
+  <h2>1. 佐川急便のCSVを置いてください</h2>
+  <div id="drop">
+    <div class="big">ここにファイルをドラッグ＆ドロップ</div>
+    <div class="small">またはクリックしてファイルを選ぶ</div>
+  </div>
+  <input type="file" id="file" accept=".csv,text/csv" class="hide">
+  <div id="fileinfo" class="note hide" style="margin-top:10px"></div>
+</div>
+
+<div id="result" class="hide"></div>
+
+<footer>合同会社ジャパングローバルトレイド ／ 不具合・使いにくい点は info@japanglobaltrade.com までお知らせください</footer>
+</div>
+
+<script>
+"use strict";
+
+/* ===== 出力の決まり（実際に登録できているファイルに合わせています） ===== */
+var OUT_HEADER = ["品名４", "お問い合せ送り状No."];  // 1列目=シッピーノ番号 / 2列目=送り状番号
+var OUT_BOM    = true;   // UTF-8 BOM 付き
+var OUT_EOL    = "\r\n";
+
+/* ===== 入力の列を見つけるための手がかり ===== */
+var COL_SHIPPINNO = ["品名4", "品名４", "シッピーノ番号"];
+var COL_TRACKING  = ["お問い合せ送り状No.", "お問い合わせ送り状No.", "送り状番号", "お問い合せ送り状NO"];
+
+var lastBlob = null, lastName = "";
+
+/* ---------- 文字コードを判定して読む ---------- */
+function decodeBytes(buf){
+  var b = new Uint8Array(buf);
+  if (b.length >= 3 && b[0]===0xEF && b[1]===0xBB && b[2]===0xBF){
+    return { text: new TextDecoder("utf-8").decode(b.subarray(3)), enc: "UTF-8 (BOM付き)" };
+  }
+  try {
+    return { text: new TextDecoder("utf-8", {fatal:true}).decode(b), enc: "UTF-8" };
+  } catch(e){
+    return { text: new TextDecoder("shift_jis").decode(b), enc: "Shift_JIS" };
+  }
+}
+
+/* ---------- CSVを行と列に分ける（"..." のくくりに対応） ---------- */
+function parseCSV(text){
+  var rows=[], row=[], cell="", q=false, i=0;
+  text = text.replace(/\r\n/g,"\n").replace(/\r/g,"\n");
+  while (i < text.length){
+    var c = text[i];
+    if (q){
+      if (c === '"'){
+        if (text[i+1] === '"'){ cell+='"'; i+=2; continue; }
+        q=false; i++; continue;
+      }
+      cell+=c; i++; continue;
+    }
+    if (c === '"'){ q=true; i++; continue; }
+    if (c === ','){ row.push(cell); cell=""; i++; continue; }
+    if (c === '\n'){ row.push(cell); rows.push(row); row=[]; cell=""; i++; continue; }
+    cell+=c; i++;
+  }
+  if (cell!=="" || row.length){ row.push(cell); rows.push(row); }
+  return rows.filter(function(r){ return r.some(function(v){ return String(v).trim()!==""; }); });
+}
+
+/* ---------- 見出しの表記ゆれを吸収する ---------- */
+function norm(s){
+  return String(s||"")
+    .replace(/^﻿/,"")
+    .replace(/[\s　]/g,"")
+    .replace(/[Ａ-Ｚａ-ｚ０-９．]/g, function(ch){
+      return String.fromCharCode(ch.charCodeAt(0)-0xFEE0);
+    })
+    .toLowerCase();
+}
+function findCol(header, cands){
+  var h = header.map(norm);
+  for (var i=0;i<cands.length;i++){
+    var c = norm(cands[i]);
+    var idx = h.indexOf(c);
+    if (idx >= 0) return idx;
+  }
+  for (var j=0;j<cands.length;j++){
+    var c2 = norm(cands[j]);
+    for (var k=0;k<h.length;k++){ if (h[k] && h[k].indexOf(c2)>=0) return k; }
+  }
+  return -1;
+}
+
+/* ---------- 画面表示のかけら ---------- */
+function esc(s){ return String(s).replace(/[&<>"]/g,function(m){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m];}); }
+function msg(kind, title, lines){
+  var body = (lines && lines.length) ? "<ul><li>"+lines.map(esc).join("</li><li>")+"</li></ul>" : "";
+  return '<div class="msg '+kind+'"><div class="t">'+esc(title)+'</div>'+body+'</div>';
+}
+function today(){
+  var d=new Date(), p=function(n){return (n<10?"0":"")+n;};
+  return d.getFullYear()+p(d.getMonth()+1)+p(d.getDate());
+}
+
+/* ---------- 本体 ---------- */
+function handleFile(f){
+  document.getElementById("fileinfo").className = "note";
+  document.getElementById("fileinfo").textContent = "読み込んだファイル： " + f.name;
+  var fr = new FileReader();
+  fr.onload = function(){ try{ process(decodeBytes(fr.result), f.name); }catch(e){ showFatal("ファイルを読み取れませんでした。", [String(e && e.message || e)]); } };
+  fr.onerror = function(){ showFatal("ファイルを読み取れませんでした。", ["もう一度お試しください。"]); };
+  fr.readAsArrayBuffer(f);
+}
+
+function showFatal(title, lines){
+  lastBlob = null;
+  document.getElementById("result").className = "card";
+  document.getElementById("result").innerHTML =
+    '<h2>2. 結果</h2>' + msg("ng", title, lines) +
+    '<p class="note">解決しない場合は、そのファイルを info@japanglobaltrade.com まで転送してください。</p>';
+}
+
+function process(dec, srcName){
+  var rows = parseCSV(dec.text);
+  if (rows.length < 2){ showFatal("データが入っていないようです。", ["行が見つかりませんでした（見出しのみ、または空のファイルです）。"]); return; }
+
+  var header = rows[0];
+  var iShip = findCol(header, COL_SHIPPINNO);
+  var iTrk  = findCol(header, COL_TRACKING);
+
+  if (iShip < 0 || iTrk < 0){
+    var miss = [];
+    if (iShip < 0) miss.push("シッピーノ番号の列（見出し「品名４」）が見つかりません。");
+    if (iTrk  < 0) miss.push("送り状番号の列（見出し「お問い合せ送り状No.」）が見つかりません。");
+    miss.push("読み取れた見出し： " + header.slice(0,50).join(" / "));
+    showFatal("列の見出しが見つかりませんでした。", miss);
+    return;
+  }
+
+  var body = rows.slice(1);
+  var out = [], skipped = [];
+  for (var r=0; r<body.length; r++){
+    var ship = String(body[r][iShip] != null ? body[r][iShip] : "").trim();
+    var trk  = String(body[r][iTrk]  != null ? body[r][iTrk]  : "").trim();
+    if (ship === ""){ skipped.push({ line:r+2, trk:trk }); continue; }   // シッピーノ経由でない出荷
+    out.push({ line:r+2, ship:ship, trk:trk });
+  }
+
+  /* ===== 点検 ===== */
+  var errors = [], warns = [];
+
+  if (out.length === 0){
+    showFatal("シッピーノの出荷が1件も入っていません。", ["「品名４」に値のある行が1件もありませんでした。ダウンロードした日付の範囲をご確認ください。"]);
+    return;
+  }
+
+  var byTrk = {}, byShip = {};
+  var empty = [], notNum = [], rounded = [], oddLen = [];
+  out.forEach(function(o){
+    if (o.trk === ""){ empty.push(o.line); }
+    else {
+      if (!/^[0-9]+$/.test(o.trk)){ notNum.push(o.line + "行目： " + o.trk); }
+      else {
+        if (/0000$/.test(o.trk)) rounded.push(o.line + "行目： " + o.trk);
+        if (o.trk.length !== 12) oddLen.push(o.line + "行目： " + o.trk + "（" + o.trk.length + "桁）");
+      }
+      (byTrk[o.trk] = byTrk[o.trk] || []).push(o.line);
+    }
+    (byShip[o.ship] = byShip[o.ship] || []).push(o.line);
+  });
+
+  function dupText(map, what){
+    var out2 = [];
+    Object.keys(map).forEach(function(v){
+      var ls = map[v];
+      if (ls.length < 2) return;
+      var head = ls.slice(0,4).join("行目, ") + "行目";
+      var tail = ls.length > 4 ? " ほか" + (ls.length-4) + "行" : "";
+      out2.push(v + " … " + ls.length + "件（" + head + tail + "）");
+    });
+    return out2;
+  }
+  function cap(list, n){
+    if (list.length <= n) return list;
+    return list.slice(0,n).concat(["ほか " + (list.length-n) + "件"]);
+  }
+
+  var dupTrk = dupText(byTrk), dupShip = dupText(byShip);
+
+  if (empty.length)   errors.push("送り状番号が空の行があります： " + cap(empty.map(function(l){return l+"行目";}),8).join(", "));
+  if (notNum.length)  errors.push("送り状番号に数字以外が入っています： " + cap(notNum,5).join(" ／ "));
+  if (dupTrk.length)  errors.push("同じ送り状番号が複数あります： " + cap(dupTrk,5).join(" ／ "));
+  if (dupShip.length) errors.push("同じシッピーノ番号が複数あります： " + cap(dupShip,5).join(" ／ "));
+
+  if (rounded.length) warns.push("下4桁が 0000 の番号があります。Excelで桁が消えた番号かもしれません： " + cap(rounded,5).join(" ／ "));
+  if (oddLen.length)  warns.push("12桁でない番号があります： " + cap(oddLen,5).join(" ／ "));
+
+  /* ===== 画面 ===== */
+  var html = '<h2>2. 結果</h2>';
+
+  html += '<div class="nums">'
+       +  '<div class="num"><b>'+out.length+'</b><span>作るファイルの件数</span></div>'
+       +  '<div class="num"><b>'+skipped.length+'</b><span>対象外として除いた行</span></div>'
+       +  '<div class="num"><b>'+body.length+'</b><span>読み込んだ行の合計</span></div>'
+       +  '</div>';
+
+  if (errors.length){
+    html += msg("ng","この内容ではファイルを作れません。直してからもう一度お願いします。", errors);
+  }
+  if (warns.length){
+    html += msg("warn","番号をご確認ください", warns);
+  }
+  if (!errors.length && !warns.length){
+    html += msg("ok","問題は見つかりませんでした。", ["送り状番号の重複・空欄・桁落ちのいずれもありません。"]);
+  }
+
+  if (skipped.length){
+    html += '<p class="note">※ 除いた '+skipped.length+' 行は「品名４」が空の行です。シッピーノを通していない出荷のため、アップロード対象外です。</p>';
+  }
+
+  html += '<h2 style="margin-top:22px">アップロードする中身</h2>'
+       +  '<div class="scroll"><table><thead><tr><th style="width:60px">行</th><th>'+esc(OUT_HEADER[0])+'（シッピーノ番号）</th><th>'+esc(OUT_HEADER[1])+'（送り状番号）</th></tr></thead><tbody>';
+  out.forEach(function(o){
+    var flag = (o.trk==="" || !/^[0-9]+$/.test(o.trk) || /0000$/.test(o.trk));
+    html += '<tr><td class="mono">'+o.line+'</td><td class="mono">'+esc(o.ship)+'</td><td class="mono'+(flag?' bad':'')+'">'+esc(o.trk || "（空）")+'</td></tr>';
+  });
+  html += '</tbody></table></div>';
+
+  /* ===== ファイル作成 ===== */
+  var lines = [OUT_HEADER.join(",")];
+  out.forEach(function(o){ lines.push(o.ship + "," + o.trk); });
+  var text = lines.join(OUT_EOL) + OUT_EOL;
+  var parts = OUT_BOM ? [new Uint8Array([0xEF,0xBB,0xBF]), text] : [text];
+
+  lastName = "佐川実績UL" + today() + "_" + out.length + "件.csv";
+
+  if (errors.length){
+    lastBlob = null;
+    html += '<p style="margin-top:18px"><button class="btn-main" disabled>ダウンロードできません</button></p>';
+  } else {
+    lastBlob = new Blob(parts, {type:"text/csv"});
+    if (warns.length){
+      html += '<p style="margin-top:18px"><label style="display:block;background:var(--warnbg);border:1px solid #e0c68a;border-radius:8px;padding:12px 14px;cursor:pointer">'
+           +  '<input type="checkbox" id="ack" style="width:18px;height:18px;vertical-align:-3px;margin-right:8px">'
+           +  '上の番号を佐川急便の画面と見くらべて、正しいことを確認しました</label></p>';
+    }
+    html += '<p style="margin-top:14px"><button class="btn-main" id="dl"'+(warns.length?' disabled':'')+'>このファイルをダウンロード（'+out.length+'件）</button></p>'
+         +  '<p class="note">ファイル名： <span class="filename">'+esc(lastName)+'</span><br>'
+         +  'このファイルをそのままシッピーノへアップロードしてください。<b>Excelで開いて保存し直さないでください。</b></p>';
+  }
+
+  html += '<p class="note" style="margin-top:16px">読み込んだファイルの文字コード： '+esc(dec.enc)+' ／ 元ファイル： '+esc(srcName)+'</p>'
+       +  '<p style="margin-top:10px"><button class="btn-sub" id="again">別のファイルを読み込む</button></p>';
+
+  var box = document.getElementById("result");
+  box.className = "card";
+  box.innerHTML = html;
+
+  var ack = document.getElementById("ack");
+  if (ack) ack.onchange = function(){ document.getElementById("dl").disabled = !ack.checked; };
+  var dl = document.getElementById("dl");
+  if (dl) dl.onclick = function(){
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(lastBlob);
+    a.download = lastName;
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function(){ URL.revokeObjectURL(a.href); }, 4000);
+  };
+  document.getElementById("again").onclick = function(){
+    document.getElementById("file").value = "";
+    box.className = "hide"; box.innerHTML = "";
+    document.getElementById("fileinfo").className = "note hide";
+    window.scrollTo({top:0, behavior:"smooth"});
+  };
+  box.scrollIntoView({behavior:"smooth", block:"start"});
+}
+
+/* ---------- 入力まわり ---------- */
+var drop = document.getElementById("drop"), input = document.getElementById("file");
+drop.onclick = function(){ input.click(); };
+input.onchange = function(){ if (input.files[0]) handleFile(input.files[0]); };
+["dragenter","dragover"].forEach(function(ev){
+  drop.addEventListener(ev, function(e){ e.preventDefault(); drop.classList.add("over"); });
+});
+["dragleave","drop"].forEach(function(ev){
+  drop.addEventListener(ev, function(e){ e.preventDefault(); drop.classList.remove("over"); });
+});
+drop.addEventListener("drop", function(e){
+  var f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+  if (f) handleFile(f);
+});
+window.addEventListener("dragover", function(e){ e.preventDefault(); });
+window.addEventListener("drop", function(e){ e.preventDefault(); });
+</script>
+</body>
+</html>

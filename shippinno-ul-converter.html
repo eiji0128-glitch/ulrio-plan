@@ -49,6 +49,7 @@
   .note{font-size:14px;color:var(--sub)}
   .filename{font-family:"Consolas","Menlo",monospace;background:#f2f5f8;padding:3px 8px;border-radius:5px;display:inline-block}
   .bad{color:var(--ng);font-weight:700}
+  .dup{color:var(--warn);font-weight:700}
   footer{color:var(--sub);font-size:13px;text-align:center;margin-top:30px}
 </style>
 </head>
@@ -270,9 +271,9 @@ function process(dec, srcName){
 
   if (empty.length)   errors.push("送り状番号が空の行があります： " + cap(empty.map(function(l){return l+"行目";}),8).join(", "));
   if (notNum.length)  errors.push("送り状番号に数字以外が入っています： " + cap(notNum,5).join(" ／ "));
-  if (dupTrk.length)  errors.push("同じ送り状番号が複数あります： " + cap(dupTrk,5).join(" ／ "));
   if (dupShip.length) errors.push("同じシッピーノ番号が複数あります： " + cap(dupShip,5).join(" ／ "));
 
+  if (dupTrk.length)  warns.push("同じ送り状番号が複数の注文に使われています。1つの送り状にまとめて出荷した場合は、このままで構いません。心当たりがない場合は、Excelで桁が消えている可能性がありますので、佐川急便の画面と見くらべてください： " + cap(dupTrk,5).join(" ／ "));
   if (rounded.length) warns.push("下4桁が 0000 の番号があります。Excelで桁が消えた番号かもしれません： " + cap(rounded,5).join(" ／ "));
   if (oddLen.length)  warns.push("12桁でない番号があります： " + cap(oddLen,5).join(" ／ "));
 
@@ -303,7 +304,9 @@ function process(dec, srcName){
        +  '<div class="scroll"><table><thead><tr><th style="width:60px">行</th><th>'+esc(OUT_HEADER[0])+'（シッピーノ番号）</th><th>'+esc(OUT_HEADER[1])+'（送り状番号）</th></tr></thead><tbody>';
   out.forEach(function(o){
     var flag = (o.trk==="" || !/^[0-9]+$/.test(o.trk) || /0000$/.test(o.trk));
-    html += '<tr><td class="mono">'+o.line+'</td><td class="mono">'+esc(o.ship)+'</td><td class="mono'+(flag?' bad':'')+'">'+esc(o.trk || "（空）")+'</td></tr>';
+    var isDup = (o.trk !== "" && byTrk[o.trk] && byTrk[o.trk].length > 1);
+    var cls = flag ? " bad" : (isDup ? " dup" : "");
+    html += '<tr><td class="mono">'+o.line+'</td><td class="mono">'+esc(o.ship)+'</td><td class="mono'+cls+'">'+esc(o.trk || "（空）")+(isDup?' <span style="font-weight:400;font-size:12px">（同じ番号が'+byTrk[o.trk].length+'件）</span>':'')+'</td></tr>';
   });
   html += '</tbody></table></div>';
 

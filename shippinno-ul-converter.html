@@ -243,7 +243,7 @@ function process(dec, srcName){
     else {
       if (!/^[0-9]+$/.test(o.trk)){ notNum.push(o.line + "行目： " + o.trk); }
       else {
-        if (/0000$/.test(o.trk)) rounded.push(o.line + "行目： " + o.trk);
+        if (/0000$/.test(o.trk)) rounded.push(o);
         if (o.trk.length !== 12) oddLen.push(o.line + "行目： " + o.trk + "（" + o.trk.length + "桁）");
       }
       (byTrk[o.trk] = byTrk[o.trk] || []).push(o.line);
@@ -251,11 +251,12 @@ function process(dec, srcName){
     (byShip[o.ship] = byShip[o.ship] || []).push(o.line);
   });
 
-  function dupText(map, what){
+  function dupText(map, pick){
     var out2 = [];
     Object.keys(map).forEach(function(v){
       var ls = map[v];
       if (ls.length < 2) return;
+      if (pick && !pick(v)) return;
       var head = ls.slice(0,4).join("行目, ") + "行目";
       var tail = ls.length > 4 ? " ほか" + (ls.length-4) + "行" : "";
       out2.push(v + " … " + ls.length + "件（" + head + tail + "）");
@@ -267,15 +268,25 @@ function process(dec, srcName){
     return list.slice(0,n).concat(["ほか " + (list.length-n) + "件"]);
   }
 
-  var dupTrk = dupText(byTrk), dupShip = dupText(byShip);
+  /* 同じ送り状番号でも、下4桁が 0000 のものはExcelで桁が消えた形とみなして止める（8月17日の事故がこの形）。
+     それ以外の重複は、1つの送り状にまとめて出荷した場合がありうるので止めない。 */
+  function isCut(v){ return /0000$/.test(v); }
+  var dupTrkCut  = dupText(byTrk, isCut);
+  var dupTrkKeep = dupText(byTrk, function(v){ return !isCut(v); });
+  var dupShip    = dupText(byShip);
+  var cutTrk = {};
+  Object.keys(byTrk).forEach(function(v){ if (byTrk[v].length > 1 && isCut(v)) cutTrk[v] = true; });
+  var roundedOnly = rounded.filter(function(o){ return !cutTrk[o.trk]; })
+                           .map(function(o){ return o.line + "行目： " + o.trk; });
 
-  if (empty.length)   errors.push("送り状番号が空の行があります： " + cap(empty.map(function(l){return l+"行目";}),8).join(", "));
-  if (notNum.length)  errors.push("送り状番号に数字以外が入っています： " + cap(notNum,5).join(" ／ "));
-  if (dupShip.length) errors.push("同じシッピーノ番号が複数あります： " + cap(dupShip,5).join(" ／ "));
+  if (empty.length)     errors.push("送り状番号が空の行があります： " + cap(empty.map(function(l){return l+"行目";}),8).join(", "));
+  if (notNum.length)    errors.push("送り状番号に数字以外が入っています： " + cap(notNum,5).join(" ／ "));
+  if (dupTrkCut.length) errors.push("同じ送り状番号が複数あり、その番号の下4桁が 0000 です。Excelで桁が消えた形です。佐川急便のCSVをもう一度ダウンロードし、Excelで開かずにそのまま置いてください： " + cap(dupTrkCut,5).join(" ／ "));
+  if (dupShip.length)   errors.push("同じシッピーノ番号が複数あります： " + cap(dupShip,5).join(" ／ "));
 
-  if (dupTrk.length)  warns.push("同じ送り状番号が複数の注文に使われています。1つの送り状にまとめて出荷した場合は、このままで構いません。心当たりがない場合は、Excelで桁が消えている可能性がありますので、佐川急便の画面と見くらべてください： " + cap(dupTrk,5).join(" ／ "));
-  if (rounded.length) warns.push("下4桁が 0000 の番号があります。Excelで桁が消えた番号かもしれません： " + cap(rounded,5).join(" ／ "));
-  if (oddLen.length)  warns.push("12桁でない番号があります： " + cap(oddLen,5).join(" ／ "));
+  if (dupTrkKeep.length) warns.push("同じ送り状番号が複数の注文に使われています。1つの送り状にまとめて出荷した場合は、このままで構いません。心当たりがない場合は、佐川急便の画面と見くらべてください： " + cap(dupTrkKeep,5).join(" ／ "));
+  if (roundedOnly.length) warns.push("下4桁が 0000 の番号があります。Excelで桁が消えた番号かもしれません： " + cap(roundedOnly,5).join(" ／ "));
+  if (oddLen.length)     warns.push("12桁でない番号があります： " + cap(oddLen,5).join(" ／ "));
 
   /* ===== 画面 ===== */
   var html = '<h2>2. 結果</h2>';

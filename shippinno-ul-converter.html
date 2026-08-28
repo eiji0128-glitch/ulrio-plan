@@ -112,6 +112,36 @@ var OUT_EOL    = "\r\n";
 var COL_SHIPPINNO = ["品名4", "品名４", "シッピーノ番号"];
 var COL_TRACKING  = ["お問い合せ送り状No.", "お問い合わせ送り状No.", "送り状番号", "お問い合せ送り状NO"];
 
+/* ===== 当社分の行を見分けるための手がかり =====
+   e飛伝3の発送実績は出荷日ごとに一括で出るため、他社様の行も混ざります。
+   見分けは2つの手がかりを組み合わせて行います。片方が崩れても、もう片方が気づかせます。
+
+   手がかり1: 品名４にシッピーノ番号があるか
+     シッピーノを通した出荷は「品名４」にシッピーノ番号が入ります。
+     実物6件（2026年8月時点）はすべて次の形でした。
+       202608200810-jhx5c7tiurs4
+       └ 12桁の数字（年月日時分） ┘ └ 英数字12文字（小文字と数字） ┘
+     公式の桁数・文字種の定めは公表されていないため、後ろは「英数字6文字以上」と
+     緩めに見たうえで、前半12桁が日時として成立するかまでを確かめます。
+     （他社様の管理コードが偶然この条件まで満たすことは、まず起きません）
+
+   手がかり2: ご依頼主電話番号が当社の番号か
+     当社の出荷は、店舗（ポップアップリビング／ＵＬＲＩＯ／楽天市場 デッフィ 等）が
+     変わっても、ご依頼主電話番号は当社の番号です。店舗が増えても直す必要がありません。 */
+var OUR_TEL = "0926000190";   // 当社のご依頼主電話番号（記号を除いた形）
+var COL_SENDER1 = ["ご依頼主名称１", "ご依頼主名称1"];
+var COL_SENDER2 = ["ご依頼主名称２", "ご依頼主名称2"];
+var COL_SENDERTEL = ["ご依頼主電話番号"];
+
+function looksLikeStamp(s){          // 12桁が年月日時分として成立するか
+  var y=+s.slice(0,4), mo=+s.slice(4,6), d=+s.slice(6,8), h=+s.slice(8,10), mi=+s.slice(10,12);
+  return y>=2000 && y<=2099 && mo>=1 && mo<=12 && d>=1 && d<=31 && h<=23 && mi<=59;
+}
+function isShippinnoNo(v){
+  var m = /^([0-9]{12})-([0-9a-zA-Z]{6,})$/.exec(v);
+  return !!m && looksLikeStamp(m[1]);
+}
+
 var lastBlob = null, lastName = "";
 
 /* ---------- 文字コードを判定して読む ---------- */
@@ -202,6 +232,9 @@ function showFatal(title, lines){
     '<p class="note">解決しない場合は、そのファイルを info@japanglobaltrade.com まで転送してください。</p>';
 }
 
+/* 選んだ行の状態を持っておく（画面の作り直しでも消えないように） */
+var rowsState = null;
+
 function process(dec, srcName){
   var rows = parseCSV(dec.text);
   if (rows.length < 2){ showFatal("データが入っていないようです。", ["行が見つかりませんでした（見出しのみ、または空のファイルです）。"]); return; }
@@ -209,6 +242,9 @@ function process(dec, srcName){
   var header = rows[0];
   var iShip = findCol(header, COL_SHIPPINNO);
   var iTrk  = findCol(header, COL_TRACKING);
+  var iSnd1 = findCol(header, COL_SENDER1);
+  var iSnd2 = findCol(header, COL_SENDER2);
+  var iTel  = findCol(header, COL_SENDERTEL);
 
   if (iShip < 0 || iTrk < 0){
     var miss = [];
@@ -219,23 +255,52 @@ function process(dec, srcName){
     return;
   }
 
+  function cell(row, i){ return (i >= 0 && row[i] != null) ? String(row[i]).trim() : ""; }
+
+  var telKnown = (iTel >= 0);
   var body = rows.slice(1);
-  var out = [], skipped = [];
+  var cands = [], hidden = 0;
   for (var r=0; r<body.length; r++){
-    var ship = String(body[r][iShip] != null ? body[r][iShip] : "").trim();
-    var trk  = String(body[r][iTrk]  != null ? body[r][iTrk]  : "").trim();
-    if (ship === ""){ skipped.push({ line:r+2, trk:trk }); continue; }   // シッピーノ経由でない出荷
-    out.push({ line:r+2, ship:ship, trk:trk });
+    var row  = body[r];
+    var ship = cell(row, iShip);
+    var trk  = cell(row, iTrk);
+    var snd  = (cell(row, iSnd1) + cell(row, iSnd2)).replace(/\s+/g, "");
+    var tel  = cell(row, iTel).replace(/[^0-9]/g, "");
+    var telOurs = (tel !== "" && tel === OUR_TEL);
+    var hasNo   = isShippinnoNo(ship);
+    /* 表に出すのは、品名４に値がある行と、当社の荷物の行。
+       他社様の、シッピーノを通していない行（品名４が空で電話も違う）は表に出さない。 */
+    if (ship === "" && !telOurs){ hidden++; continue; }
+    cands.push({
+      line: r+2, ship: ship, trk: trk, sender: snd,
+      hasNo: hasNo, telOurs: telOurs, on: hasNo
+    });
   }
 
-  /* ===== 点検 ===== */
-  var errors = [], warns = [];
-
-  if (out.length === 0){
-    showFatal("シッピーノの出荷が1件も入っていません。", ["「品名４」に値のある行が1件もありませんでした。ダウンロードした日付の範囲をご確認ください。"]);
+  if (!cands.some(function(c){ return c.hasNo; })){
+    showFatal("シッピーノへ登録する出荷が1件も見つかりませんでした。", [
+      "「品名４」にシッピーノ番号（例 202608261933-8jrqwywirokk）の形をした値が1件もありませんでした。",
+      "ダウンロードした日付の範囲をご確認ください。それでも同じ場合は、アップロードはなさらずに、そのファイルを info@japanglobaltrade.com まで転送してください。"
+    ]);
     return;
   }
 
+  rowsState = { cands: cands, hidden: hidden, total: body.length, telKnown: telKnown, enc: dec.enc, src: srcName };
+  render(true);
+}
+
+function render(first){
+  var st = rowsState;
+  var cands = st.cands;
+  var out      = cands.filter(function(c){ return c.on; });
+  var onNoNo   = cands.filter(function(c){ return  c.on && !c.hasNo; });                     // 番号の形でないのに選ばれている
+  var onNoTel  = st.telKnown ? cands.filter(function(c){ return c.on && !c.telOurs; }) : []; // ご依頼主が当社でないのに選ばれている
+  var offMine  = cands.filter(function(c){ return !c.on && !c.hasNo &&  c.telOurs; }).length;// 当社の荷物だがシッピーノ番号なし
+  var offOther = cands.filter(function(c){ return !c.on && !c.hasNo && !c.telOurs; }).length;// 他社様の行
+  var offHasNo = cands.filter(function(c){ return !c.on &&  c.hasNo; }).length;              // 手で外された当社の出荷
+
+  /* ===== 点検（選ばれている行だけを見ます） ===== */
+  var errors = [], warns = [];
   var byTrk = {}, byShip = {};
   var empty = [], notNum = [], rounded = [], oddLen = [];
   out.forEach(function(o){
@@ -279,22 +344,25 @@ function process(dec, srcName){
   var roundedOnly = rounded.filter(function(o){ return !cutTrk[o.trk]; })
                            .map(function(o){ return o.line + "行目： " + o.trk; });
 
-  if (empty.length)     errors.push("送り状番号が空の行があります： " + cap(empty.map(function(l){return l+"行目";}),8).join(", "));
-  if (notNum.length)    errors.push("送り状番号に数字以外が入っています： " + cap(notNum,5).join(" ／ "));
-  if (dupTrkCut.length) errors.push("同じ送り状番号が複数あり、その番号の下4桁が 0000 です。Excelで桁が消えた形です。佐川急便のCSVをもう一度ダウンロードし、Excelで開かずにそのまま置いてください： " + cap(dupTrkCut,5).join(" ／ "));
-  if (dupShip.length)   errors.push("同じシッピーノ番号が複数あります： " + cap(dupShip,5).join(" ／ "));
+  if (out.length === 0)  errors.push("行が1つも選ばれていません。下の表で、登録する行にチェックを入れてください。");
+  if (empty.length)      errors.push("送り状番号が空の行があります： " + cap(empty.map(function(l){return l+"行目";}),8).join(", "));
+  if (notNum.length)     errors.push("送り状番号に数字以外が入っています： " + cap(notNum,5).join(" ／ "));
+  if (dupTrkCut.length)  errors.push("同じ送り状番号が複数あり、その番号の下4桁が 0000 です。Excelで桁が消えた形です。佐川急便のCSVをもう一度ダウンロードし、Excelで開かずにそのまま置いてください： " + cap(dupTrkCut,5).join(" ／ "));
+  if (dupShip.length)    errors.push("同じシッピーノ番号が複数あります： " + cap(dupShip,5).join(" ／ "));
 
-  if (dupTrkKeep.length) warns.push("同じ送り状番号が複数の注文に使われています。1つの送り状にまとめて出荷した場合は、このままで構いません。心当たりがない場合は、佐川急便の画面と見くらべてください： " + cap(dupTrkKeep,5).join(" ／ "));
+  if (onNoNo.length)      warns.push("シッピーノ番号の形をしていない行が選ばれています。他社様の行かもしれません： " + cap(onNoNo.map(function(o){ return o.line + "行目： " + (o.ship || "（空）"); }),5).join(" ／ "));
+  if (onNoTel.length)     warns.push("ご依頼主が当社ではない行が選ばれています。他社様の行かもしれません： " + cap(onNoTel.map(function(o){ return o.line + "行目： " + (o.sender || "（記載なし）"); }),5).join(" ／ "));
+  if (dupTrkKeep.length)  warns.push("同じ送り状番号が複数の注文に使われています。1つの送り状にまとめて出荷した場合は、このままで構いません。心当たりがない場合は、佐川急便の画面と見くらべてください： " + cap(dupTrkKeep,5).join(" ／ "));
   if (roundedOnly.length) warns.push("下4桁が 0000 の番号があります。Excelで桁が消えた番号かもしれません： " + cap(roundedOnly,5).join(" ／ "));
-  if (oddLen.length)     warns.push("12桁でない番号があります： " + cap(oddLen,5).join(" ／ "));
+  if (oddLen.length)      warns.push("12桁でない番号があります： " + cap(oddLen,5).join(" ／ "));
 
   /* ===== 画面 ===== */
   var html = '<h2>2. 結果</h2>';
 
   html += '<div class="nums">'
        +  '<div class="num"><b>'+out.length+'</b><span>作るファイルの件数</span></div>'
-       +  '<div class="num"><b>'+skipped.length+'</b><span>対象外として除いた行</span></div>'
-       +  '<div class="num"><b>'+body.length+'</b><span>読み込んだ行の合計</span></div>'
+       +  '<div class="num"><b>'+(st.total-out.length)+'</b><span>対象外として除いた行</span></div>'
+       +  '<div class="num"><b>'+st.total+'</b><span>読み込んだ行の合計</span></div>'
        +  '</div>';
 
   if (errors.length){
@@ -304,20 +372,39 @@ function process(dec, srcName){
     html += msg("warn","番号をご確認ください", warns);
   }
   if (!errors.length && !warns.length){
-    html += msg("ok","問題は見つかりませんでした。", ["送り状番号の重複・空欄・桁落ちのいずれもありません。"]);
+    html += msg("ok","問題は見つかりませんでした。", ["当社の出荷 "+out.length+" 件を選びました。送り状番号の重複・空欄・桁落ちのいずれもありません。"]);
   }
 
-  if (skipped.length){
-    html += '<p class="note">※ 除いた '+skipped.length+' 行は「品名４」が空の行です。シッピーノを通していない出荷のため、アップロード対象外です。</p>';
-  }
+  var notes = [];
+  if (offOther) notes.push('他社様の行とみられる '+offOther+' 行は、はじめからチェックを外してあります。そのままで構いません。');
+  if (offMine)  notes.push('当社の出荷ですが、シッピーノ番号のない '+offMine+' 行があります。シッピーノを通していない出荷ですので、登録の対象外です。');
+  if (offHasNo) notes.push('当社の出荷のうち '+offHasNo+' 行は、チェックを外していただいています。');
+  if (st.hidden) notes.push('他社様の、シッピーノを通していない '+st.hidden+' 行は、下の表には出していません。');
+  if (!st.telKnown) notes.push('この佐川のファイルには「ご依頼主電話番号」の列がありませんでした。ご依頼主による確認ができていません。');
+  if (notes.length) html += '<p class="note">※ ' + notes.join('<br>※ ') + '</p>';
 
   html += '<h2 style="margin-top:22px">アップロードする中身</h2>'
-       +  '<div class="scroll"><table><thead><tr><th style="width:60px">行</th><th>'+esc(OUT_HEADER[0])+'（シッピーノ番号）</th><th>'+esc(OUT_HEADER[1])+'（送り状番号）</th></tr></thead><tbody>';
-  out.forEach(function(o){
-    var flag = (o.trk==="" || !/^[0-9]+$/.test(o.trk) || /0000$/.test(o.trk));
-    var isDup = (o.trk !== "" && byTrk[o.trk] && byTrk[o.trk].length > 1);
-    var cls = flag ? " bad" : (isDup ? " dup" : "");
-    html += '<tr><td class="mono">'+o.line+'</td><td class="mono">'+esc(o.ship)+'</td><td class="mono'+cls+'">'+esc(o.trk || "（空）")+(isDup?' <span style="font-weight:400;font-size:12px">（同じ番号が'+byTrk[o.trk].length+'件）</span>':'')+'</td></tr>';
+       +  '<p class="note" style="margin-bottom:8px">当社の出荷にはあらかじめチェックが入っています。変えたいときはチェックを付け外ししてください。</p>'
+       +  '<div class="scroll"><table><thead><tr>'
+       +  '<th style="width:52px">登録</th><th style="width:52px">行</th><th style="width:150px">ご依頼主</th>'
+       +  '<th>'+esc(OUT_HEADER[0])+'（シッピーノ番号）</th><th>'+esc(OUT_HEADER[1])+'（送り状番号）</th>'
+       +  '</tr></thead><tbody>';
+  cands.forEach(function(c, idx){
+    var flag  = c.on && (c.trk==="" || !/^[0-9]+$/.test(c.trk) || /0000$/.test(c.trk));
+    var isDup = c.on && c.trk !== "" && byTrk[c.trk] && byTrk[c.trk].length > 1;
+    var cls   = flag ? " bad" : (isDup ? " dup" : "");
+    var rowStyle = c.on ? "" : ' style="background:#f7f8f9;color:#8a929b"';
+    var why = "";
+    if (!c.hasNo && c.telOurs)  why = ' <span style="font-size:12px">（当社の出荷ですが、シッピーノ番号がありません）</span>';
+    else if (!c.hasNo)          why = ' <span style="font-size:12px">（シッピーノ番号の形ではありません）</span>';
+    else if (st.telKnown && !c.telOurs) why = ' <span style="font-size:12px">（ご依頼主が当社ではありません）</span>';
+    html += '<tr'+rowStyle+'>'
+         +  '<td style="text-align:center"><input type="checkbox" class="pick" data-i="'+idx+'"'+(c.on?' checked':'')+' style="width:18px;height:18px"></td>'
+         +  '<td class="mono">'+c.line+'</td>'
+         +  '<td>'+esc(c.sender || "（記載なし）")+(st.telKnown && !c.telOurs ? '' : '')+'</td>'
+         +  '<td class="mono">'+esc(c.ship || "（空）")+why+'</td>'
+         +  '<td class="mono'+cls+'">'+esc(c.trk || "（空）")+(isDup?' <span style="font-weight:400;font-size:12px">（同じ番号が'+byTrk[c.trk].length+'件）</span>':'')+'</td>'
+         +  '</tr>';
   });
   html += '</tbody></table></div>';
 
@@ -344,12 +431,25 @@ function process(dec, srcName){
          +  'このファイルをそのままシッピーノへアップロードしてください。<b>Excelで開いて保存し直さないでください。</b></p>';
   }
 
-  html += '<p class="note" style="margin-top:16px">読み込んだファイルの文字コード： '+esc(dec.enc)+' ／ 元ファイル： '+esc(srcName)+'</p>'
+  html += '<p class="note" style="margin-top:16px">読み込んだファイルの文字コード： '+esc(st.enc)+' ／ 元ファイル： '+esc(st.src)+'</p>'
        +  '<p style="margin-top:10px"><button class="btn-sub" id="again">別のファイルを読み込む</button></p>';
 
   var box = document.getElementById("result");
   box.className = "card";
   box.innerHTML = html;
+
+  Array.prototype.forEach.call(box.querySelectorAll(".pick"), function(cb){
+    cb.onchange = function(){
+      rowsState.cands[Number(cb.getAttribute("data-i"))].on = cb.checked;
+      var y = window.scrollY;
+      var sc = box.querySelector(".scroll");
+      var sy = sc ? sc.scrollTop : 0;
+      render();
+      window.scrollTo(0, y);
+      var sc2 = document.getElementById("result").querySelector(".scroll");
+      if (sc2) sc2.scrollTop = sy;
+    };
+  });
 
   var ack = document.getElementById("ack");
   if (ack) ack.onchange = function(){ document.getElementById("dl").disabled = !ack.checked; };
@@ -363,11 +463,13 @@ function process(dec, srcName){
   };
   document.getElementById("again").onclick = function(){
     document.getElementById("file").value = "";
+    rowsState = null;
     box.className = "hide"; box.innerHTML = "";
     document.getElementById("fileinfo").className = "note hide";
     window.scrollTo({top:0, behavior:"smooth"});
   };
-  box.scrollIntoView({behavior:"smooth", block:"start"});
+
+  if (first) box.scrollIntoView({behavior:"smooth", block:"start"});
 }
 
 /* ---------- 入力まわり ---------- */

@@ -324,10 +324,10 @@ footer{margin-top:30px;color:var(--ink3);font-size:11.5px;line-height:1.75}
 <div class="statusline">
   <span class="cnt" id="cnt"></span>
   <span class="actives" id="activeTags"></span>
-  <button class="shr" id="shareBtn" type="button">この絞り込みのリンクをコピー</button>
+  <button class="shr" id="shareBtn" type="button" hidden>この条件をリンクで送る</button>
 </div>
 <div class="shrbox" id="shrbox" hidden>
-  <p>下のリンクをコピーして送ってください。開いた人には、いまの絞り込みがそのまま出ます。</p>
+  <p>下のリンクをコピーして送ってください。開いた人の画面にも、いまと同じ日付・条件で出ます。</p>
   <input id="shrUrl" type="text" readonly>
   <button class="btn-2" id="shrClose" type="button">閉じる</button>
 </div>
@@ -563,6 +563,7 @@ for(var i=0;i<DAYS.length;i++){
   if(N0.getFullYear()===2026&&N0.getMonth()+1===DAYS[i].m&&N0.getDate()===DAYS[i].d) todayIdx=i;
 }
 var st={day:(todayIdx>=0?todayIdx:0),cats:[],onlyOpen:false,nowOnly:false,onlyNear:false,onlyWalk:false,q:""};
+var day0=st.day;   /* 最初に出ている日。ここから変えたときだけ「リンクで送る」を出す */
 
 function walkMin(s){return Math.round(s.km*1000/70);}
 function fmtH(v){var h=Math.floor(v),m=Math.round((v-h)*60);return h+":"+(m<10?"0":"")+m;}
@@ -789,9 +790,19 @@ function render(){
 
   var hs=stateToHash();
   try{history.replaceState(null,"",hs?("#"+hs):(location.pathname+location.search));}catch(e){}
+
+  /* 「この条件をリンクで送る」は、送る中身があるときだけ出す。
+     ＝分類や条件を選んだとき、または最初に出ていた日から日付を変えたとき。
+     Claudeの枠の中ではリンクを渡せないので出さない（枠のアドレスは人に渡せないため）。 */
   var sb=document.getElementById("shareBtn");
-  if(sb) sb.removeAttribute("data-done");
-  if(sb) sb.textContent="この絞り込みのリンクをコピー";
+  if(sb){
+    var canShare=!inFrame&&(act.length>0||st.day!==day0);
+    sb.hidden=!canShare;
+    if(canShare){
+      sb.removeAttribute("data-done");
+      sb.textContent="この条件をリンクで送る";
+    }
+  }
 }
 
 /* ---------- memo ---------- */
@@ -866,13 +877,12 @@ function shareUrl(){
 /* Claudeの画面（枠の中）ではリンクの共有ができない（枠のアドレスは人に渡せない）ので隠す。
    このHTMLをふつうのウェブアドレスに置いたときだけ出る。 */
 var inFrame=false; try{inFrame=(window.self!==window.top);}catch(e){inFrame=true;}
-if(inFrame) document.getElementById("shareBtn").hidden=true;
 var shrBox=document.getElementById("shrbox");
 document.getElementById("shrClose").onclick=function(){shrBox.hidden=true;};
 document.getElementById("shareBtn").onclick=function(){
   var btn=this,u=shareUrl();
   function done(){
-    btn.textContent="コピーしました";
+    btn.textContent="リンクをコピーしました";
     btn.setAttribute("data-done","1");
     shrBox.hidden=true;
   }

@@ -564,8 +564,11 @@ var todayIdx=-1,N0=jstNow();
 for(var i=0;i<DAYS.length;i++){
   if(N0.getFullYear()===2026&&N0.getMonth()+1===DAYS[i].m&&N0.getDate()===DAYS[i].d) todayIdx=i;
 }
-var st={day:(todayIdx>=0?todayIdx:0),cats:[],onlyOpen:false,nowOnly:false,onlyNear:false,onlyWalk:false,q:""};
-var day0=st.day;   /* 最初に出ている日。ここから変えたときだけ「リンクで送る」を出す */
+/* onlyOpen は最初からオン。日付を選んだら、その日に休みの店は消えるのが自然なため。
+   オフにすれば休みの店も出る（そのときは「この日は休み」と表示される）。 */
+var st={day:(todayIdx>=0?todayIdx:0),cats:[],onlyOpen:true,nowOnly:false,onlyNear:false,onlyWalk:false,q:""};
+var day0=st.day;    /* 最初に出ている日。ここから変えたときだけ「リンクで送る」を出す */
+var open0=st.onlyOpen;  /* 最初の状態。ここから変えたときだけ「リンクで送る」を出す */
 
 function walkMin(s){return Math.round(s.km*1000/70);}
 function fmtH(v){var h=Math.floor(v),m=Math.round((v-h)*60);return h+":"+(m<10?"0":"")+m;}
@@ -791,7 +794,8 @@ function render(){
     tw.appendChild(b);
   });
   var fn=document.getElementById("fabN");
-  fn.textContent=act.length; fn.hidden=act.length===0;
+  var n=act.length; if(st.onlyOpen===open0) n--;   /* 既定でオンのぶんは数えない */
+  fn.textContent=n; fn.hidden=n<=0;
 
   var hs=stateToHash();
   try{history.replaceState(null,"",hs?("#"+hs):(location.pathname+location.search));}catch(e){}
@@ -801,7 +805,9 @@ function render(){
      Claudeの枠の中ではリンクを渡せないので出さない（枠のアドレスは人に渡せないため）。 */
   var sb=document.getElementById("shareBtn");
   if(sb){
-    var canShare=!inFrame&&(act.length>0||st.day!==day0);
+    var moved = st.cats.length>0 || st.nowOnly || st.onlyNear || st.onlyWalk ||
+                st.q.trim()!=="" || st.day!==day0 || st.onlyOpen!==open0;
+    var canShare=!inFrame&&moved;
     sb.hidden=!canShare;
     if(canShare){
       sb.removeAttribute("data-done");
@@ -844,7 +850,7 @@ function stateToHash(){
   var p=[];
   if(st.day) p.push("d="+st.day);
   if(st.cats.length) p.push("c="+st.cats.map(encodeURIComponent).join(","));
-  if(st.onlyOpen) p.push("o=1");
+  p.push("o="+(st.onlyOpen?"1":"0"));
   if(st.nowOnly) p.push("n=1");
   if(st.onlyNear) p.push("r=1");
   if(st.onlyWalk) p.push("w=1");
@@ -867,7 +873,8 @@ function applyHash(){
   });
   if(o.d!==undefined){var d=parseInt(o.d,10); if(d>=0&&d<DAYS.length) st.day=d;}
   if(o.c) st.cats=o.c.split(",").filter(function(c){return CATS.indexOf(c)>=0;});
-  st.onlyOpen=(o.o==="1"); st.nowOnly=(o.n==="1");
+  if(o.o!==undefined) st.onlyOpen=(o.o==="1");   /* 書いていない古いリンクは既定（オン）のまま */
+  st.nowOnly=(o.n==="1");
   st.onlyNear=(o.r==="1"); st.onlyWalk=(o.w==="1");
   st.q=o.q||"";
   syncControls();
@@ -911,6 +918,7 @@ document.getElementById("shareBtn").onclick=function(){
 };
 window.addEventListener("hashchange",function(){applyHash();render();});
 
+syncControls();   /* ハッシュが無くても、スイッチの見た目を初期状態に合わせる */
 applyHash();
 render();
 </script>

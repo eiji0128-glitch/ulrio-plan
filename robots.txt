@@ -23,3 +23,4 @@ Disallow: /middleeight-return-receipt-qr.png
 Disallow: /horiuchi-clickpost-check-20260807.html
 Disallow: /shippinno-ul-converter.html
 Disallow: /shippinno-ul-manual.html
+Disallow: /goto-kaidashi.html

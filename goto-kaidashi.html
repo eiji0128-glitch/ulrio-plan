@@ -1,0 +1,903 @@
+<!doctype html><html lang="ja"><head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#EFF3F1">
+<title>五島合宿 買い出しマップ</title>
+<style>:root{color-scheme:light dark}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head><body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EFF3F1; --card:#FFFFFF; --card2:#F4F8F6;
+  --ink:#0C1A17; --ink2:#485B57; --ink3:#7A8C88;
+  --line:#DCE5E2; --line2:#EAF0EE;
+  --accent:#0A6A58; --accent-soft:#DFEFEA; --on-accent:#FFFFFF;
+  --ok:#0E6A45; --ok-bg:#DAEFE3;
+  --ng:#9C3626; --ng-bg:#F7E2DC;
+  --warn:#84600F; --warn-bg:#F8EED6;
+  --sh-1:0 1px 2px rgba(12,26,23,.05);
+  --sh-2:0 2px 6px rgba(12,26,23,.08), 0 12px 28px -14px rgba(12,26,23,.25);
+  --sh-3:0 -2px 10px rgba(12,26,23,.10), 0 -18px 40px -20px rgba(12,26,23,.35);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0A1413; --card:#131F1D; --card2:#1A2724;
+    --ink:#E7EEEB; --ink2:#A8BAB5; --ink3:#7C8E8A;
+    --line:#25332F; --line2:#1D2A27;
+    --accent:#54CFB0; --accent-soft:#12312A; --on-accent:#06201B;
+    --ok:#6BD6A0; --ok-bg:#0F2F23;
+    --ng:#EE9179; --ng-bg:#361B15;
+    --warn:#E0BE6C; --warn-bg:#2F2614;
+    --sh-1:0 1px 2px rgba(0,0,0,.5);
+    --sh-2:0 2px 6px rgba(0,0,0,.5), 0 12px 28px -14px rgba(0,0,0,.8);
+    --sh-3:0 -2px 10px rgba(0,0,0,.5), 0 -18px 40px -20px rgba(0,0,0,.9);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0A1413; --card:#131F1D; --card2:#1A2724;
+  --ink:#E7EEEB; --ink2:#A8BAB5; --ink3:#7C8E8A;
+  --line:#25332F; --line2:#1D2A27;
+  --accent:#54CFB0; --accent-soft:#12312A; --on-accent:#06201B;
+  --ok:#6BD6A0; --ok-bg:#0F2F23;
+  --ng:#EE9179; --ng-bg:#361B15;
+  --warn:#E0BE6C; --warn-bg:#2F2614;
+  --sh-1:0 1px 2px rgba(0,0,0,.5);
+  --sh-2:0 2px 6px rgba(0,0,0,.5), 0 12px 28px -14px rgba(0,0,0,.8);
+  --sh-3:0 -2px 10px rgba(0,0,0,.5), 0 -18px 40px -20px rgba(0,0,0,.9);
+}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Yu Gothic",system-ui,sans-serif;
+  font-size:16px;line-height:1.7;-webkit-text-size-adjust:100%;
+}
+button,input,textarea,a{font-family:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.app{max-width:720px;margin:0 auto;padding:0 14px 132px}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-variant-numeric:tabular-nums}
+
+/* ===== header ===== */
+.hd{padding:22px 0 14px}
+.hd .kicker{
+  font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 7px;font-weight:600;
+}
+.hd h1{font-size:26px;line-height:1.25;margin:0 0 8px;font-weight:900;letter-spacing:.01em}
+.hd p{margin:0;font-size:13.5px;color:var(--ink2);line-height:1.65}
+.hd b{color:var(--ink)}
+
+/* ===== alerts (accordion) ===== */
+.alerts{display:grid;gap:6px;margin:14px 0 0}
+.al{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.al>button{
+  width:100%;display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;
+  background:none;border:0;padding:12px 13px;text-align:left;cursor:pointer;color:var(--ink);
+  font-size:13.5px;line-height:1.5;min-height:48px;
+}
+.al .mark{
+  width:22px;height:22px;border-radius:50%;background:var(--ng-bg);color:var(--ng);
+  display:grid;place-items:center;font-size:13px;font-weight:900;flex:0 0 auto;
+}
+.al .tw{font-weight:700}
+.al .cv{color:var(--ink3);font-size:11px;transition:transform .18s ease}
+.al[open] .cv{transform:rotate(180deg)}
+.al .body{padding:0 13px 13px 45px;font-size:13px;color:var(--ink2);line-height:1.72}
+.al .body b{color:var(--ink)}
+
+/* ===== sticky day bar ===== */
+.daybar{
+  position:sticky;top:0;z-index:30;background:var(--bg);
+  margin:16px -14px 0;padding:9px 14px 9px;border-bottom:1px solid var(--line);
+}
+.daybar.stuck{box-shadow:var(--sh-1)}
+.days{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.days::-webkit-scrollbar{display:none}
+.day{
+  flex:0 0 auto;min-width:62px;min-height:48px;border:1px solid var(--line);
+  background:var(--card);color:var(--ink2);border-radius:10px;padding:6px 10px;cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;line-height:1.15;
+}
+.day .dd{font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:15px}
+.day .dw{font-size:11px;color:var(--ink3)}
+.day.sun .dw,.day.sat .dw{color:var(--ng)}
+.day[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.day[aria-pressed="true"] .dw{color:var(--on-accent);opacity:.85}
+.day .td{font-family:"IBM Plex Mono",monospace;font-size:8.5px;letter-spacing:.1em;color:var(--ng)}
+.day[aria-pressed="true"] .td{color:var(--on-accent)}
+
+/* ===== status line under daybar ===== */
+.statusline{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:12px 0 2px}
+.cnt{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--ink3)}
+.cnt b{color:var(--ink);font-weight:700;font-size:14px}
+.actives{display:flex;gap:6px;flex-wrap:wrap}
+.tagx{
+  display:inline-flex;align-items:center;gap:6px;background:var(--accent-soft);color:var(--accent);
+  border-radius:999px;padding:4px 6px 4px 11px;font-size:12px;font-weight:700;border:0;cursor:pointer;
+  min-height:30px;
+}
+.tagx span.x{font-size:14px;line-height:1;opacity:.75}
+.shr{
+  margin-left:auto;border:1px solid var(--line);background:var(--card2);color:var(--ink2);
+  border-radius:999px;padding:5px 12px;font-size:12px;font-weight:700;cursor:pointer;min-height:30px;
+}
+.shr[data-done="1"]{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+.shrbox{margin:8px 0 0;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:11px 12px}
+.shrbox p{margin:0 0 7px;font-size:12.5px;color:var(--ink2)}
+.shrbox input{
+  width:100%;border:1px solid var(--line);background:var(--card2);color:var(--ink);
+  border-radius:8px;padding:9px 10px;font-size:13px;margin:0 0 8px;
+}
+
+/* ===== area ===== */
+.area{margin:22px 0 0}
+.area-h{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin:0 0 3px}
+.area-h h2{font-size:17px;font-weight:900;margin:0;letter-spacing:.02em}
+.area-h .km{
+  font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--accent);
+  background:var(--accent-soft);padding:3px 8px;border-radius:999px;font-weight:600;
+}
+.area-h+p{margin:0 0 10px;font-size:12.5px;color:var(--ink3);line-height:1.6}
+
+/* ===== card ===== */
+.list{display:grid;gap:9px}
+.card{background:var(--card);border:1px solid var(--line2);border-radius:12px;padding:13px;box-shadow:var(--sh-1)}
+.card.pick{border-color:var(--accent-soft);box-shadow:var(--sh-2)}
+.c-top{display:flex;align-items:flex-start;gap:9px;justify-content:space-between}
+.c-name{font-size:17px;font-weight:700;line-height:1.4;margin:0;letter-spacing:.01em}
+.c-state{
+  flex:0 0 auto;font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;
+  padding:4px 9px;border-radius:999px;white-space:nowrap;margin-top:2px;
+}
+.c-state.ok{color:var(--ok);background:var(--ok-bg)}
+.c-state.ng{color:var(--ng);background:var(--ng-bg)}
+.c-state.q{color:var(--warn);background:var(--warn-bg)}
+.c-tags{display:flex;gap:5px;flex-wrap:wrap;margin:7px 0 0}
+.t{font-size:11px;font-weight:700;padding:3px 8px;border-radius:999px;letter-spacing:.02em}
+.t.now{background:var(--ok);color:var(--card)}
+.t.pick{background:var(--accent-soft);color:var(--accent)}
+.t.plain{background:var(--card2);color:var(--ink2);border:1px solid var(--line)}
+.c-facts{
+  margin:8px 0 0;font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--ink3);
+  font-variant-numeric:tabular-nums;
+}
+.c-desc{margin:7px 0 0;font-size:13.5px;color:var(--ink2);line-height:1.7}
+.c-desc .why{color:var(--ink);font-weight:500}
+.c-acts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0 0}
+.act{
+  display:flex;align-items:center;justify-content:center;gap:6px;min-height:44px;
+  border:1px solid var(--line);background:var(--card2);color:var(--ink2);
+  border-radius:9px;text-decoration:none;font-size:13px;font-weight:500;padding:0 8px;text-align:center;
+}
+.act.tel{font-family:"IBM Plex Mono",monospace;font-weight:600}
+.act.map{color:var(--ink2)}
+.act.go{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:700}
+.act.go2{background:var(--card);border-color:var(--accent);color:var(--accent);font-weight:700}
+.act.dim{opacity:.45;pointer-events:none}
+.empty{color:var(--ink3);font-size:14px;padding:26px 4px;text-align:center;line-height:1.8}
+
+/* ===== FAB ===== */
+.fab{
+  position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:40;
+  display:inline-flex;align-items:center;gap:9px;min-height:52px;padding:0 20px;
+  background:var(--accent);color:var(--on-accent);border:0;border-radius:999px;
+  font-size:15px;font-weight:700;cursor:pointer;box-shadow:var(--sh-2);
+}
+.fab .n{
+  background:var(--on-accent);color:var(--accent);border-radius:999px;
+  min-width:22px;height:22px;display:grid;place-items:center;font-size:12px;font-weight:900;padding:0 5px;
+}
+.fab .n[hidden]{display:none}
+
+/* ===== bottom sheet ===== */
+.scrim{position:fixed;inset:0;background:rgba(8,18,16,.45);z-index:50;border:0;padding:0}
+.sheet{
+  position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--card);
+  border-radius:18px 18px 0 0;box-shadow:var(--sh-3);max-height:86vh;display:flex;flex-direction:column;
+  padding-bottom:env(safe-area-inset-bottom);
+}
+.sh-grip{width:40px;height:4px;border-radius:999px;background:var(--line);margin:9px auto 0;flex:0 0 auto}
+.sh-head{display:flex;align-items:center;justify-content:space-between;padding:10px 16px 6px;flex:0 0 auto}
+.sh-head h2{margin:0;font-size:17px;font-weight:900}
+.sh-x{
+  border:0;background:var(--card2);color:var(--ink2);border-radius:999px;width:36px;height:36px;
+  font-size:17px;cursor:pointer;line-height:1;
+}
+.sh-body{overflow-y:auto;padding:6px 16px 14px;-webkit-overflow-scrolling:touch}
+.sh-lab{
+  font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink3);margin:14px 0 8px;font-weight:600;
+}
+.sh-lab:first-child{margin-top:4px}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{
+  border:1px solid var(--line);background:var(--card2);color:var(--ink2);border-radius:999px;
+  padding:0 14px;min-height:40px;font-size:13.5px;cursor:pointer;line-height:1;
+  display:inline-flex;align-items:center;
+}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:700}
+.togs{display:grid;gap:2px}
+.tog{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;
+  padding:11px 2px;min-height:48px;border-bottom:1px solid var(--line2);font-size:14.5px;color:var(--ink);
+}
+.tog:last-child{border-bottom:0}
+.tog small{display:block;font-size:12px;color:var(--ink3);line-height:1.5;font-weight:400}
+.sw{position:relative;width:46px;height:28px;flex:0 0 auto}
+.sw input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer}
+.sw i{
+  position:absolute;inset:0;background:var(--line);border-radius:999px;transition:background .15s ease;
+  pointer-events:none;
+}
+.sw i::after{
+  content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;
+  background:var(--card);transition:transform .15s ease;box-shadow:var(--sh-1);
+}
+.sw input:checked+i{background:var(--accent)}
+.sw input:checked+i::after{transform:translateX(18px)}
+.sw input:focus-visible+i{outline:2px solid var(--accent);outline-offset:2px}
+.srch{
+  width:100%;border:1px solid var(--line);background:var(--card2);color:var(--ink);
+  border-radius:10px;padding:12px 13px;font-size:15px;min-height:48px;
+}
+.srch::placeholder{color:var(--ink3)}
+.sh-foot{
+  display:grid;grid-template-columns:auto 1fr;gap:9px;padding:11px 16px 14px;
+  border-top:1px solid var(--line2);flex:0 0 auto;background:var(--card);
+}
+.btn-2{
+  border:1px solid var(--line);background:var(--card2);color:var(--ink2);border-radius:10px;
+  min-height:48px;padding:0 16px;font-size:14px;cursor:pointer;
+}
+.btn-1{
+  border:0;background:var(--accent);color:var(--on-accent);border-radius:10px;
+  min-height:48px;font-size:15px;font-weight:700;cursor:pointer;
+}
+
+/* ===== panels ===== */
+.panel{margin:26px 0 0;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 14px}
+.panel h2{margin:0 0 4px;font-size:17px;font-weight:900}
+.panel .note{margin:0 0 12px;font-size:12.5px;color:var(--ink3);line-height:1.65}
+.memo{
+  display:block;width:100%;min-height:200px;resize:vertical;border:1px solid var(--line);
+  background:var(--card2);color:var(--ink);border-radius:10px;padding:12px 13px;
+  font-size:15px;line-height:1.85;
+}
+.memo::placeholder{color:var(--ink3);line-height:1.8}
+.foot-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px}
+.saved{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink3);flex:1 1 auto}
+.calls{display:grid;gap:0}
+.callrow{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  border-bottom:1px solid var(--line2);padding:11px 0;min-height:56px;
+}
+.callrow:last-child{border-bottom:0}
+.callrow .cn{font-size:14.5px;font-weight:700;line-height:1.4}
+.callrow .cq{font-size:12px;color:var(--ink3);line-height:1.55}
+.callrow a{
+  font-family:"IBM Plex Mono",monospace;font-weight:600;color:var(--accent);text-decoration:none;
+  white-space:nowrap;font-size:13.5px;border:1px solid var(--accent);border-radius:8px;
+  padding:9px 12px;flex:0 0 auto;
+}
+footer{margin-top:30px;color:var(--ink3);font-size:11.5px;line-height:1.75}
+
+@media (min-width:600px){
+  .app{padding-bottom:120px}
+  .hd h1{font-size:32px}
+  .c-acts{grid-template-columns:repeat(4,1fr)}
+  .sheet{left:50%;transform:translateX(-50%);max-width:640px;border-radius:18px 18px 0 0}
+}
+/* アプリ内ブラウザ（LINE・Instagram・X など）は、画面のいちばん下に
+   丸いツールバーを重ねて描く。ページ側からは見えないので、指で触る端末では
+   下に置くものをまとめて一段上げ、必ずよける。実測でツールバーの高さは
+   画面の下から約 65px なので、88px 上げれば確実に外れる。 */
+@media (pointer:coarse){
+  .app{padding-bottom:200px}
+  .fab{bottom:calc(88px + env(safe-area-inset-bottom))}
+  .sh-foot{padding-bottom:88px}
+}
+@media (prefers-reduced-motion:reduce){
+  .al .cv,.sw i,.sw i::after{transition:none}
+}
+</style>
+
+<div class="app">
+<header class="hd">
+  <p class="kicker">Shinkamigoto&nbsp;/&nbsp;Nakadori Island</p>
+  <h1>五島合宿 買い出しマップ</h1>
+  <p>宿は <b>villa itsutsu</b>（浦桑郷374-1）／<b>10/2金〜10/7水</b>・10名。<br>
+     距離と時間は<b>宿からの車の道のり</b>です。</p>
+</header>
+
+<div class="alerts">
+  <details class="al"><summary style="display:none"></summary></details>
+</div>
+
+<div class="daybar" id="daybar">
+  <div class="days" id="days"></div>
+</div>
+
+<div class="statusline">
+  <span class="cnt" id="cnt"></span>
+  <span class="actives" id="activeTags"></span>
+  <button class="shr" id="shareBtn" type="button">この絞り込みのリンクをコピー</button>
+</div>
+<div class="shrbox" id="shrbox" hidden>
+  <p>下のリンクをコピーして送ってください。開いた人には、いまの絞り込みがそのまま出ます。</p>
+  <input id="shrUrl" type="text" readonly>
+  <button class="btn-2" id="shrClose" type="button">閉じる</button>
+</div>
+
+<div id="results"></div>
+
+<section class="panel">
+  <h2>メモ</h2>
+  <p class="note">買うもの、頼まれたもの、電話で聞いたこと。打てば自動で保存されます。保存先はこの端末の中だけです。</p>
+  <textarea class="memo" id="memo" aria-label="メモ" placeholder="例
+・氷は多めに（サウナ用）
+・炭はビッグヒライで。18時までに
+・望月酒店に電話 → 日曜は◯◯"></textarea>
+  <div class="foot-row">
+    <span class="saved" id="memoState"></span>
+    <button class="btn-2" id="memoClear" type="button">全部消す</button>
+  </div>
+</section>
+
+<section class="panel">
+  <h2>出発前に電話で確かめる店</h2>
+  <p class="note">Googleマップに営業時間が出ていない店と、10人ぶんの予約が要る店です。</p>
+  <div class="calls" id="calls"></div>
+</section>
+
+<footer>
+  出どころ：Googleマップ（営業時間・定休日）とNAVITIME（店舗一覧・電話番号）を突き合わせ、道のりはOpenStreetMapの経路計算をGoogleマップの実測4区間で補正。<br>
+  離島の店は営業時間が変わりやすいので、遠出の前に一本電話を入れると確実です。調査日：2026年9月4〜5日。
+</footer>
+</div>
+
+<button class="fab" id="fab" type="button" aria-haspopup="dialog">絞り込み<span class="n" id="fabN" hidden>0</span></button>
+
+<button class="scrim" id="scrim" hidden aria-label="閉じる"></button>
+<div class="sheet" id="sheet" hidden role="dialog" aria-modal="true" aria-label="絞り込み">
+  <div class="sh-grip"></div>
+  <div class="sh-head">
+    <h2>絞り込み</h2>
+    <button class="sh-x" id="sheetX" type="button" aria-label="閉じる">✕</button>
+  </div>
+  <div class="sh-body">
+    <p class="sh-lab">買うもの・行き先</p>
+    <div class="chips" id="chips"></div>
+    <p class="sh-lab">条件</p>
+    <div class="togs">
+      <label class="tog">この日に開く店だけ<span class="sw"><input type="checkbox" id="onlyOpen"><i></i></span></label>
+      <label class="tog">今この時間に開いている店だけ<small>本当の今の曜日と時刻で判定します</small><span class="sw"><input type="checkbox" id="nowOnly"><i></i></span></label>
+      <label class="tog">車5分以内だけ<span class="sw"><input type="checkbox" id="onlyNear"><i></i></span></label>
+      <label class="tog">歩いて行ける店だけ<small>宿から徒歩15分以内</small><span class="sw"><input type="checkbox" id="onlyWalk"><i></i></span></label>
+    </div>
+    <p class="sh-lab">言葉でさがす</p>
+    <input class="srch" id="q" type="search" placeholder="店名・買いたいもの（例：炭、刺身）" aria-label="言葉でさがす">
+  </div>
+  <div class="sh-foot">
+    <button class="btn-2" id="resetBtn" type="button">リセット</button>
+    <button class="btn-1" id="applyBtn" type="button">結果を見る</button>
+  </div>
+</div>
+
+<script>
+/* 曜日 index: 0=月 1=火 2=水 3=木 4=金 5=土 6=日 */
+var DAILY=function(o,c){return [[o,c],[o,c],[o,c],[o,c],[o,c],[o,c],[o,c]];};
+function except(o,c,off){var a=DAILY(o,c);off.forEach(function(d){a[d]=null;});return a;}
+var WEEKDAY=function(o,c){return [[o,c],[o,c],[o,c],[o,c],[o,c],null,null];};
+var VILLA="32.9874111,129.0828319";
+
+var S=[
+/* ===== 浦桑 ===== */
+{n:"カミティバリュー",a:"浦桑",c:["スーパー"],km:0.75,min:2,tel:"0959-54-2415",ad:"浦桑郷1396-1",cid:"18231838984337570546",
+ h:DAILY(9,20),pick:1,buy:"生鮮・精肉・鮮魚・惣菜・酒・日用品。<span class='why'>宿からいちばん近い総合スーパー。館内にセリアも入っています。</span>"},
+{n:"Aコープ浦桑店",a:"浦桑",c:["スーパー"],km:0.50,min:2,tel:"0959-54-2500",ad:"浦桑郷1375-1",cid:"11156706673485844047",
+ h:DAILY(9,19),buy:"生鮮・惣菜・弁当。<span class='why'>魚が安いと評判。刺身を買って宿で飲むならここ。</span>"},
+{n:"ローソン・ポプラ 上五島浦桑店",a:"浦桑",c:["コンビニ","ATM・銀行"],km:0.56,min:2,tel:"0959-43-6052",ad:"浦桑郷1379-1",cid:"3482227048000991674",
+ h:DAILY(6,24),pick:1,buy:"酒・タバコ・ローソン銀行ATM。<span class='why'>歩ける距離で夜0時まで。夜食の駆け込み先。</span>"},
+{n:"マツモトキヨシ 浦桑店",a:"浦桑",c:["ドラッグ"],km:0.78,min:2,tel:"0959-43-6455",ad:"浦桑郷3-1",cid:"18396973486637542692",
+ h:DAILY(8,23),pick:1,badge:"無休",buy:"薬・日用品・飲料・菓子。<span class='why'>年中無休で夜23時まで。二日酔いの薬も夜に買えます。</span>"},
+{n:"ビッグヒライ上五島店",a:"浦桑",c:["ホームセンター"],km:0.87,min:3,tel:"0959-54-2335",ad:"浦桑郷浦浜1400",cid:"9765574222879352421",
+ h:DAILY(9,18),pick:1,buy:"炭・着火剤・工具・日用品。<span class='why'>宿にBBQコンロと焚き火台があります。炭まわりはここが最寄り。18時で閉まります。</span>"},
+{n:"Seria つつみカミティ店",a:"浦桑",c:["ホームセンター"],km:0.75,min:2,tel:"0959-54-1600",ad:"浦桑郷1396-1 カミティ内",cid:"17552716349538885143",
+ h:DAILY(9.5,20),buy:"紙皿・紙コップ・割り箸・トング。<span class='why'>10人分の使い捨て食器はここで揃います。</span>"},
+{n:"ひまわり（精肉・鮮魚）",a:"浦桑",c:["精肉","鮮魚"],km:0.52,min:2,tel:"0959-54-1524",ad:"浦桑郷1377-1",cid:"1165748469972336758",
+ h:except(9,17,[5]),buy:"肉・魚。<span class='why'>BBQの肉を頼むならここ。土曜が休みです。</span>"},
+{n:"グッドモーニング・浦桑店",a:"浦桑",c:["パン"],km:0.41,min:2,tel:"0959-54-2010",ad:"浦桑郷1373-2",cid:"9719579547486569093",
+ h:except(7,12,[2,5]),buy:"焼きたてパン。<span class='why'>朝7時から昼12時まで。水曜と土曜は休み。</span>"},
+{n:"望月酒店",a:"浦桑",c:["酒"],km:1.03,min:3,tel:"0959-54-1076",ad:"浦桑郷1042",cid:"10412483965733058349",h:null,
+ buy:"地酒・焼酎。<span class='why'>宿から最も近い酒屋。営業時間が公開されていないので要電話。</span>"},
+{n:"菓子の木",a:"浦桑",c:["菓子"],km:0.57,min:2,tel:"0959-54-1118",ad:"浦桑郷1385",cid:"1917018442667261095",h:except(10,16,[0]),buy:"洋菓子・手みやげ。月曜休み。"},
+{n:"ENEOS 新魚目SS",a:"浦桑",c:["ガソリン"],km:0.54,min:2,tel:"0959-54-1168",ad:"浦桑郷1376",cid:"9920323248349586787",
+ h:except(7,19,[6]),pick:1,buy:"給油。<span class='why'>宿から最寄りの給油所。ただし日曜定休です。</span>"},
+{n:"ホワイト急便 カミティ店",a:"浦桑",c:["その他"],km:0.75,min:2,tel:"0959-54-2415",ad:"浦桑郷1396-1 カミティ内",
+ h:except(10,18,[0,4]),buy:"クリーニング。月曜と金曜が休み。"},
+{n:"国丸書店",a:"浦桑",c:["その他"],km:0.47,min:2,tel:"0959-54-1615",ad:"浦桑郷157-2",cid:"10727039263386840922",
+ h:[[10,20],[10,20],[10,20],[10,20],[10,20],[10,17],[10,17]],buy:"本・雑誌・文具。土日は17時まで。"},
+{n:"前田食堂",a:"浦桑",c:["飲食"],km:0.26,min:1,tel:"0959-54-2064",ad:"浦桑郷1383",cid:"10947742913288071168",h:null,
+ pick:1,buy:"定食屋。ちゃんぽん・白身魚フライ定食。<span class='why'>宿から歩いて4分。地元の人が集まる食堂です。</span>"},
+{n:"居酒屋 さつま屋",a:"浦桑",c:["飲食"],km:0.57,min:2,tel:"0959-54-2883",ad:"浦桑郷1319",cid:"9933674912882865181",
+ h:DAILY(17.5,23),pick:1,buy:"居酒屋。<span class='why'>歩いて行ける居酒屋。10人なら必ず予約を。</span>"},
+{n:"食事処 海舟",a:"浦桑",c:["飲食"],km:0.54,min:2,tel:"0959-54-2606",ad:"浦桑郷1380",cid:"6139674095400794944",
+ h:except(17.5,22,[0]),buy:"和食。夜だけ。月曜休み。"},
+{n:"寿司処 真寿美",a:"浦桑",c:["飲食"],km:0.52,min:2,tel:"0959-54-1995",ad:"浦桑郷1377-1",cid:"15273298625212247700",
+ h:DAILY(11.5,14),buy:"寿司。<span class='why'>昼だけで、夜はやっていません。</span>"},
+{n:"川康",a:"浦桑",c:["飲食"],km:0.45,min:2,tel:"0959-54-2752",ad:"浦桑郷1373-1",cid:"4339745476353891850",
+ h:except(11,20.5,[1]),buy:"ラーメン。火曜休み。"},
+{n:"詩季",a:"浦桑",c:["飲食"],km:0.58,min:2,tel:"0959-54-2903",ad:"浦桑郷1387",cid:"1223501907477722369",
+ h:except(11,20,[6]),buy:"食堂。日曜休み。"},
+{n:"和の屋 浦桑店",a:"浦桑",c:["飲食"],km:0.47,min:2,tel:"0959-54-1661",ad:"浦桑郷157-1",cid:"14273767835984759961",
+ h:except(11,16,[2]),buy:"お好み焼き。水曜休み。"},
+{n:"肉処堀切",a:"浦桑",c:["飲食"],km:0.53,min:2,tel:"0959-54-1956",ad:"浦桑郷62-1",cid:"4315985794079781321",h:null,buy:"焼肉・ホルモン。"},
+{n:"やきとり五城",a:"浦桑",c:["飲食"],km:0.67,min:2,tel:"0959-54-1666",ad:"浦桑郷1340",cid:"4843998994960916266",h:null,buy:"焼鳥。"},
+{n:"cafeセブンプラス",a:"浦桑",c:["飲食"],km:0.53,min:2,tel:"0959-54-2077",ad:"浦桑郷1380",cid:"9636954348759865311",h:null,buy:"カフェ。"},
+{n:"ワンダー",a:"浦桑",c:["飲食"],km:0.53,min:2,tel:"0959-54-2270",ad:"浦桑郷62-2",cid:"7498973497673664712",h:DAILY(10,15),buy:"ハンバーガー・軽食。<span class='why'>昼の15時で閉まります。夜はやっていません。</span>"},
+{n:"ムーンハーフ",a:"浦桑",c:["飲食"],km:0.62,min:2,tel:"0959-54-1227",ad:"浦桑郷915-7",cid:"3017220316436332744",h:null,buy:"スナック。二次会用。"},
+
+/* ===== 青方 ===== */
+{n:"エレナFC上五島店",a:"青方",c:["スーパー"],km:2.1,min:4,tel:"0959-52-2234",ad:"青方郷2338-1",cid:"6758076618737493378",
+ h:DAILY(9,20),pick:1,buy:"食品全般・酒・日用品。<span class='why'>島でいちばん品揃えが良いスーパー。まとめ買いはここ一択。</span>"},
+{n:"ローソン 上五島青方店",a:"青方",c:["コンビニ","ATM・銀行"],km:2.3,min:4,tel:"0959-42-5072",ad:"青方郷1717-37",cid:"504415862742038397",
+ h:DAILY(0,24),pick:1,badge:"24時間",buy:"酒・タバコ・ローソン銀行ATM。<span class='why'>島で唯一の24時間営業。深夜に何か切らしたらここ。</span>"},
+{n:"ドラッグストアコスモス 上五島店",a:"青方",c:["ドラッグ"],km:2.5,min:5,tel:"0959-43-1001",ad:"青方郷505-2",cid:"11940087194341234352",
+ h:DAILY(9,20),buy:"薬・日用品に加えて食品と飲料も安い。"},
+{n:"ほっともっと 上五島店",a:"青方",c:["弁当・惣菜"],km:2.2,min:4,tel:"0959-52-4718",ad:"青方郷1110-37",cid:"17364238129590130649",
+ h:DAILY(6,20),pick:1,buy:"弁当。<span class='why'>朝6時から。10人分の朝食をまとめて頼むならここ。前日に電話予約が確実。</span>"},
+{n:"オサダ 上五島店",a:"青方",c:["ホームセンター"],km:2.1,min:4,tel:"0959-52-2086",ad:"青方郷1702",cid:"7101781166023501617",
+ h:DAILY(9,19),buy:"ホームセンター。炭・BBQ用品・日用品。ダイソーとキャンドゥも同じ建物。"},
+{n:"ダイソー 上五島店",a:"青方",c:["ホームセンター"],km:2.1,min:4,tel:"0959-52-2086",ad:"青方郷1702",cid:"7461403089603463107",
+ h:DAILY(9,20),buy:"100円ショップ。オサダの中。"},
+{n:"ショッピングセンター マルコ",a:"青方",c:["スーパー"],km:2.1,min:4,tel:"0959-52-2125",ad:"青方郷2297",cid:"11186191027157411713",h:null,buy:"スーパー。"},
+{n:"喜久屋精肉店",a:"青方",c:["精肉"],km:2.1,min:4,tel:"0959-52-3219",ad:"青方郷1110-3",cid:"1343974111759668940",
+ h:except(7,18,[6]),buy:"精肉。朝7時から。日曜休み。"},
+{n:"魚安",a:"青方",c:["鮮魚"],km:2.2,min:4,tel:"0959-52-2420",ad:"青方郷1332",cid:"2320606944475103732",h:null,buy:"鮮魚。"},
+{n:"石田鮮魚店",a:"青方",c:["鮮魚","精肉"],km:1.5,min:4,tel:"0959-42-3296",ad:"七目郷114",cid:"11727076583383065808",h:null,
+ buy:"鮮魚・精肉。<span class='why'>宿から2番目に近い魚屋。</span>"},
+{n:"パンランドかんちゃん",a:"青方",c:["パン"],km:2.1,min:4,tel:"0959-52-8499",ad:"青方郷2281",cid:"3425855047261970467",h:null,buy:"パン。"},
+{n:"菓子工房クローバー",a:"青方",c:["菓子"],km:2.4,min:5,tel:"0959-42-0810",ad:"七目郷956-13",cid:"8910760446378773938",h:except(11,18,[3]),buy:"洋菓子・手みやげ。木曜休み。"},
+{n:"吉村酒店（ホワイト急便）",a:"青方",c:["酒"],km:1.8,min:4,tel:"0959-52-2090",ad:"青方郷1395-11",cid:"4550003897691051515",
+ h:[null,[9,18.5],[9,18.5],[9,18.5],[9,18.5],[9,18],[9,18]],buy:"酒店。月曜休み。"},
+{n:"寺田分店",a:"青方",c:["ホームセンター"],km:2.1,min:4,tel:"0959-52-2009",ad:"青方郷2304",cid:"7856927548521117069",h:null,
+ buy:"釣具・アウトドア用品。<span class='why'>クーラーボックスや保冷剤なら島内で最も安いという評判。</span>"},
+{n:"ENEOS 青方SS（大和商事）",a:"青方",c:["ガソリン"],km:1.9,min:4,tel:"0959-52-2093",ad:"青方郷2330",cid:"8194034274068533098",
+ h:except(7,18.5,[6]),buy:"給油。日曜定休。"},
+{n:"青方SS（松岡石油）",a:"青方",c:["ガソリン"],km:2.3,min:4,tel:"0959-52-2083",ad:"青方郷1791-9",cid:"5978525801650864497",
+ h:except(7,19,[6]),buy:"給油。日曜定休。"},
+{n:"十八親和銀行 新上五島支店",a:"青方",c:["ATM・銀行"],km:2.2,min:4,tel:"0959-52-2017",ad:"青方郷1110-39",cid:"12835361230535893608",
+ h:WEEKDAY(9,11.5),buy:"銀行窓口。<span class='why'>平日の午前だけ。現金はコンビニATMのほうが早いです。</span>"},
+{n:"ローソン銀行ATM（エレナ上五島内）",a:"青方",c:["ATM・銀行"],km:2.1,min:4,tel:"",ad:"青方郷2338-1",cid:"8990488262331964989",
+ h:DAILY(9,21),buy:"ATM。"},
+{n:"魚目郵便局",a:"青方",c:["ATM・銀行"],km:2.1,min:4,tel:"0959-54-1042",ad:"榎津郷433-1",cid:"1227582657463151779",
+ h:WEEKDAY(9,17),buy:"郵便窓口・ゆうちょATM。土日休み。"},
+{n:"青方郵便局",a:"青方",c:["ATM・銀行"],km:2.0,min:4,tel:"",ad:"青方郷2338",cid:"3117314166633261950",h:WEEKDAY(9,17),buy:"郵便窓口・ゆうちょATM。土日休み。"},
+
+/* ===== 有川 ===== */
+{n:"ドラッグストアモリ 上五島店",a:"有川",c:["ドラッグ"],km:3.3,min:6,tel:"0959-42-1177",ad:"有川郷2774",cid:"7296168386380388745",
+ h:DAILY(9,23),pick:1,buy:"薬・日用品・食品。<span class='why'>夜23時まで。スーパーより安いものも多いという評判です。</span>"},
+{n:"エレナFC有川店",a:"有川",c:["スーパー"],km:3.8,min:7,tel:"0959-43-0266",ad:"有川郷2630-1",cid:"9332796479498855624",
+ h:DAILY(9,20),buy:"食品全般・酒・日用品。有川港に行くならこちら。"},
+{n:"ローソン 上五島有川店",a:"有川",c:["コンビニ","ATM・銀行"],km:4.0,min:7,tel:"0959-43-0231",ad:"有川郷577-7",cid:"2831018268045447690",
+ h:DAILY(6,24),buy:"酒・タバコ・ローソン銀行ATM。"},
+{n:"江口酒店",a:"有川",c:["酒"],km:4.6,min:8,tel:"0959-42-0188",ad:"有川郷1172",cid:"11464883552319272485",
+ h:DAILY(10,20),pick:1,buy:"酒の専門店。<span class='why'>島の酒屋で唯一、毎日10-20時と時間がはっきりしている店。まとめ買いはここ。</span>"},
+{n:"五島灘酒造",a:"有川",c:["酒"],km:4.5,min:8,tel:"0959-42-0002",ad:"有川郷1394-1",cid:"6348268458702183040",
+ h:except(9,17,[5,6]),buy:"五島初の酒蔵。上五島産さつまいもの芋焼酎。<span class='why'>手みやげに。土日祝が休みです。</span>"},
+{n:"リビングセンター",a:"有川",c:["ホームセンター"],km:4.6,min:8,tel:"0959-42-0827",ad:"有川郷707-1",cid:"8273531237862305992",h:null,buy:"日用品雑貨。"},
+{n:"テラダインテリア雑貨",a:"有川",c:["ホームセンター"],km:3.5,min:6,tel:"0959-42-0141",ad:"有川郷2782",cid:"5281087746420547917",
+ h:[[8,18],[8,18],[8,18],[8,18],[8,18],[8,18],[9,18]],buy:"インテリア・日用品雑貨。朝8時から。無休。"},
+{n:"ベスト電器 新上五島店",a:"有川",c:["その他"],km:3.4,min:6,tel:"0959-42-1102",ad:"有川郷2777",cid:"5249585283691265769",
+ h:DAILY(10,19),buy:"家電。充電器・乾電池・延長コード。"},
+{n:"ENEOS 大橋SS",a:"有川",c:["ガソリン"],km:3.4,min:6,tel:"0959-42-0340",ad:"有川郷2783-1",cid:"7079785244995177495",
+ h:except(7,19,[6]),buy:"給油。日曜定休。"},
+{n:"apollostation 有川SS",a:"有川",c:["ガソリン"],km:3.1,min:5,tel:"0959-42-1005",ad:"有川郷2514-3",cid:"14238231371984492317",
+ h:except(7,19,[6]),buy:"給油。日曜定休。"},
+{n:"大谷魚屋",a:"有川",c:["鮮魚","精肉"],km:4.3,min:7,tel:"0959-42-0096",ad:"有川郷950-7",cid:"9014466865901942018",h:null,buy:"鮮魚・精肉。"},
+{n:"グッドモーニング 有川店",a:"有川",c:["パン"],km:4.7,min:8,tel:"0959-42-1408",ad:"有川郷644",cid:"10306845640998615389",
+ h:except(6,8,[2,5,6]),buy:"パン。<span class='why'>朝6:00-8:00の2時間だけ。水・土・日は休み。</span>"},
+{n:"パン工房大地のめぐみ",a:"有川",c:["パン"],km:4.4,min:7,tel:"0959-42-3322",ad:"有川郷734-3",cid:"5100361793025009522",
+ h:except(8,16.5,[0,2]),buy:"パン。月曜と水曜が休み。"},
+{n:"ボヌール",a:"有川",c:["菓子"],km:3.2,min:6,tel:"0959-42-3567",ad:"有川郷2374-13",cid:"16521653104088656150",h:DAILY(10,18),buy:"洋菓子・手みやげ。毎日10-18時。"},
+{n:"タナカフェ",a:"有川",c:["菓子","飲食"],km:4.3,min:7,tel:"0959-42-3805",ad:"有川郷950-3",cid:"13214106452284304534",h:except(11,18,[1]),buy:"洋菓子・カフェ。火曜休み。"},
+{n:"はまぐりデッキ",a:"有川",c:["飲食"],km:2.8,min:5,tel:"0959-43-0510",ad:"有川郷2460-1",cid:"17779150820888570972",h:null,buy:"カフェ。"},
+
+/* ===== 遠出 ===== */
+{n:"ENEOS 青砂SS",a:"遠出",c:["ガソリン"],km:5.9,min:10,tel:"0959-52-8226",ad:"奈摩郷1264-5",cid:"7964644750700072951",
+ h:except(8,17,[5]),pick:1,buy:"給油。<span class='why'>日曜に開いている島内で唯一のスタンド。ただし土曜が休みです。</span>"},
+{n:"山下商店",a:"遠出",c:["スーパー"],km:9.1,min:16,tel:"",ad:"太田郷980",cid:"3569749987063966215",h:DAILY(9,20),buy:"スーパー。島の東側に行くとき用。"},
+{n:"番嶽温泉（ホテルマルゲリータ内）",a:"遠出",c:["温泉"],km:10.4,min:18,tel:"0959-55-3151",ad:"小串郷1074",cid:"11121509456006813439",h:null,
+ buy:"温泉。<span class='why'>ホテルの中にあります。宿泊者以外が入れるかと時間は電話で確認を。</span>"},
+{n:"奈良尾温泉センター",a:"遠出",c:["温泉"],km:24.4,min:31,tel:"0959-44-0117",ad:"奈良尾郷712-3",cid:"1427173645328918758",h:DAILY(13,19),
+ buy:"日帰り温泉。毎日13-19時。<span class='why'>島の南端。片道30分以上かかります。</span>"}
+];
+
+var AREAS=[
+ {k:"浦桑",t:"浦桑（宿のまわり）",d:"車1〜3分",s:"宿と同じ集落。スーパー・コンビニ・ドラッグ・ホームセンター・酒屋・食堂が全部ここ。歩ける距離です。"},
+ {k:"青方",t:"青方",d:"車4〜5分",s:"島でいちばん品揃えの良いスーパーと、24時間のコンビニ、銀行がある町。"},
+ {k:"有川",t:"有川",d:"車6〜8分",s:"有川港のある町。23時まで開くドラッグストアと、時間の確かな酒屋。"},
+ {k:"遠出",t:"少し遠出",d:"車10分〜",s:"日曜の給油と、温泉に行くとき。"}
+];
+var CATS=["スーパー","コンビニ","ドラッグ","酒","ホームセンター","弁当・惣菜","精肉","鮮魚","パン","菓子","飲食","ガソリン","ATM・銀行","温泉","その他"];
+var DAYS=[
+ {m:10,d:2,w:4,l:"金"},{m:10,d:3,w:5,l:"土"},{m:10,d:4,w:6,l:"日"},
+ {m:10,d:5,w:0,l:"月"},{m:10,d:6,w:1,l:"火"},{m:10,d:7,w:2,l:"水"}
+];
+var ALERTS=[
+ {t:"10/4（日）はガソリンスタンドがほぼ全部休み",
+  b:"宿の最寄りの新魚目SSを含め、浦桑・青方・有川の5店（新魚目SS・青方SS×2・大橋SS・有川SS）はいずれも日曜定休。日曜に給油できるのは<b>青砂SS（奈摩郷・8:00〜17:00・宿から車10分）</b>だけです。土曜のうちに満タンにしておくのが確実。"},
+ {t:"銀行の窓口は平日の午前だけ。現金はコンビニATMで",
+  b:"十八親和銀行 新上五島支店は平日9:00〜11:30のみで土日休み。<b>ローソン上五島青方店は24時間</b>、宿の近くの浦桑店も6:00〜24:00でATMが使えます。"},
+ {t:"宿の近くのパン屋は水・土が休みで、しかも12時まで",
+  b:"グッドモーニング浦桑店は朝7:00〜12:00。朝食用のパンは前日にスーパーで確保しておくほうが安全です。有川店にいたっては朝6:00〜8:00の2時間だけです。"}
+];
+var CALLS=[
+ {n:"望月酒店",tel:"0959-54-1076",q:"営業時間と定休日。宿から最も近い酒屋"},
+ {n:"前田食堂",tel:"0959-54-2064",q:"営業時間。10人で入れるか"},
+ {n:"肉処堀切",tel:"0959-54-1956",q:"営業時間。10人の焼肉が可能か"},
+ {n:"やきとり五城",tel:"0959-54-1666",q:"営業時間。10人で入れるか"},
+ {n:"cafeセブンプラス",tel:"0959-54-2077",q:"営業時間"},
+ {n:"居酒屋 さつま屋",tel:"0959-54-2883",q:"10人の予約（毎日17:30〜23:00）"},
+ {n:"ほっともっと 上五島店",tel:"0959-52-4718",q:"朝に10人分の弁当をまとめて頼めるか"},
+ {n:"ショッピングセンター マルコ",tel:"0959-52-2125",q:"営業時間と定休日"},
+ {n:"石田鮮魚店",tel:"0959-42-3296",q:"営業時間。刺身の盛り合わせを頼めるか"},
+ {n:"魚安",tel:"0959-52-2420",q:"営業時間と定休日"},
+ {n:"パンランドかんちゃん",tel:"0959-52-8499",q:"営業時間と定休日"},
+ {n:"寺田分店",tel:"0959-52-2009",q:"営業時間。クーラーボックスの在庫"},
+ {n:"リビングセンター",tel:"0959-42-0827",q:"営業時間と定休日"},
+ {n:"大谷魚屋",tel:"0959-42-0096",q:"営業時間と定休日"},
+ {n:"ムーンハーフ",tel:"0959-54-1227",q:"営業時間。二次会で10人入れるか"},
+ {n:"はまぐりデッキ",tel:"0959-43-0510",q:"営業時間と定休日。BBQ・カフェの予約"},
+ {n:"番嶽温泉（ホテルマルゲリータ）",tel:"0959-55-3151",q:"宿泊者以外の日帰り入浴。時間と料金"}
+];
+
+/* ---------- state ---------- */
+function jstNow(){var n=new Date();return new Date(n.getTime()+(n.getTimezoneOffset()*60000)+(9*3600000));}
+var todayIdx=-1,N0=jstNow();
+for(var i=0;i<DAYS.length;i++){
+  if(N0.getFullYear()===2026&&N0.getMonth()+1===DAYS[i].m&&N0.getDate()===DAYS[i].d) todayIdx=i;
+}
+var st={day:(todayIdx>=0?todayIdx:0),cats:[],onlyOpen:false,nowOnly:false,onlyNear:false,onlyWalk:false,q:""};
+
+function walkMin(s){return Math.round(s.km*1000/70);}
+function fmtH(v){var h=Math.floor(v),m=Math.round((v-h)*60);return h+":"+(m<10?"0":"")+m;}
+function status(s,di){
+  if(!s.h) return {k:"q",t:"時間 要確認"};
+  var hh=s.h[DAYS[di].w];
+  if(!hh) return {k:"ng",t:"この日は休み"};
+  if(hh[0]===0&&hh[1]===24) return {k:"ok",t:"24時間"};
+  return {k:"ok",t:fmtH(hh[0])+"–"+fmtH(hh[1])};
+}
+function openRightNow(s){
+  if(!s.h) return false;
+  var n=jstNow(),w=(n.getDay()+6)%7,t=n.getHours()+n.getMinutes()/60,hh=s.h[w];
+  return !!hh&&t>=hh[0]&&t<hh[1];
+}
+/* その店だけを開くリンク。場所IDがある店は必ず1件で開きます。 */
+function mapUrl(s){
+  if(s.cid) return "https://maps.google.com/?cid="+s.cid;
+  return "https://www.google.com/maps/search/?api=1&query="+
+    encodeURIComponent(s.n+" 長崎県南松浦郡新上五島町"+s.ad);
+}
+function navUrl(s,from){
+  var org=(from==="villa")?"&origin="+VILLA:"";
+  return "https://www.google.com/maps/dir/?api=1"+org+
+    "&destination="+encodeURIComponent("長崎県南松浦郡新上五島町"+s.ad+" "+s.n)+"&travelmode=driving";
+}
+function esc(x){return String(x).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+
+/* ---------- alerts ---------- */
+var alWrap=document.querySelector(".alerts");
+alWrap.innerHTML="";
+ALERTS.forEach(function(a){
+  var box=document.createElement("div"); box.className="al";
+  var btn=document.createElement("button"); btn.type="button";
+  btn.innerHTML='<span class="mark">!</span><span class="tw">'+a.t+'</span><span class="cv">\u25bc</span>';
+  btn.setAttribute("aria-expanded","false");
+  var bd=document.createElement("div"); bd.className="body"; bd.hidden=true; bd.innerHTML=a.b;
+  btn.onclick=function(){
+    var open=bd.hidden;
+    bd.hidden=!open;
+    btn.setAttribute("aria-expanded",String(open));
+    if(open) box.setAttribute("open",""); else box.removeAttribute("open");
+  };
+  box.appendChild(btn); box.appendChild(bd);
+  alWrap.appendChild(box);
+});
+
+/* ---------- day bar ---------- */
+var daysEl=document.getElementById("days");
+DAYS.forEach(function(d,i){
+  var b=document.createElement("button");
+  b.type="button";
+  b.className="day"+(d.w===6?" sun":(d.w===5?" sat":""));
+  b.setAttribute("aria-pressed",String(i===st.day));
+  b.innerHTML='<span class="dd">'+d.m+'/'+d.d+'</span><span class="dw">'+d.l+'</span>'+
+    (i===todayIdx?'<span class="td">TODAY</span>':'');
+  b.onclick=function(){
+    st.day=i;
+    [].forEach.call(daysEl.children,function(c,j){c.setAttribute("aria-pressed",String(j===i));});
+    render();
+    window.scrollTo({top:0,behavior:"smooth"});
+  };
+  daysEl.appendChild(b);
+});
+var dbar=document.getElementById("daybar");
+window.addEventListener("scroll",function(){
+  dbar.classList.toggle("stuck",window.scrollY>4);
+},{passive:true});
+
+/* ---------- sheet ---------- */
+var chipsEl=document.getElementById("chips");
+CATS.forEach(function(c){
+  var b=document.createElement("button");
+  b.type="button"; b.className="chip"; b.textContent=c; b.setAttribute("aria-pressed","false");
+  b.onclick=function(){
+    var k=st.cats.indexOf(c);
+    if(k>=0) st.cats.splice(k,1); else st.cats.push(c);
+    b.setAttribute("aria-pressed",String(st.cats.indexOf(c)>=0));
+    render();
+  };
+  chipsEl.appendChild(b);
+});
+function bind(id,key){
+  document.getElementById(id).onchange=function(){
+    st[key]=this.checked;
+    if(key==="nowOnly"&&this.checked&&todayIdx>=0&&st.day!==todayIdx){
+      st.day=todayIdx;
+      [].forEach.call(daysEl.children,function(c,j){c.setAttribute("aria-pressed",String(j===todayIdx));});
+    }
+    render();
+  };
+}
+bind("onlyOpen","onlyOpen"); bind("nowOnly","nowOnly");
+bind("onlyNear","onlyNear"); bind("onlyWalk","onlyWalk");
+document.getElementById("q").oninput=function(){st.q=this.value;render();};
+
+var sheet=document.getElementById("sheet"),scrim=document.getElementById("scrim"),fab=document.getElementById("fab");
+function openSheet(){
+  sheet.hidden=false; scrim.hidden=false;
+  document.body.style.overflow="hidden";
+  document.querySelector(".sh-body").scrollTop=0;   /* 前に開いた位置を持ち越さない */
+  document.getElementById("sheetX").focus();
+}
+function closeSheet(){
+  sheet.hidden=true; scrim.hidden=true;
+  document.body.style.overflow="";
+  fab.focus();
+}
+fab.onclick=openSheet;
+scrim.onclick=closeSheet;
+document.getElementById("sheetX").onclick=closeSheet;
+document.getElementById("applyBtn").onclick=closeSheet;
+document.getElementById("resetBtn").onclick=function(){
+  st.cats=[]; st.onlyOpen=st.nowOnly=st.onlyNear=st.onlyWalk=false; st.q="";
+  [].forEach.call(chipsEl.children,function(c){c.setAttribute("aria-pressed","false");});
+  ["onlyOpen","nowOnly","onlyNear","onlyWalk"].forEach(function(id){document.getElementById(id).checked=false;});
+  document.getElementById("q").value="";
+  render();
+};
+document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!sheet.hidden) closeSheet();});
+
+/* ---------- render ---------- */
+function activeList(){
+  var a=[];
+  st.cats.forEach(function(c){a.push({t:c,off:function(){
+    st.cats.splice(st.cats.indexOf(c),1);
+    [].forEach.call(chipsEl.children,function(b){if(b.textContent===c)b.setAttribute("aria-pressed","false");});
+  }});});
+  function tog(key,label,id){
+    if(st[key]) a.push({t:label,off:function(){st[key]=false;document.getElementById(id).checked=false;}});
+  }
+  tog("onlyOpen","この日に開く店","onlyOpen");
+  tog("nowOnly","今営業中","nowOnly");
+  tog("onlyNear","車5分以内","onlyNear");
+  tog("onlyWalk","徒歩15分以内","onlyWalk");
+  if(st.q.trim()) a.push({t:"「"+st.q.trim()+"」",off:function(){st.q="";document.getElementById("q").value="";}});
+  return a;
+}
+
+function render(){
+  var host=document.getElementById("results");
+  host.innerHTML="";
+  var shown=0, qq=st.q.trim().toLowerCase();
+
+  AREAS.forEach(function(area){
+    var items=S.filter(function(s){
+      if(s.a!==area.k) return false;
+      if(st.cats.length&&!s.c.some(function(c){return st.cats.indexOf(c)>=0;})) return false;
+      if(st.onlyNear&&s.min>5) return false;
+      if(st.onlyWalk&&walkMin(s)>15) return false;
+      if(st.onlyOpen&&status(s,st.day).k==="ng") return false;
+      if(st.nowOnly&&!openRightNow(s)) return false;
+      if(qq){
+        var hay=(s.n+" "+s.buy+" "+s.c.join(" ")+" "+s.ad).toLowerCase().replace(/<[^>]+>/g,"");
+        if(hay.indexOf(qq)<0) return false;
+      }
+      return true;
+    });
+    if(!items.length) return;
+    shown+=items.length;
+
+    var sec=document.createElement("section"); sec.className="area";
+    var h=document.createElement("div"); h.className="area-h";
+    h.innerHTML='<h2>'+area.t+'</h2><span class="km">'+area.d+'</span>';
+    var p=document.createElement("p"); p.textContent=area.s;
+    sec.appendChild(h); sec.appendChild(p);
+
+    var list=document.createElement("div"); list.className="list";
+    items.forEach(function(s){
+      var sv=status(s,st.day);
+      var card=document.createElement("article");
+      card.className="card"+(s.pick?" pick":"");
+
+      var tags="";
+      if(todayIdx>=0&&st.day===todayIdx&&openRightNow(s)) tags+='<span class="t now">いま営業中</span>';
+      if(s.pick) tags+='<span class="t pick">おすすめ</span>';
+      if(s.badge) tags+='<span class="t plain">'+s.badge+'</span>';
+
+      var facts='車'+s.min+'分 · '+s.km.toFixed(1)+'km';
+      if(walkMin(s)<=20) facts+=' · 徒歩'+walkMin(s)+'分';
+
+      card.innerHTML=
+        '<div class="c-top"><h3 class="c-name">'+s.n+'</h3>'+
+          '<span class="c-state '+sv.k+'">'+sv.t+'</span></div>'+
+        (tags?'<div class="c-tags">'+tags+'</div>':'')+
+        '<div class="c-facts">'+facts+'</div>'+
+        '<p class="c-desc">'+s.buy+'</p>'+
+        '<div class="c-acts">'+
+          (s.tel
+            ?'<a class="act tel" href="tel:'+s.tel.replace(/-/g,"")+'">'+s.tel+'</a>'
+            :'<span class="act tel dim">電話なし</span>')+
+          '<a class="act map" href="'+mapUrl(s)+'" target="_blank" rel="noopener">地図で見る</a>'+
+          '<a class="act go" href="'+navUrl(s,"villa")+'" target="_blank" rel="noopener">宿からナビ</a>'+
+          '<a class="act go2" href="'+navUrl(s,"here")+'" target="_blank" rel="noopener">現在地からナビ</a>'+
+        '</div>';
+      list.appendChild(card);
+    });
+    sec.appendChild(list);
+    host.appendChild(sec);
+  });
+
+  if(!shown){
+    var e=document.createElement("p"); e.className="empty";
+    e.innerHTML="条件に合う店がありません。<br>右下の「絞り込み」からリセットしてください。";
+    host.appendChild(e);
+  }
+
+  var d=DAYS[st.day];
+  document.getElementById("cnt").innerHTML=
+    d.m+"/"+d.d+"（"+d.l+"）· <b>"+shown+"</b> 件 / 全 "+S.length+" 件";
+
+  var act=activeList(), tw=document.getElementById("activeTags");
+  tw.innerHTML="";
+  act.forEach(function(a){
+    var b=document.createElement("button");
+    b.type="button"; b.className="tagx";
+    b.innerHTML=esc(a.t)+'<span class="x" aria-hidden="true">✕</span>';
+    b.setAttribute("aria-label",a.t+" を外す");
+    b.onclick=function(){a.off();render();};
+    tw.appendChild(b);
+  });
+  var fn=document.getElementById("fabN");
+  fn.textContent=act.length; fn.hidden=act.length===0;
+
+  var hs=stateToHash();
+  try{history.replaceState(null,"",hs?("#"+hs):(location.pathname+location.search));}catch(e){}
+  var sb=document.getElementById("shareBtn");
+  if(sb) sb.removeAttribute("data-done");
+  if(sb) sb.textContent="この絞り込みのリンクをコピー";
+}
+
+/* ---------- memo ---------- */
+var MKEY="goto2026.memo";
+var memoEl=document.getElementById("memo"),memoState=document.getElementById("memoState"),mt=null;
+try{memoEl.value=localStorage.getItem(MKEY)||"";}catch(e){}
+memoState.textContent=memoEl.value?"保存済み":"";
+memoEl.addEventListener("input",function(){
+  memoState.textContent="入力中…";
+  clearTimeout(mt);
+  mt=setTimeout(function(){
+    try{localStorage.setItem(MKEY,memoEl.value);memoState.textContent="保存しました";}
+    catch(e){memoState.textContent="この端末には保存できませんでした";}
+  },400);
+});
+document.getElementById("memoClear").onclick=function(){
+  if(!memoEl.value) return;
+  if(!confirm("メモを全部消しますか？")) return;
+  memoEl.value=""; try{localStorage.removeItem(MKEY);}catch(e){}
+  memoState.textContent=""; memoEl.focus();
+};
+
+/* ---------- call list ---------- */
+var callsEl=document.getElementById("calls");
+CALLS.forEach(function(c){
+  var d=document.createElement("div"); d.className="callrow";
+  d.innerHTML='<div><div class="cn">'+c.n+'</div><div class="cq">'+c.q+'</div></div>'+
+    '<a href="tel:'+c.tel.replace(/-/g,"")+'">'+c.tel+'</a>';
+  callsEl.appendChild(d);
+});
+
+/* ---------- 絞り込みをリンクにする ---------- */
+function stateToHash(){
+  var p=[];
+  if(st.day) p.push("d="+st.day);
+  if(st.cats.length) p.push("c="+st.cats.map(encodeURIComponent).join(","));
+  if(st.onlyOpen) p.push("o=1");
+  if(st.nowOnly) p.push("n=1");
+  if(st.onlyNear) p.push("r=1");
+  if(st.onlyWalk) p.push("w=1");
+  if(st.q.trim()) p.push("q="+encodeURIComponent(st.q.trim()));
+  return p.join("&");
+}
+function syncControls(){
+  [].forEach.call(daysEl.children,function(c,j){c.setAttribute("aria-pressed",String(j===st.day));});
+  [].forEach.call(chipsEl.children,function(b){b.setAttribute("aria-pressed",String(st.cats.indexOf(b.textContent)>=0));});
+  ["onlyOpen","nowOnly","onlyNear","onlyWalk"].forEach(function(id){document.getElementById(id).checked=!!st[id];});
+  document.getElementById("q").value=st.q;
+}
+function applyHash(){
+  var h=(location.hash||"").replace(/^#/,"");
+  if(!h) return;
+  var o={};
+  h.split("&").forEach(function(kv){
+    var i=kv.indexOf("=");
+    if(i>0){try{o[kv.slice(0,i)]=decodeURIComponent(kv.slice(i+1));}catch(e){}}
+  });
+  if(o.d!==undefined){var d=parseInt(o.d,10); if(d>=0&&d<DAYS.length) st.day=d;}
+  if(o.c) st.cats=o.c.split(",").filter(function(c){return CATS.indexOf(c)>=0;});
+  st.onlyOpen=(o.o==="1"); st.nowOnly=(o.n==="1");
+  st.onlyNear=(o.r==="1"); st.onlyWalk=(o.w==="1");
+  st.q=o.q||"";
+  syncControls();
+}
+function shareUrl(){
+  var base=location.href.split("#")[0];
+  var r=document.referrer||"";
+  if(/^https:\/\/claude\.ai\//.test(r)) base=r.split("#")[0];
+  var hs=stateToHash();
+  return hs?(base+"#"+hs):base;
+}
+/* Claudeの画面（枠の中）ではリンクの共有ができない（枠のアドレスは人に渡せない）ので隠す。
+   このHTMLをふつうのウェブアドレスに置いたときだけ出る。 */
+var inFrame=false; try{inFrame=(window.self!==window.top);}catch(e){inFrame=true;}
+if(inFrame) document.getElementById("shareBtn").hidden=true;
+var shrBox=document.getElementById("shrbox");
+document.getElementById("shrClose").onclick=function(){shrBox.hidden=true;};
+document.getElementById("shareBtn").onclick=function(){
+  var btn=this,u=shareUrl();
+  function done(){
+    btn.textContent="コピーしました";
+    btn.setAttribute("data-done","1");
+    shrBox.hidden=true;
+  }
+  function manual(){
+    document.getElementById("shrUrl").value=u;
+    shrBox.hidden=false;
+    document.getElementById("shrUrl").select();
+  }
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(u).then(done,manual);
+    return;
+  }
+  try{
+    var ta=document.createElement("textarea");
+    ta.value=u; ta.style.position="fixed"; ta.style.opacity="0";
+    document.body.appendChild(ta); ta.select();
+    var ok=document.execCommand("copy");
+    document.body.removeChild(ta);
+    if(ok) done(); else manual();
+  }catch(e){manual();}
+};
+window.addEventListener("hashchange",function(){applyHash();render();});
+
+applyHash();
+render();
+</script>
+
+</body></html>

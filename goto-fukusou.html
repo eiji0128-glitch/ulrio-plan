@@ -200,19 +200,19 @@ footer{color:var(--sub);font-size:12px;padding:30px 0 50px}
   <div class="palette">
     <span class="sw"><i style="background:#1f2d4a"></i>紺（ジーンズ・T）</span>
     <span class="sw"><i style="background:#ffffff"></i>白（T・シャツ）</span>
-    <span class="sw"><i style="background:#1b1b1d"></i>黒（上着・ポロ・スニーカー・小物）</span>
+    <span class="sw"><i style="background:#1b1b1d"></i>黒（ポロ・スニーカー・小物）</span>
     <span class="sw"><i style="background:#9a9ea4"></i>差し色：グレー（ハーフパンツ）</span>
-    <span class="sw"><i style="background:#5f6446"></i>差し色：オリーブ（T 1枚）</span>
-    <span class="sw"><i style="background:#c9ccd0"></i>差し色：ライトグレー（日よけの長袖）</span>
+    <span class="sw"><i style="background:#5f6446"></i>Tシャツは毎日違う色（白・生成り・紺・青・オリーブ・黒）</span>
+    <span class="sw"><i style="background:#c9ccd0"></i>ライトグレー（上着）</span>
   </div>
   <div class="rules">
     <div class="rule"><b>ジーンズは1本を6日間</b>移動・仕事・夕食はすべて濃紺ジーンズで通す。海と船には持ち込まない</div>
-    <div class="rule"><b>見た目はTシャツの色で変える</b>同じ組み合わせの日は一度もない。白Tを着る2日は5日空いていて、1回目はシャツを羽織る</div>
+    <div class="rule"><b>見た目はTシャツの色で変える</b>6日間、同じ色のTシャツを着る日は一度もない。下は濃紺かグレーなので、どの色を着ても合う</div>
     <div class="rule"><b>夕食の夜は襟を足す</b>白シャツを羽織るか、ニットポロを着る。43歳の男性が一番きちんと見えるのは、柄なし・ロゴなし・体に合ったサイズ</div>
     <div class="rule"><b>足元は黒で統一</b>黒スニーカーと黒サンダル。濃紺ジーンズにもグレーのハーフパンツにも合い、汚れも目立たない</div>
   </div>
   <div class="rules">
-    <div class="rule"><b>上着は2枚あって役目が違う</b>風よけの上着（黒・シャカシャカした生地）は風と小雨を防ぐ。日よけの長袖（ライトグレー・汗が乾く生地）は船釣りの日焼けを防ぐ。色を分けたので取り違えない</div>
+    <div class="rule"><b>上着は1枚で兼ねる</b>ライトグレーのUVパーカ1枚で、日よけと朝晩・船の上の羽織りを兼ねる。風と雨は防げないので、9/24ごろに五島の予報を見て、雨の予報か朝の最低気温が18℃を下回りそうなら、GUのウィンドプルーフシェルパーカ（¥4,990）を買い足す</div>
     <div class="rule"><b>海の日はハーフパンツ</b>シャワーのあと濡れた髪のままジーンズを履かずに済む</div>
   </div>
 </section>
@@ -228,8 +228,8 @@ footer{color:var(--sub);font-size:12px;padding:30px 0 50px}
   <div class="tips">
     <div class="rule"><b>水着は真水ですすいで干すだけ</b>サウナ・SUP・マグロのたびに、シャワーで流して絞り、部屋に干す。黒なので汚れが目立たない</div>
     <div class="rule"><b>着た服はすぐ袋へ</b>汚れた服用の袋を1枚持ち、きれいな服と分けておく。帰りの荷造りも一瞬で終わる</div>
-    <div class="rule"><b>釣りは寝間着のTシャツで</b>6:30に起きてそのまま出る。着古したTなら魚の匂いが付いても惜しくない。上に日よけの長袖、寒いうちは風よけの上着を重ねる</div>
-    <div class="rule"><b>かさばる物は身に着けて行く</b>濃紺ジーンズ・黒T・風よけの上着・黒スニーカーで家を出れば、残りは30Lのリュック1つに収まる</div>
+    <div class="rule"><b>釣りは寝間着のTシャツで</b>6:30に起きてそのまま出る。着古したTなら魚の匂いが付いても惜しくない。上にUVパーカを羽織る</div>
+    <div class="rule"><b>かさばる物は身に着けて行く</b>濃紺ジーンズ・黒T・UVパーカ・黒スニーカーで家を出れば、残りは30Lのリュック1つに収まる</div>
   </div>
 </section>
 <footer>GUの商品・価格・Mサイズの在庫は 2026年9月21日に、ZARAは 9月19日に、各社の公式オンラインストアで確認したものです。店舗の在庫や、セール・値上げで変わることがあります。サイズは各社のサイズ表で最終確認してください。</footer>
@@ -241,11 +241,10 @@ const GUURL=(id,c)=>`https://www.gu-global.com/jp/ja/products/${id}/00?colorDisp
 // buy:false = 手持ちで足りれば買わない（初期はチェックなし）
 const STORES=[
  {name:'GU',sub:'全部そろいます。Mサイズは9/21時点ですべて在庫あり',items:[
-  {id:'tee',nm:'コットンクルーネックT',role:'毎日のTシャツ',color:'白2・紺・黒・オリーブ',size:'M',n:5,price:790,code:'359077',url:GUURL('E359077-000','00'),img:GUIMG('359077','00'),buy:true},
+  {id:'tee',nm:'コットンクルーネックT',role:'毎日のTシャツ',color:'白・生成り・紺・青・オリーブ',size:'M',n:5,price:790,code:'359077',url:GUURL('E359077-000','00'),img:GUIMG('359077','00'),buy:true},
   {id:'polo',nm:'アゼポロセーター MN',role:'屋形船の夜（10/5）',color:'黒',size:'M',n:1,price:2990,code:'361756',url:GUURL('E361756-000','09'),img:GUIMG('361756','09'),buy:true},
   {id:'shirt',nm:'イージーケアブロードシャツ CL（レギュラーフィット）',role:'夕食の夜に羽織る',color:'白',size:'M',n:1,price:2990,code:'360697',url:GUURL('E360697-000','00'),img:GUIMG('360697','00'),buy:true},
-  {id:'jacket',nm:'ウィンドプルーフシェルパーカ ST（オーバーサイズフィット）',role:'風よけの上着：フェリー・朝の船・屋形船・雨',color:'黒',size:'M（ゆったりした形なのでSも試着）',n:1,price:4990,code:'360532',url:GUURL('E360532-001','09'),img:GUIMG('360532001','09'),buy:true},
-  {id:'uv',nm:'ドライUVカットフルジップパーカ',role:'日よけの長袖：10/4 船釣り',color:'ライトグレー',size:'M',n:1,price:1990,code:'361669',url:GUURL('E361669-000','02'),img:GUIMG('361669','02'),buy:true},
+  {id:'uv',nm:'ドライUVカットフルジップパーカ',role:'上着：日よけ・朝晩と船の上の羽織り',color:'ライトグレー',size:'M',n:1,price:1990,code:'361669',url:GUURL('E361669-000','02'),img:GUIMG('361669','02'),buy:true},
   {id:'shorts',nm:'コットンブレンドイージーハーフパンツ',role:'海のあと・船釣り',color:'グレー',size:'M',n:1,price:1290,code:'358970',url:GUURL('E358970-000','07'),img:GUIMG('358970','07'),buy:true},
   {id:'cap',nm:'UVカットツイルキャップ',role:'船と海辺の日差しよけ',color:'黒',size:'フリー',n:1,price:990,code:'349110',url:GUURL('E349110-000','09'),img:'https://image.uniqlo.com/GU/ST3/AsianCommon/imagesgoods/349110/item/goods_09_349110_3x4.jpg',buy:true},
   {id:'sun',nm:'UVカットウェリントンサングラス',role:'海の照り返しよけ',color:'黒',size:'―',n:1,price:1290,code:'359117',url:GUURL('E359117-000','09'),img:'https://image.uniqlo.com/GU/ST3/AsianCommon/imagesgoods/359117/item/goods_09_359117_3x4.jpg',buy:true},
@@ -258,20 +257,20 @@ const STORES=[
  ]}
 ];
 
-const C={black:'#1b1b1d',white:'#ffffff',navy:'#1f2d4a',olive:'#5f6446',lgray:'#c9ccd0',gray:'#9a9ea4'};
+const C={blue:'#4a6a86',natural:'#ece6d8',black:'#1b1b1d',white:'#ffffff',navy:'#1f2d4a',olive:'#5f6446',lgray:'#c9ccd0',gray:'#9a9ea4'};
 const IMG=Object.fromEntries(STORES.flatMap(s=>s.items.map(i=>[i.id,i.img])));
 const TEE=c=>GUIMG('359077',c);
 // [名前, 色, 写真] 写真が無い物（手持ち）は色の四角で見せる
-const J=['濃紺ジーンズ（手持ち）',C.navy], S=['黒スニーカー（手持ち）',C.black], W=['風よけの上着',C.black,IMG.jacket];
+const J=['濃紺ジーンズ（手持ち）',C.navy], S=['黒スニーカー（手持ち）',C.black], W=['UVパーカ',C.lgray,IMG.uv];
 const SH=['グレーハーフパンツ',C.gray,IMG.shorts], SW=['水着',C.black,IMG.swim], SD=['サンダル',C.black,IMG.sandal];
 const DAYS=[
  {d:'10/1',w:'木 夜',p:'博多港 23:45発のフェリー',looks:[['移動',[['黒T（家から）',C.black,TEE('09')],J,W,S]]]},
- {d:'10/2',w:'金',p:'5:40 青方港着・クエ養殖場・すし処嶋',looks:[['朝〜昼',[['白T',C.white,TEE('00')],J,['風よけの上着（朝）',C.black,IMG.jacket],S]],['夜',[['＋白シャツを羽織る',C.white,IMG.shirt]]]]},
+ {d:'10/2',w:'金',p:'5:40 青方港着・クエ養殖場・すし処嶋',looks:[['朝〜昼',[['白T',C.white,TEE('00')],J,['UVパーカ（朝）',C.lgray,IMG.uv],S]],['夜',[['＋白シャツを羽織る',C.white,IMG.shirt]]]]},
  {d:'10/3',w:'土',p:'午前 SUP＋シュノーケリング・午後は仕事',looks:[['海',[SW,SD]],['午後〜夜',[['紺T',C.navy,TEE('69')],SH,SD]]]},
- {d:'10/4',w:'日',p:'6:30 船釣り・夜は優心で釣った魚',looks:[['釣り',[['寝間着のT（手持ち）',C.gray],['日よけの長袖',C.lgray,IMG.uv],['寒いうちは風よけの上着',C.black,IMG.jacket],SH,['キャップ',C.black,IMG.cap],SD]],['夜',[['黒T',C.black,TEE('09')],['白シャツ',C.white,IMG.shirt],J,S]]]},
- {d:'10/5',w:'月',p:'仕事・16:00 屋形船BBQ（9名）',looks:[['一日',[['黒ニットポロ',C.black,IMG.polo],J,S]],['船の上',[['＋風よけの上着',C.black,IMG.jacket]]]]},
+ {d:'10/4',w:'日',p:'6:30 船釣り・夜は優心で釣った魚',looks:[['釣り',[['寝間着のT（手持ち）',C.gray],W,SH,['キャップ',C.black,IMG.cap],SD]],['夜',[['青T',C.blue,TEE('67')],['白シャツ',C.white,IMG.shirt],J,S]]]},
+ {d:'10/5',w:'月',p:'仕事・16:00 屋形船BBQ（9名）',looks:[['一日',[['黒ニットポロ',C.black,IMG.polo],J,S]],['船の上',[['＋UVパーカ',C.lgray,IMG.uv]]]]},
  {d:'10/6',w:'火',p:'12:00 マグロシュノーケリング・送迎',looks:[['海',[SW,SD,['サングラス',C.black,IMG.sun]]],['午後〜夜',[['オリーブT',C.olive,TEE('57')],SH,SD]]]},
- {d:'10/7',w:'水',p:'10:00 チェックアウト・12:10 フェリー',looks:[['移動',[['白T（2枚目）',C.white,TEE('00')],J,W,S]]]},
+ {d:'10/7',w:'水',p:'10:00 チェックアウト・12:10 フェリー',looks:[['移動',[['生成りT',C.natural,TEE('30')],J,W,S]]]},
 ];
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const yen=n=>'¥'+n.toLocaleString('ja-JP');
@@ -322,8 +321,8 @@ document.getElementById('cards').innerHTML=STORES.flatMap(s=>s.items.map(it=>`
   <span class="pname">${esc(it.nm)}</span><span class="color">色：${esc(it.color)}</span></div></a>`)).join('');
 
 const CHECK=[
- ['濃紺ジーンズ ★','服'],['黒T ★','服'],['風よけの上着（黒）★','服'],['黒スニーカー ★','靴'],
- ['Tシャツ 5枚（白2・紺・黒・オリーブ）','服'],['ニットポロ（黒）','服'],['白シャツ','服'],['ハーフパンツ（グレー）','服'],['日よけの長袖（ライトグレー）','服'],
+ ['濃紺ジーンズ ★','服'],['黒T ★','服'],['UVパーカ（ライトグレー）★','服'],['黒スニーカー ★','靴'],
+ ['Tシャツ 5枚（白・生成り・紺・青・オリーブ）','服'],['ニットポロ（黒）','服'],['白シャツ','服'],['ハーフパンツ（グレー）','服'],
  ['寝間着（着古したTと短パン）','服'],['下着 6枚','服'],['靴下 4足（黒）','服'],
  ['水着','海'],['サンダル','海'],['速乾タオル','海'],['キャップ','小物'],['サングラス','小物'],['日焼け止め','小物'],
  ['汚れた服を入れる袋','小物'],['圧縮袋','小物']

@@ -200,7 +200,8 @@ footer{color:var(--sub);font-size:12px;padding:30px 0 50px}
   <div class="palette">
     <span class="sw"><i style="background:#1f2d4a"></i>紺（ジーンズ・T）</span>
     <span class="sw"><i style="background:#ffffff"></i>白（T・シャツ）</span>
-    <span class="sw"><i style="background:#1b1b1d"></i>黒（上着・ポロ・ハーフパンツ・スニーカー・小物）</span>
+    <span class="sw"><i style="background:#1b1b1d"></i>黒（上着・ポロ・スニーカー・小物）</span>
+    <span class="sw"><i style="background:#9a9ea4"></i>差し色：グレー（ハーフパンツ）</span>
     <span class="sw"><i style="background:#5f6446"></i>差し色：オリーブ（T 1枚）</span>
     <span class="sw"><i style="background:#c9ccd0"></i>差し色：ライトグレー（日よけの長袖）</span>
   </div>
@@ -208,7 +209,7 @@ footer{color:var(--sub);font-size:12px;padding:30px 0 50px}
     <div class="rule"><b>ジーンズは1本を6日間</b>移動・仕事・夕食はすべて濃紺ジーンズで通す。海と船には持ち込まない</div>
     <div class="rule"><b>見た目はTシャツの色で変える</b>同じ組み合わせの日は一度もない。白Tを着る2日は5日空いていて、1回目はシャツを羽織る</div>
     <div class="rule"><b>夕食の夜は襟を足す</b>白シャツを羽織るか、ニットポロを着る。43歳の男性が一番きちんと見えるのは、柄なし・ロゴなし・体に合ったサイズ</div>
-    <div class="rule"><b>足元は黒で統一</b>黒スニーカーと黒サンダル。濃紺ジーンズにも黒ハーフパンツにも合い、汚れも目立たない</div>
+    <div class="rule"><b>足元は黒で統一</b>黒スニーカーと黒サンダル。濃紺ジーンズにもグレーのハーフパンツにも合い、汚れも目立たない</div>
   </div>
   <div class="rules">
     <div class="rule"><b>上着は2枚あって役目が違う</b>風よけの上着（黒・シャカシャカした生地）は風と小雨を防ぐ。日よけの長袖（ライトグレー・汗が乾く生地）は船釣りの日焼けを防ぐ。色を分けたので取り違えない</div>
@@ -245,7 +246,7 @@ const STORES=[
   {id:'shirt',nm:'イージーケアブロードシャツ CL（レギュラーフィット）',role:'夕食の夜に羽織る',color:'白',size:'M',n:1,price:2990,code:'360697',url:GUURL('E360697-000','00'),img:GUIMG('360697','00'),buy:true},
   {id:'jacket',nm:'ウィンドプルーフシェルパーカ ST（オーバーサイズフィット）',role:'風よけの上着：フェリー・朝の船・屋形船・雨',color:'黒',size:'M（ゆったりした形なのでSも試着）',n:1,price:4990,code:'360532',url:GUURL('E360532-001','09'),img:GUIMG('360532001','09'),buy:true},
   {id:'uv',nm:'ドライUVカットフルジップパーカ',role:'日よけの長袖：10/4 船釣り',color:'ライトグレー',size:'M',n:1,price:1990,code:'361669',url:GUURL('E361669-000','02'),img:GUIMG('361669','02'),buy:true},
-  {id:'shorts',nm:'コットンブレンドイージーハーフパンツ',role:'海のあと・船釣り',color:'黒',size:'M',n:1,price:1290,code:'358970',url:GUURL('E358970-000','09'),img:GUIMG('358970','09'),buy:true},
+  {id:'shorts',nm:'コットンブレンドイージーハーフパンツ',role:'海のあと・船釣り',color:'グレー',size:'M',n:1,price:1290,code:'358970',url:GUURL('E358970-000','07'),img:GUIMG('358970','07'),buy:true},
   {id:'cap',nm:'UVカットツイルキャップ',role:'船と海辺の日差しよけ',color:'黒',size:'フリー',n:1,price:990,code:'349110',url:GUURL('E349110-000','09'),img:'https://image.uniqlo.com/GU/ST3/AsianCommon/imagesgoods/349110/item/goods_09_349110_3x4.jpg',buy:true},
   {id:'sun',nm:'UVカットウェリントンサングラス',role:'海の照り返しよけ',color:'黒',size:'―',n:1,price:1290,code:'359117',url:GUURL('E359117-000','09'),img:'https://image.uniqlo.com/GU/ST3/AsianCommon/imagesgoods/359117/item/goods_09_359117_3x4.jpg',buy:true},
   {id:'boxer',nm:'ボクサーパンツ ST',role:'手持ちで6枚あれば買わない',color:'黒',size:'M',n:6,price:490,code:'360741',url:GUURL('E360741-000','09'),img:'https://image.uniqlo.com/GU/ST3/AsianCommon/imagesgoods/360741/item/goods_09_360741_3x4.jpg',buy:false},
@@ -262,7 +263,7 @@ const IMG=Object.fromEntries(STORES.flatMap(s=>s.items.map(i=>[i.id,i.img])));
 const TEE=c=>GUIMG('359077',c);
 // [名前, 色, 写真] 写真が無い物（手持ち）は色の四角で見せる
 const J=['濃紺ジーンズ（手持ち）',C.navy], S=['黒スニーカー（手持ち）',C.black], W=['風よけの上着',C.black,IMG.jacket];
-const SH=['黒ハーフパンツ',C.black,IMG.shorts], SW=['水着',C.black,IMG.swim], SD=['サンダル',C.black,IMG.sandal];
+const SH=['グレーハーフパンツ',C.gray,IMG.shorts], SW=['水着',C.black,IMG.swim], SD=['サンダル',C.black,IMG.sandal];
 const DAYS=[
  {d:'10/1',w:'木 夜',p:'博多港 23:45発のフェリー',looks:[['移動',[['黒T（家から）',C.black,TEE('09')],J,W,S]]]},
  {d:'10/2',w:'金',p:'5:40 青方港着・クエ養殖場・すし処嶋',looks:[['朝〜昼',[['白T',C.white,TEE('00')],J,['風よけの上着（朝）',C.black,IMG.jacket],S]],['夜',[['＋白シャツを羽織る',C.white,IMG.shirt]]]]},
@@ -322,7 +323,7 @@ document.getElementById('cards').innerHTML=STORES.flatMap(s=>s.items.map(it=>`
 
 const CHECK=[
  ['濃紺ジーンズ ★','服'],['黒T ★','服'],['風よけの上着（黒）★','服'],['黒スニーカー ★','靴'],
- ['Tシャツ 5枚（白2・紺・黒・オリーブ）','服'],['ニットポロ（黒）','服'],['白シャツ','服'],['ハーフパンツ（黒）','服'],['日よけの長袖（ライトグレー）','服'],
+ ['Tシャツ 5枚（白2・紺・黒・オリーブ）','服'],['ニットポロ（黒）','服'],['白シャツ','服'],['ハーフパンツ（グレー）','服'],['日よけの長袖（ライトグレー）','服'],
  ['寝間着（着古したTと短パン）','服'],['下着 6枚','服'],['靴下 4足（黒）','服'],
  ['水着','海'],['サンダル','海'],['速乾タオル','海'],['キャップ','小物'],['サングラス','小物'],['日焼け止め','小物'],
  ['汚れた服を入れる袋','小物'],['圧縮袋','小物']

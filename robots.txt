@@ -25,3 +25,4 @@ Disallow: /shippinno-ul-converter.html
 Disallow: /shippinno-ul-manual.html
 Disallow: /goto-kaidashi.html
 Disallow: /ulrio-yoyaku-lp-preview.html
+Disallow: /goto-fukusou.html

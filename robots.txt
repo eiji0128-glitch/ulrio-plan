@@ -28,3 +28,4 @@ Disallow: /ulrio-yoyaku-lp-preview.html
 Disallow: /goto-fukusou.html
 Disallow: /lzm-color-q/
 Disallow: /go-rm-b.html
+Disallow: /lazymat-rakuten-preview.html
